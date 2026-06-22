@@ -8,9 +8,80 @@
   list-style: none;
   box-sizing: border-box;
 }
+/* Defined the project guideine colors  */
+
+:root {
+  --primary: #0a2947; /* Dark blue */
+  --secondary: #f3e4c9; /* Piege */
+  --third: #d3d4c0; /* Olive */
+  --fourth: #8b5e3c; /* Brown */
+}
 
 /* Scrolling behaviour styling - when you navigate from section to another */
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--secondary);
 }
+
+.container {
+  width: 100%;
+  margin: auto;
+  padding: 0 2rem;
+}
+
+/* --------------- Start Header Styling --------------- */
+.hearder-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px 5%;
+  background-color: var(--primary);
+  color: #d3d4c0;
+  box-shadow: 0 2px 10px var(--secondary);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo a {
+  font-size: 1.4rem;
+  color: var(--third);
+  font-weight: 600;
+}
+
+.logo a:hover {
+  color: var(--fourth);
+  transition: all 0.3s;
+}
+
+.header-span {
+  color: var(--fourth);
+}
+
+.header-span:hover {
+  color: var(--third);
+  transition: all 0.3s;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-weight: 300;
+  color: var(--third);
+}
+
+.nav-links a:hover {
+  font-weight: 600;
+  color: var(--fourth);
+  transition: 0.5s all ease;
+  transform: scale(1.05);
+}
+/* --------------- End of Header Styling --------------- */
