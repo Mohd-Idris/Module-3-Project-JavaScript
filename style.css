@@ -157,7 +157,7 @@ body {
   cursor: pointer;
 }
 
-.btn-add-task {
+#btn-add-task {
   background-color: #267d3a;
 }
 
@@ -176,7 +176,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 1rem;
-  padding: 1rem;
+  padding: 4em 5%;
 }
 
 .card {
