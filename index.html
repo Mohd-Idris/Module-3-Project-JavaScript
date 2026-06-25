@@ -42,39 +42,65 @@
         </div>
     </header>
     <main>
-      <!-- ------------------------------------------------------------------------------------ -->
-      <div class="home-container">
-        <div class="headers">
-          <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search" />
-          </div>
-          <div class="headers-icons">
-            <button class="btn-icon">
-              <i class="fas fa-bell"></i>
-              <span class="notification-dot"></span>
-            </button>
-            <button class="btn-icon">
-              <i class="fas fa-user"></i>
-            </button>
-          </div>
-        </div>
-        <!-- -------------------------------------------------------------------------------- ---->
-          <div class="main-content">
-        <div class="title-section">
-            <div class="greeting" id="greeting">
-                <h1>
-                    You have <span class="task-count" id="task-count">0</span> task today 
-                    <button class="btn-add" onclick="openModal()"><i class="fas fa-plus"></i>Add New</button>
-                </h1>
-            </div>
-        </div>
-      </div>
-      </div>
-
-
-
      
+      <section class="to-do">
+        <div class="todo-title"><h1 class="title">To-Do-List Application</h1></div>
+        <div class="form-data">
+          <form>
+                <label
+                >Name
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Please add task "
+                  required
+                />
+
+                 <label
+                >Priority
+                <select name="priority" id="priority">
+                  <option value="">-- Choose Priority --</option>
+                  <option>Minor</option>
+                  <option>Major</option>
+                  <option>Critical</option>
+                </select>
+            </form>
+
+            <button class="btn btn-add-task">
+              Add Task
+            </button>
+
+            <button class="btn btn-edit-task">
+              Edit Task
+            </button>
+
+            <button class="btn btn-remove-task">
+              Delete Task
+            </button>
+        </div>
+        <div class="to-do-container">
+          <div id="ongoing-task" class="card">
+            <h3 id="ongoing-task-heading" class="card-heading">Ongoing Task</h3>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+          </div>
+       
+         <div id="priority-task" class="card">
+          <h3 id="priority-task-heading" class="card-heading">Top Priority Task</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+        </div>
+
+         <div id="completed-task" class="card">
+          <h3 id="completed-task-heading" class="card-heading">Completed Task</h3>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+        </div>
+        </div>
+        
+      </section>
+
     </main>
     <script src="script.js"></script>
   </body>

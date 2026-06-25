@@ -11,8 +11,8 @@
 /* Defined the project guideine colors  */
 
 :root {
-  --primary: #0a2947; /* Dark blue */
-  --secondary: #f3e4c9; /* Piege */
+  --primary: #0a2947; /* Navy */
+  --secondary: #f3e4c9; /* Beige */
   --third: #d3d4c0; /* Olive */
   --fourth: #8b5e3c; /* Brown */
 }
@@ -90,84 +90,124 @@ body {
 }
 /* --------------- End of Header Styling --------------- */
 
-.home-container {
-  width: 95%;
-  padding: 2.5rem 5%;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 60px;
-  display: grid;
-  grid-template-columns: 1fr 350px;
-  margin-top: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-.headers {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  grid-column: 1/-1;
-}
-.search-bar {
-  max-width: 500px;
+/* --------------- Start Hero-Section Styling --------------- */
+/* .to-do h1 {
+ 
   width: 100%;
-  position: relative;
-  flex: 1;
-}
-
-.search-bar input {
-  width: 100%;
-  padding: 12px 45px;
-  border: 1px solid var(--primary);
-  border-radius: 15px;
-  font-size: 14px;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.search-bar input:focus {
-  border-color: var(--fourth);
-}
-
-.search-bar i {
-  position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
+  margin: 2rem auto;
+  text-align: center;
+  color: linear-gradient(var(--fourth), var(--secondary));
   color: var(--primary);
+} */
+
+.todo-title .title {
+  color: var(--fourth);
+  margin: 2rem auto;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  background: linear-gradient(to right, var(--primary), var(--fourth));
+  color: var(--secondary);
+  width: fit-content;
 }
 
-.headers-icons {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.btn-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--secondary);
+.form-data {
+  min-height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-}
-
-.btn-icon:hover {
-  background: var(--primary);
+  width: fit-content;
+  margin: 0 auto;
+  /* background-color: var(--fourth); */
+  background: linear-gradient(to right, var(--primary), var(--fourth));
+  padding: 40px;
+  border-radius: 30px;
   color: var(--third);
 }
+.form-data input,
+.form-data select {
+  display: block;
+  padding: 12px 20px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  color: var(--fourth);
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.form-data input:focus,
+.form-data select {
+  outline: none;
+}
 
-.notification-dot {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 8px;
-  height: 8px;
+.form-data input {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  margin-top: 20px;
+  background-color: var(--primary);
+  color: var(--third);
+  height: 100%;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-add-task {
+  background-color: #267d3a;
+}
+
+.btn-edit-task {
+  background-color: #b59124;
+}
+.btn-remove-task {
+  background-color: #b0212f;
+}
+
+.to-do-container {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
   background-color: var(--third);
-  border-radius: 50%;
+  padding: 1rem;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 40px;
+  height: 60vh;
+  overflow: hidden auto;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  margin-bottom: 0.5rem;
+}
+
+.card-heading {
+  background: linear-gradient(to right, var(--secondary), var(--fourth));
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+  color: var(th);
 }
