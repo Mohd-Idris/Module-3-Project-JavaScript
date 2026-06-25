@@ -164,6 +164,7 @@ body {
 .btn-edit-task {
   background-color: #b59124;
 }
+
 .btn-remove-task {
   background-color: #b0212f;
 }
@@ -228,12 +229,58 @@ i {
 
 .checked-sign {
   color: #267d3a;
+  animation-name: side;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+@keyframes side {
+  0% {
+  }
+  100% {
+    /* transform: rotate(-360deg); */
+    transform: rotateX(-180deg) rotateY(180deg) rotateZ(180deg);
+    border-radius: 50%;
+    scale: 1.5;
+  }
 }
 
 .top-priority-sign {
   color: #b0212f;
+  animation-name: rotate;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
 }
-
+@keyframes rotate {
+  0% {
+  }
+  100% {
+    transform: rotate(180deg);
+    border-radius: 50%;
+  }
+}
 .ongoing-sign {
   color: #f59e0b;
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+@keyframes spin {
+  0% {
+  }
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+  }
 }
