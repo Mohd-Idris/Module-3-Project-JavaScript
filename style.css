@@ -91,14 +91,6 @@ body {
 /* --------------- End of Header Styling --------------- */
 
 /* --------------- Start Hero-Section Styling --------------- */
-/* .to-do h1 {
- 
-  width: 100%;
-  margin: 2rem auto;
-  text-align: center;
-  color: linear-gradient(var(--fourth), var(--secondary));
-  color: var(--primary);
-} */
 
 .todo-title .title {
   color: var(--fourth);
@@ -118,7 +110,12 @@ body {
   width: fit-content;
   margin: 0 auto;
   /* background-color: var(--fourth); */
-  background: linear-gradient(to right, var(--primary), var(--fourth));
+  background: linear-gradient(
+    to right,
+    var(--primary),
+    transparent,
+    var(--fourth)
+  );
   padding: 40px;
   border-radius: 30px;
   color: var(--third);
@@ -144,11 +141,14 @@ body {
 .form-data input {
   margin-bottom: 1rem;
 }
+.form-data .lbl {
+  color: var(--secondary);
+}
 
 .btn {
   margin-top: 20px;
-  background-color: var(--primary);
-  color: var(--third);
+  margin-right: 10px;
+  color: var(--secondary);
   height: 100%;
   padding: 20px 30px;
   border: none;
@@ -173,13 +173,19 @@ body {
   margin: 0 auto;
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, auto);
   gap: 1rem;
   padding: 1rem;
 }
 
 .card {
-  background-color: var(--third);
+  /* background-color: var(--third); */
+  background: linear-gradient(
+    to right,
+    var(--primary),
+    transparent,
+    var(--fourth)
+  );
   padding: 1rem;
   margin: 0 auto;
   text-align: center;
@@ -194,8 +200,12 @@ body {
   transition: all 0.3s ease;
 }
 
-.item h3 {
-  margin-bottom: 0.5rem;
+.card h3 {
+  margin-bottom: 1.5rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 13px;
+  background: var(--secondary);
 }
 
 .card p {
@@ -210,4 +220,20 @@ body {
   margin-bottom: 0.5rem;
   padding: 0 0.5rem;
   color: var(th);
+}
+i {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.checked-sign {
+  color: #267d3a;
+}
+
+.top-priority-sign {
+  color: #b0212f;
+}
+
+.ongoing-sign {
+  color: #f59e0b;
 }

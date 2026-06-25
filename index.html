@@ -47,7 +47,7 @@
         <div class="todo-title"><h1 class="title">To-Do-List Application</h1></div>
         <div class="form-data">
           <form>
-                <label
+                <label class="lbl"
                 >Name
                 <input
                   type="text"
@@ -57,7 +57,7 @@
                   required
                 />
 
-                 <label
+                 <label class="lbl"
                 >Priority
                 <select name="priority" id="priority">
                   <option value="">-- Choose Priority --</option>
@@ -81,19 +81,19 @@
         </div>
         <div class="to-do-container">
           <div id="ongoing-task" class="card">
-            <h3 id="ongoing-task-heading" class="card-heading">Ongoing Task</h3>
+            <h3 id="ongoing-task-heading" class="card-heading"><i class="fa-solid fa-spinner ongoing-sign"></i>Ongoing Task</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
           </div>
        
          <div id="priority-task" class="card">
-          <h3 id="priority-task-heading" class="card-heading">Top Priority Task</h3>
+          <h3 id="priority-task-heading" class="card-heading"><i class="fa-solid fa-circle-exclamation top-priority-sign"></i>Top Priority Task</h3>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
         </div>
 
          <div id="completed-task" class="card">
-          <h3 id="completed-task-heading" class="card-heading">Completed Task</h3>
+          <h3 id="completed-task-heading" class="card-heading"><i class="fa-solid fa-circle-check checked-sign"></i>Completed Task</h3>
           <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
         </div>
