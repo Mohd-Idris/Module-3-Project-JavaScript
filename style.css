@@ -324,9 +324,15 @@ i {
 }
 
 .sign-up .sign-up-title {
+  text-transform: capitalize;
+  color: var(--accent-color);
+  font: inherit;
   font-size: 3rem;
-  font-weight: 900;
-  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sign-up-title .sign-up-span {
+  /* color: var() */
 }
 
 .sign-up-form {
@@ -355,4 +361,63 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.sign-up-form input {
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1rem;
+  font: inherit;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  /* border-left: none; */
+  background-color: var(--input-color);
+  transition: all 150ms ease-in-out;
+}
+
+.sign-up-form input:hover {
+  /* border:  2px solid var(--accent-color); */
+  border-color: var(--accent-color);
+}
+
+.sign-up-form input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.sign-up-form-content:has(input:focus) > .label {
+  background-color: var(--text-color);
+}
+
+.sign-up-form button {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  margin: 10px 0 0 0;
+  padding: 1rem 3rem;
+  font: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sign-up-form button:hover {
+  background-color: var(--text-color);
+}
+
+.sign-up-form button:focus {
+  background-color: var(--accent-color);
+  outline: none;
+}
+
+.wrapper .login-link {
+  color: var(--accent-color);
+}
+
+.wrapper .login-link:hover {
+  text-decoration: underline;
 }
