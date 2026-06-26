@@ -11,6 +11,14 @@
 /* Defined the project guideine colors  */
 
 :root {
+  /* Sign up Color guidelines */
+
+  --accent-color: #8672ff; /* Light Purple */
+  --base-color: #ffffff; /* White */
+  --text-color: #2e2b41; /* Gunmetal */
+  --input-color: #f3f0ff; /* Lavender / Foumdation White / Pale Blue */
+
+  /* ------------------------------------ */
   --primary: #0a2947; /* Navy */
   --secondary: #f3e4c9; /* Beige */
   --third: #d3d4c0; /* Olive */
@@ -290,10 +298,27 @@ i {
 }
 
 /* ----------------------------- */
-.material-symbols-outlined {
-  font-variation-settings:
-    "FILL" 1,
-    "wght" 400,
-    "GRAD" 0,
-    "opsz" 24;
+#sign-up-html {
+  color: var(--text-color);
+  text-align: center;
+}
+
+#sign-up-body {
+  min-height: 100vh;
+  background-image: url(./Images/sign-up-background-image.jpg);
+  background-size: cover;
+  background-position: right;
+  overflow: hidden;
+}
+
+.wrapper {
+  background-color: var(--base-color);
+  height: 100vh;
+  width: max(40%, 600px);
+  padding: 10px;
+  border-radius: 0 20px 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
