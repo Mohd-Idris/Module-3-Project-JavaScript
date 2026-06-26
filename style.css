@@ -332,7 +332,7 @@ i {
 }
 
 .sign-up-title .sign-up-span {
-  /* color: var() */
+  color: var(--primary);
 }
 
 .sign-up-form {
