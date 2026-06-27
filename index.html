@@ -34,10 +34,10 @@
         <div class="nav-div">
           <nav class="nav-bar">
             <ul class="nav-links">
-              <li><a href="#" class="active-page">Home</a></li>
+              <li><a href="index.html" class="active-page">Home</a></li>
               <li><a href="#">Services</a></li>
               <li><a href="#">Contact Me</a></li> 
-              <li><a href="#">Login</a></li> 
+              <li><a href="login.html">Login</a></li> 
             </ul>
           </nav>
         </div>
@@ -48,7 +48,7 @@
         <div class="todo-title"><h1 class="title">To-Do Application</h1></div>
         <div class="form-data">
           <form>
-                <label class="lbl"
+                <label class="todo-form-label"
                 >Name
                 <input
                   type="text"
@@ -58,13 +58,13 @@
                   required
                 />
 
-                 <label class="lbl"
+                 <label class="todo-form-label"
                 >Priority
                 <select name="priority" id="priority-input">
                   <option value="">-- Choose Priority --</option>
-                  <option>Minor</option>
-                  <option>Major</option>
-                  <option>Critical</option>
+                  <option>Minor - due date: 5 days</option>
+                  <option>Major due date: 3 days</option>
+                  <option>Critical due date: 1 day</option>
                 </select>
             </form>
 
@@ -80,23 +80,34 @@
               Delete Task
             </button>
         </div>
+
+
+
         <div class="to-do-container">
           <div id="ongoing-task" class="card">
             <h3 id="ongoing-task-heading" class="card-heading"><i class="fa-solid fa-spinner ongoing-sign"></i>Ongoing Task</h3>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+            <p>-Task Name</p>
+            <p>- Priority Type</p>
+            <p>- Due Date</p>
+            <p>- Task created date/time</p>
+            
           </div>
        
-         <div id="priority-task" class="card">
+         <div id="priority-task" class="card priority-card">
           <h3 id="priority-task-heading" class="card-heading"><i class="fa-solid fa-circle-exclamation top-priority-sign"></i>Top Priority Task</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+            <p>-Task Name</p>
+            <p>- Priority Type: Critical</p>
+            <p>- Due Date</p>
+            <p>- Task created date/time</p>
         </div>
 
-         <div id="completed-task" class="card">
+         <div id="completed-task" class="card completed-card">
           <h3 id="completed-task-heading" class="card-heading"><i class="fa-solid fa-circle-check checked-sign"></i>Completed Task</h3>
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod saepe sit iusto ducimus itaque magni blanditiis autem eaque pariatur? Officiis.</p>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, quos?</p>
+            <p>-Task Name</p>
+            <p>- Priority Type</p>
+            <p>- Completed Date</p>
+            <p>- Task created Date</p>
+            <p>- Task completed Date</p>
         </div>
         </div>
         
