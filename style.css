@@ -127,7 +127,113 @@ body {
 /* --------------- End of Header Styling --------------- */
 
 /* --------------- Start Hero-Section Styling --------------- */
+.hero-page-content {
+  margin-top: 4rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
+}
+
+.hero-page-content .hero-page-title {
+  text-transform: capitalize;
+  color: var(--base-color);
+  font: inherit;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-page-title .hero-page-span {
+  color: var(--accent-color);
+}
+
+.hero-page-content .hero-page-text {
+  margin-bottom: 1rem;
+  font-weight: lighter;
+  font: inherit;
+  font-size: 1.5rem;
+  color: var(--input-color);
+}
+
+.hero-page-content img {
+  height: 300px;
+  width: 100%;
+  ;
+  max-width: 600px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+}
+
+.carousel {
+  margin: 10px auto;
+  width: 99%;
+  height: 20vh;
+  border: none red;
+  display: flex;
+  overflow-x: auto;
+  /* To build a carousel to have to set this to auto to make the
+   horizontal scrollbar visible and then to be able to set this to none later */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel .tech-title {
+  margin-bottom: 14rem;
+
+}
+
+.tech-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: spin 5s infinite linear;
+  padding-right: 1rem;
+}
+
+@keyframes spin {
+  from {
+    translate: 0;
+  }
+
+  to {
+    translate: -100%;
+  }
+}
+
+.tech-card {
+  flex: 0 0 7rem;
+  /* You have to stop grow and shrink propperties */
+  height: auto;
+  padding: 1rem;
+  background-color: #393e46;
+  font-size: 3rem;
+  border-radius: 1rem;
+  text-align: center;
+  align-content: center;
+  width: 100%;
+}
+
+
+
+.tech-group img {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  /* display: flex; */
+}
+
+
+/* --------------- End of Hero Styling ----------------------------- */
+/* --------------- Start To-Do Hero-Section Styling --------------- */
 .todo-title .title {
   color: var(--base-color);
   margin: 2rem auto;
