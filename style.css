@@ -8,21 +8,43 @@
   list-style: none;
   box-sizing: border-box;
 }
+
 /* Defined the project guideine colors  */
 
 :root {
-  /* Sign up Color guidelines */
+  /* Color guidelines */
 
-  --accent-color: #8672ff; /* Light Purple */
-  --base-color: #ffffff; /* White */
-  --text-color: #2e2b41; /* Gunmetal */
-  --input-color: #f3f0ff; /* Lavender / Foumdation White / Pale Blue */
+  --accent-color: #8672ff;
+  /* Light Purple Color */
+  --base-color: #ffffff;
+  /* White Color */
+  --text-color: #2e2b41;
+  /* Gunmetal Color */
+  --input-color: #f3f0ff;
+  /* Lavender Color / Foumdation White Color / Pale Blue Color */
 
-  /* ------------------------------------ */
-  /* --primary: #0a2947;*/ /* Navy */
-  /* --secondary: #f3e4c9;*/ /* Beige */
-  /*--third: #d3d4c0;*/ /* Olive */
-  /*--fourth: #8b5e3c;*/ /* Brown */
+  /* ----------------Task Color Guidelines-------------------- */
+  /* --primary: #0a2947;*/
+  /* Navy */
+  /* --secondary: #f3e4c9;*/
+  /* Beige */
+  /*--third: #d3d4c0;*/
+  /* Olive */
+  /*--fourth: #8b5e3c;*/
+  /* Brown */
+
+  /* ---------------- Task Color Guidelines -------------------- */
+
+  --minor: #94a3b8;
+  /* Rock Blue Color */
+  --major: #f59e0b;
+  /* Amber Color */
+  --critical: #ef4444;
+  /* Coral Red Color */
+  --ongoing: #0ea5e9;
+  /* Sky Color */
+  --completed: #10b981;
+  /* Emerald Color */
 }
 
 /* Scrolling behaviour styling - when you navigate from section to another */
@@ -101,6 +123,7 @@ body {
   color: var(--base-color);
   font-weight: 600;
 }
+
 /* --------------- End of Header Styling --------------- */
 
 /* --------------- Start Hero-Section Styling --------------- */
@@ -139,6 +162,7 @@ body {
   align-items: center;
   padding: 1rem */
 }
+
 .form-data input,
 .form-data select {
   display: block;
@@ -153,6 +177,7 @@ body {
   font-size: 1rem;
   font: inherit;
 }
+
 .form-data input:focus,
 .form-data select {
   outline: none;
@@ -162,6 +187,7 @@ body {
 .form-data select {
   margin-bottom: 1rem;
 }
+
 .form-data .todo-form-label {
   color: var(--text-color);
 }
@@ -195,7 +221,7 @@ body {
   margin: 0 auto;
   margin-top: 1rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1rem;
   justify-content: center;
   align-items: center;
@@ -242,12 +268,13 @@ body {
 }
 
 i {
-  margin-right: 20px;
+  margin-right: 10px;
   font-size: 25px;
 }
 
 .checked-sign {
-  color: #267d3a;
+  /* color: #267d3a; */
+  color: var(--completed);
   animation-name: side;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
@@ -256,19 +283,21 @@ i {
   animation-direction: normal;
   animation-play-state: running;
 }
-@keyframes side {
-  0% {
-  }
+
+/* @keyframes side {
+  0% {}
+
   100% {
-    /* transform: rotate(-360deg); */
+    // transform: rotate(-360deg); //
     transform: rotateX(-180deg) rotateY(180deg) rotateZ(180deg);
     border-radius: 50%;
     scale: 1.5;
   }
-}
+} */
 
 .top-priority-sign {
-  color: #b0212f;
+  /* color: #b0212f; */
+  color: var(--critical);
   animation-name: rotate;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
@@ -277,16 +306,19 @@ i {
   animation-direction: normal;
   animation-play-state: running;
 }
-@keyframes rotate {
-  0% {
-  }
+
+/* @keyframes rotate {
+  0% {}
+
   100% {
     transform: rotate(180deg);
     border-radius: 50%;
   }
-}
-.ongoing-sign {
-  color: #f59e0b;
+} */
+
+.minor-sign {
+  /* color: #f59e0b; */
+  color: var(--minor);
   animation-name: spin;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
@@ -295,21 +327,45 @@ i {
   animation-direction: normal;
   animation-play-state: running;
 }
-@keyframes spin {
-  0% {
-  }
+
+/* @keyframes spin {
+  0% {}
+
   100% {
     transform: rotate(360deg);
     border-radius: 50%;
   }
+} */
+
+.major-sign {
+  /* color: #f59e0b; */
+  color: var(--major);
+  animation-name: spin;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
 }
 
-.priority-card,
-.completed-card {
-  background-color: rgba(255, 255, 255, 0.58);
+/* @keyframes spin {
+  0% {}
+
+  100% {
+    transform: rotate(360deg);
+    border-radius: 50%;
+  }
+} */
+
+.minor-task-card,
+.major-task-card,
+.priority-task-card,
+.completed-task-card {
+  background-color: rgba(255, 255, 255, 0.743);
 }
 
-/* ----------------------------- */
+/* --------------Sign Up Page Styling--------------- */
 #sign-up-html {
   color: var(--text-color);
   text-align: center;
@@ -317,22 +373,37 @@ i {
 
 #sign-up-body {
   min-height: 100vh;
-  background-image: url(./Images/sign-up-background-image.jpg);
+  /* background-image: url(./Images/sign-up-background-image.jpg); */
   background-size: cover;
   background-position: right;
   overflow: hidden;
 }
 
-.wrapper {
-  background-color: var(--base-color);
+.sign-up {
+  background-color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  width: max(40%, 600px); /* you can use clamp(minimum, ideal, maximum) */
-  padding: 10px;
-  border-radius: 0 20px 20px 0;
+}
+
+.sign-up-container {
+  background-color: var(--base-color);
+  /* height: 100vh; */
+  /* width: max(40%, 600px); */
+  /* you can use clamp(minimum, ideal, maximum) */
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 3s ease-in-out;
+  box-shadow: 3px 3px 40px 5px var(--accent-color);
+
 }
 
 .sign-up .sign-up-title {
@@ -344,11 +415,12 @@ i {
 }
 
 .sign-up-title .sign-up-span {
-  color: var(--primary);
+  color: var(--text-color);
 }
 
 .sign-up-form {
-  width: min(400px, 100%); /* you can use clamp(minimum, ideal, maximum) */
+  width: min(400px, 100%);
+  /* you can use clamp(minimum, ideal, maximum) */
   margin: 20px 0 50px;
   display: flex;
   flex-direction: column;
@@ -357,7 +429,7 @@ i {
   align-items: center;
 }
 
-.sign-up-form > div {
+.sign-up-form>div {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -400,7 +472,7 @@ i {
   border-color: var(--text-color);
 }
 
-.sign-up-form-content:has(input:focus) > .label {
+.sign-up-form-content:has(input:focus)>.label {
   background-color: var(--text-color);
 }
 
@@ -419,6 +491,7 @@ i {
 
 .sign-up-form button:hover {
   background-color: var(--text-color);
+  text-decoration: underline;
 }
 
 .sign-up-form button:focus {
@@ -428,8 +501,140 @@ i {
 
 .wrapper .login-link {
   color: var(--accent-color);
+  /* background-color: var(--text-color); */
 }
 
 .wrapper .login-link:hover {
+  text-decoration: underline;
+}
+
+/* --------------Login Page Styling--------------- */
+.login {
+  background-color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: var(--base-color);
+  /* width: max(40%, 600px); */
+  width: 100%;
+  max-width: 500px;
+  margin: 2rem 0;
+  /* you can use clamp(minimum, ideal, maximum) */
+  padding: 10px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 3s ease-in-out;
+  box-shadow: 3px 3px 40px 5px var(--accent-color);
+}
+
+.login .login-title {
+  text-transform: capitalize;
+  color: var(--accent-color);
+  font: inherit;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+
+.login-title .login-span {
+  color: var(--text-color);
+}
+
+.login-form {
+  width: min(400px, 100%);
+  /* you can use clamp(minimum, ideal, maximum) */
+  margin: 20px 0 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.login-form>div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form .label {
+  flex-shrink: 0;
+  height: 50px;
+  width: 50px;
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.login-form input {
+  flex-grow: 1;
+  min-width: 0;
+  height: 50px;
+  padding: 1rem;
+  font: inherit;
+  border-radius: 0 10px 10px 0;
+  border: 2px solid var(--input-color);
+  /* border-left: none; */
+  background-color: var(--input-color);
+  transition: all 150ms ease-in-out;
+}
+
+.login-form input:hover {
+  /* border:  2px solid var(--accent-color); */
+  border-color: var(--accent-color);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--text-color);
+}
+
+.login-form-content:has(input:focus)>.label {
+  background-color: var(--text-color);
+}
+
+.login-form button {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  margin: 10px 0 0 0;
+  padding: 1rem 3rem;
+  font: inherit;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: var(--text-color);
+  text-decoration: underline;
+}
+
+.login-form button:focus {
+  background-color: var(--accent-color);
+  outline: none;
+}
+
+.login-container .login-link {
+  color: var(--accent-color);
+  /* background-color: var(--text-color); */
+}
+
+.login-container .login-link:hover {
   text-decoration: underline;
 }

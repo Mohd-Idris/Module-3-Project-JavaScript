@@ -1,88 +1,114 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My JS Project</title>
-    <!-- An external link CSS style  -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Fonts -->
-    <!-- An external font (Poppins font) for the website -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Icons -->
-    <!-- A link to generate icons for the website -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!-- Navigation Links Section -->
-    <header>
-      <div class="hearder-container container">
-        <div class="logo">
-          <a href="#">My<span class="header-span span">JSPro</span></a>
-        </div>
-        <div class="nav-div">
-          <nav class="nav-bar">
-            <ul class="nav-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact Me</a></li>
-              <li><a href="login.html" class="active-page">Login</a></li>
-            </ul>
-          </nav>
-        </div>
-    </header>
-    <main>
-     
-      <section class="login">
-        <div class="login-title"><h1 class="title">Login/Sign up </h1></div>
-        <div class="login-form-data">
-          <form>
-                <label class="lbl"
-                >Username
-                <input
-                  type="text"
-                  name="name"
-                  id="name-input"
-                  placeholder="Please enter your username "
-                  required
-                />
 
-                 <label class="lbl"
-                >Password
-                <input
-                  type="password"
-                  name="password"
-                  id="password-input"
-                  placeholder="Please enter your password "
-                  required
-                />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My JS Project</title>
+  <!-- An external link CSS style  -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fonts -->
+  <!-- An external font (Poppins font) for the website -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <!-- Icons -->
+  <!-- A link to generate icons for the website -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 
-            </form>
+<body>
+  <!-- Navigation Links Section -->
+  <header>
+    <div class="hearder-container container">
+      <div class="logo">
+        <a href="#">My<span class="header-span span">JSPro</span></a>
+      </div>
+      <div class="nav-div">
+        <nav class="nav-bar">
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a href="login.html" class="active-page">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+  <main>
 
-            <button class="btn" id="btn-login">
-              Log In
-            </button>
+    <!-- <section class="login">
+      <div class="login-title">
+        <h1 class="title">Login </h1>
+      </div>
+      <div class="login-form-data">
+        <form>
+          <label class="label lbl-username">Username
+            <input type="text" name="name" id="name-input" placeholder="Please enter your username " required />
 
-            <button class="btn btn-reset">
-              Reset
-            </button>
+            <label class="label lbl-password">Password
+              <input type="password" name="password" id="password-input" placeholder="Please enter your password "
+                required />
 
-            <a href="sign-up.html" class="register-text">Register now</a>
-        </div>
+        </form>
+
+        <button class="btn" id="btn-login">
+          Log In
+        </button>
+
+        <button class="btn btn-reset">
+          Reset
+        </button>
+
+        <a href="sign-up.html" class="register-text">Register now</a>
+      </div> -->
 
 
-    </main>
-    <script src="script.js"></script>
-  </body>
+
+    <section class="login">
+      <div class="login-container">
+        <h1 class="login-title"><span class="login-span">L</span>ogin</h1>
+        <form class="login-form">
+
+
+
+          <div class="login-form-content">
+            <label class="label lbl-email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200Zm-320-280v-80 480-400Z" />
+              </svg>
+            </label>
+            <input type="email" name="email" id="email-input" placeholder="Enter your Email " required />
+          </div>
+
+          <div class="login-form-content">
+            <label class="label lbl-password"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+              </svg>
+            </label>
+            <input type="password" name="password" id="password-input" placeholder="Please enter your password "
+              required />
+          </div>
+
+
+
+          <button class="submit btn-login">Login</button>
+        </form>
+        <p>Don't you have account <a href="sign-up.html" class="login-link">Create account</a></p>
+        <!-- <p>Already registered <a href="login.html" class="login-link">login</a></p> -->
+      </div>
+
+
+
+  </main>
+  <script src="script.js"></script>
+</body>
+
 </html>

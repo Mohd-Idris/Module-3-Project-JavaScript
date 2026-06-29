@@ -1,119 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My JS Project</title>
-    <!-- An external link CSS style  -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Fonts -->
-    <!-- An external font (Poppins font) for the website -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Icons -->
-    <!-- A link to generate icons for the website -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    <!-- Navigation Links Section -->
-    <header>
-      <div class="hearder-container container">
-        <div class="logo">
-          <a href="#">My<span class="header-span span">JSPro</span></a>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do-App Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="hearder-container container">
+      <div class="logo">
+        <a href="#">My<span class="header-span span">JSPro</span></a>
+      </div>
+      <div class="nav-div">
+        <nav class="nav-bar">
+          <ul class="nav-links">
+            <li><a href="index.html" class="active-page">Home</a></li>
+            <li><a href="todo-page.html">Application</a></li>
+            <li><a href="#">Contact Me</a></li>
+            <li><a href="login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+
+  <main>
+    <section class="home-page" id="homepage">
+      <div class="hero-page-container">
+        <div class="hero-page-content">
+          <h1>Welcome to To-Do-Application</h1>
+          <p>
+            Organize your daily tasks, set clear priorities, and receive timely alerts so you stay on track. Whether
+            it’s work,
+            study or personal goals — this app helps you focus on what’s important.
+          </p>
+          <a href="./todo-page.html" class="btn-primary">Learn More about Me</a>
+          <a href="./sign-up.html" class="btn-secondary">Sign Up</a>
         </div>
-        <div class="nav-div">
-          <nav class="nav-bar">
-            <ul class="nav-links">
-              <li><a href="index.html" class="active-page">Home</a></li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact Me</a></li> 
-              <li><a href="login.html">Login</a></li> 
-            </ul>
-          </nav>
-        </div>
-    </header>
-    <main>
-     
-      <section class="to-do">
-        <div class="todo-title"><h1 class="title">To-Do Application</h1></div>
-        <div class="form-data">
-          <form>
-                <label class="todo-form-label"
-                >Name
-                <input
-                  type="text"
-                  name="name"
-                  id="name-input"
-                  placeholder="Please add task "
-                  required
-                />
+    </section>
+  </main>
 
-                 <label class="todo-form-label"
-                >Priority
-                <select name="priority" id="priority-input">
-                  <option value="">-- Choose Priority --</option>
-                  <option>Minor - due date: 5 days</option>
-                  <option>Major due date: 3 days</option>
-                  <option>Critical due date: 1 day</option>
-                </select>
-            </form>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 MyDesign Company | All rights reserved</p>
+      <a href="#" class="scroll-up" aria-label="An arrorw points up " aria-labelledby="an anchor link "
+        title="An arrow"><i class="fa-solid fa-arrow-up"></i></a>
+      <div class="social-icons">
+        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website"><i
+            class="fa-brands fa-youtube you-red"></i></a>
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website"><i
+            class="fa-brands fa-linkedin link-blue"></i></a>
+        <a href="https://x.com" target="_blank" aria-label="X Website "><i class="fa-brands fa-twitter x-black"></i></a>
+        <a href="https://github.com" target="_blank" aria-label="GitHub Website"><i
+            class="fa-brands fa-github git-black"></i></a>
+      </div>
+    </div>
+  </footer>
+</body>
 
-            <button class="btn" id="btn-add-task">
-              Add Task
-            </button>
-
-            <button class="btn btn-edit-task">
-              Edit Task
-            </button>
-
-            <button class="btn btn-remove-task">
-              Delete Task
-            </button>
-        </div>
-
-
-
-        <div class="to-do-container">
-          <div id="ongoing-task" class="card">
-            <h3 id="ongoing-task-heading" class="card-heading"><i class="fa-solid fa-spinner ongoing-sign"></i>Ongoing Task</h3>
-            <p>-Task Name</p>
-            <p>- Priority Type</p>
-            <p>- Due Date</p>
-            <p>- Task created date/time</p>
-            
-          </div>
-       
-         <div id="priority-task" class="card priority-card">
-          <h3 id="priority-task-heading" class="card-heading"><i class="fa-solid fa-circle-exclamation top-priority-sign"></i>Top Priority Task</h3>
-            <p>-Task Name</p>
-            <p>- Priority Type: Critical</p>
-            <p>- Due Date</p>
-            <p>- Task created date/time</p>
-        </div>
-
-         <div id="completed-task" class="card completed-card">
-          <h3 id="completed-task-heading" class="card-heading"><i class="fa-solid fa-circle-check checked-sign"></i>Completed Task</h3>
-            <p>-Task Name</p>
-            <p>- Priority Type</p>
-            <p>- Completed Date</p>
-            <p>- Task created Date</p>
-            <p>- Task completed Date</p>
-        </div>
-        </div>
-        
-      </section>
-
-    </main>
-    <script src="script.js"></script>
-  </body>
 </html>

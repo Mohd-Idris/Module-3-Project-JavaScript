@@ -23,3 +23,6 @@ addTask.addEventListener("click", function () {
   // Test it in console
   console.log("Task: ", nameValue, "| Priority:", priorityValue);
 });
+
+
+// 1. 
