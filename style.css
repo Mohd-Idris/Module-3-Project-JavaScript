@@ -22,6 +22,8 @@
   /* Gunmetal Color */
   --input-color: #f3f0ff;
   /* Lavender Color / Foumdation White Color / Pale Blue Color */
+  --primary: #0a2947;
+  /* Navy */
 
   /* ----------------Task Color Guidelines-------------------- */
   /* --primary: #0a2947;*/
@@ -45,6 +47,18 @@
   /* Sky Color */
   --completed: #10b981;
   /* Emerald Color */
+
+  /* ---------------- Social Icons Color Guidelines -------------------- */
+  --youtube-color: #ff0000;
+  /* Red Color */
+  --linkedin-color: #0077b5;
+  /* LinkedIn Blue Color */
+  --x-color: #000000;
+  /* Black Color */
+  --github-color: #24292e;
+  /* Black-Blue Color */
+
+
 }
 
 /* Scrolling behaviour styling - when you navigate from section to another */
@@ -110,6 +124,7 @@ body {
 .nav-links a {
   font-weight: 300;
   color: var(--text-color);
+  font: inherit;
 }
 
 .nav-links a:hover {
@@ -163,18 +178,55 @@ body {
 .hero-page-content img {
   height: 300px;
   width: 100%;
-  ;
   max-width: 600px;
   border: none;
   outline: none;
   border-radius: 30px;
 }
 
+.hero-buttons {
+  margin: 0 auto;
+  margin-top: 1rem;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+
+
+}
+
+.btn-homepage {
+  background-color: var(--accent-color);
+  color: var(--base-color);
+  margin: 10px 0 0 0;
+  padding: 1rem 3rem;
+  font: inherit;
+  font-weight: 400;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 300ms ease-in-out;
+}
+
+.btn-homepage:hover {
+  background-color: var(--primary-color);
+  color: var(--input-color);
+  text-transform: uppercase;
+  text-decoration: underline;
+  scale: 1.05;
+  outline: none;
+  border: 0.1px solid var(--accent-color);
+
+}
+
 .carousel {
   margin: 10px auto;
   width: 99%;
   height: 20vh;
-  border: none red;
+  /* border: none red; */
   display: flex;
   overflow-x: auto;
   /* To build a carousel to have to set this to auto to make the
@@ -185,9 +237,19 @@ body {
   display: none;
 }
 
-.carousel .tech-title {
-  margin-bottom: 14rem;
+.technologies .tech-title {
+  text-transform: capitalize;
+  color: var(--base-color);
+  font: inherit;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 
+
+.tech-title .tech-span {
+  color: var(--accent-color);
 }
 
 .tech-group {
@@ -195,11 +257,12 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  animation: spin 5s infinite linear;
+  animation: slide 5s infinite;
   padding-right: 1rem;
+  margin-top: 1rem;
 }
 
-@keyframes spin {
+@keyframes slide {
   from {
     translate: 0;
   }
@@ -213,13 +276,14 @@ body {
   flex: 0 0 7rem;
   /* You have to stop grow and shrink propperties */
   height: auto;
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: #393e46;
   font-size: 3rem;
   border-radius: 1rem;
   text-align: center;
   align-content: center;
   width: 100%;
+
 }
 
 
@@ -228,6 +292,8 @@ body {
   max-width: 300px;
   width: 100%;
   margin: 0 auto;
+  border: none;
+  outline: none;
   /* display: flex; */
 }
 
@@ -480,9 +546,9 @@ i {
 #sign-up-body {
   min-height: 100vh;
   /* background-image: url(./Images/sign-up-background-image.jpg); */
-  background-size: cover;
+  /* background-size: cover;
   background-position: right;
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 .sign-up {
@@ -744,3 +810,82 @@ i {
 .login-container .login-link:hover {
   text-decoration: underline;
 }
+
+
+/* Footer Section styling*/
+/* ------------------------- */
+
+/* Footer section style */
+
+footer {
+  background-color: var(--accent-color);
+  width: 100%;
+  padding: 2rem 5%;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* This style will be applied on all elements inside the footer */
+
+footer * {
+  color: var(--base-color);
+}
+
+/* Footer social media style */
+
+.social-icons {
+  font-size: 2rem;
+  margin-top: 1rem;
+  /* background-color: red; */
+  /* display: flex;
+  gap: 10px;
+  justify-content: center; */
+
+
+}
+
+/* Footer social media links style */
+
+.social-icons a i {
+  margin: 0 10px;
+  font-size: 2rem;
+  text-align: center;
+  color: var(--text-color);
+  border-radius: 4px;
+}
+
+/* This style applies when you hover over the Footer icons button */
+
+.social-icons>a:first-child i:hover {
+  color: var(--youtube-color);
+  transition: 0.3s all ease-in-out;
+  transform: scale(1.2);
+  background-color: var(--base-color);
+  padding: 0.2rem 0;
+}
+
+.social-icons>a:nth-child(2) i:hover {
+  color: var(--linkedin-color);
+  transition: 0.3s all ease-in-out;
+  transform: scale(1.2);
+  background-color: var(--base-color);
+  padding: 0.2rem 0;
+}
+
+.social-icons>a:nth-child(3) i:hover {
+  color: var(--x-color);
+  transition: 0.3s all ease-in-out;
+  transform: scale(1.2);
+  background-color: var(--base-color);
+  padding: 0.2rem 0;
+}
+
+.social-icons>a:last-child i:hover {
+  color: var(--github-color);
+  transition: 0.3s all ease-in-out;
+  transform: scale(1.2);
+  background-color: var(--base-color);
+  padding: 0.2rem 0;
+}
+
+/* ------------------------- */
