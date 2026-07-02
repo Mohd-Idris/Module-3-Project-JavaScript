@@ -681,13 +681,15 @@ i {
   outline: none;
 }
 
-.wrapper .login-link {
+.sign-up-container .sign-up-link {
   color: var(--accent-color);
   /* background-color: var(--text-color); */
 }
 
-.wrapper .login-link:hover {
+.sign-up-container .sign-up-link:hover {
   text-decoration: underline;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
 /* --------------Login Page Styling--------------- */
@@ -814,11 +816,13 @@ i {
 
 .login-container .login-link {
   color: var(--accent-color);
+
   /* background-color: var(--text-color); */
 }
 
 .login-container .login-link:hover {
   text-decoration: underline;
+  font-weight: 700;
 }
 
 
