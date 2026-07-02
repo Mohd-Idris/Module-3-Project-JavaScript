@@ -45,7 +45,7 @@
       <div class="todo-title">
         <h1 class="title">To-Do Application</h1>
       </div>
-      <div class="form-data">
+      <div class="form-data" id="todo-form">
         <form class="task-form" id="task-form">
 
           <label for="name-input" class="todo-form-label">Name</label>
@@ -57,9 +57,9 @@
 
           <select name="priority" id="priority-input">
             <option value="">-- Choose Priority --</option>
-            <option>Minor - due date: 5 days</option>
-            <option>Major due date: 3 days</option>
-            <option>Critical due date: 1 day</option>
+            <option>Minor</option>
+            <option>Major</option>
+            <option>Critical</option>
           </select>
 
           <button type="submit" class="btn" id="btn-add-task">
@@ -70,7 +70,7 @@
             Edit Task
           </button>
 
-          <button type="" class="btn btn-remove-task">
+          <button type="" class="btn btn-delete-task">
             Delete Task
           </button>
         </form>
