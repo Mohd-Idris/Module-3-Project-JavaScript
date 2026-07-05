@@ -90,6 +90,7 @@ todoForm.addEventListener("submit", function (event) {
   nameInput.value = "";
   priorityInput.value = "";
 
+  // Add an event listener to the task card to mark it as completed when clicked
   taskCard.addEventListener("click", function () {
     // Toggle the completed class on the task card
     taskCard.classList.toggle("completed");
