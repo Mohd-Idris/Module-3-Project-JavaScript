@@ -26,22 +26,20 @@ const editTask = document.getElementById("btn-edit-task");
 const deleteTask = document.getElementById("btn-delete-task");
 
 // Declare the task cards
-const minorTaskCard = document.getElementById("btn-minor-task");
-const majorTaskCard = document.getElementById("btn-major-task");
-const criticalTaskCard = document.getElementById("btn-critical-task");
-const completedTaskCard = document.getElementById("btn-completed-task");
+const minorTaskCard = document.getElementById("minor-task");
+const majorTaskCard = document.getElementById("major-task");
+const criticalTaskCard = document.getElementById("priority-task");
+const completedTaskCard = document.getElementById("completed-task");
 
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting and refreshing the page
 
   // Get the current values from the form inputs
   const nameValue = nameInput.value.trim(); // Convert the task name to uppercase
-  const priorityValue = priorityInput.value;
+  let priorityValue = priorityInput.value;
 
   // Set a default priority value for the task if the user does not select any from the list.
-  if (priorityValue === "") {
-    priorityValue = "Minor"; // Set the default priority value to "minor"
-  }
+  priorityValue = !priorityValue ? "Minor" : priorityValue;
 
   // Set the Due days for the each task due to the priority value. The due days are set as follows:
   let dueDay;
@@ -62,4 +60,32 @@ todoForm.addEventListener("submit", function (event) {
     "The Due days for this task is:",
     dueDay,
   );
+
+  // Create a new task card based on the priority value and add it to the corresponding task card container
+  const taskCard = document.createElement("div");
+  // taskCard.classList.add(`task-card ${priorityValue.toLowerCase()}-task-card`);
+  taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
+  taskCard.innerHTML = `
+    <!-- <h3>${nameValue}</h3> -->
+    <!-- <p>Priority: ${priorityValue}</p> -->
+    <!-- <p>Due in: ${dueDay} days</p> -->
+    <!-- <button class="btn-edit-task">Edit</button> -->
+    <!-- <button class="btn-delete-task">Delete</button> -->
+
+    <p><span class="bold-text">Task:</span> ${nameValue}</p>
+    <p><span class="bold-text">Priority:</span> ${priorityValue}</p> 
+    <p><span class="bold-text">Due Day:</span> ${dueDay} days</p> 
+  `;
+
+  if (priorityValue === "Minor") {
+    minorTaskCard.appendChild(taskCard);
+  } else if (priorityValue === "Major") {
+    majorTaskCard.appendChild(taskCard);
+  } else if (priorityValue === "Critical") {
+    criticalTaskCard.appendChild(taskCard);
+  }
+
+  // Clear the form inputs after adding the task
+  nameInput.value = "";
+  priorityInput.value = "";
 });
