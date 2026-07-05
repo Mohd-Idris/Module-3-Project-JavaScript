@@ -89,4 +89,14 @@ todoForm.addEventListener("submit", function (event) {
   // Clear the form inputs after adding the task
   nameInput.value = "";
   priorityInput.value = "";
+
+  taskCard.addEventListener("click", function () {
+    // Toggle the completed class on the task card
+    taskCard.classList.toggle("completed");
+
+    // Move the task card to the completed task card container if it is marked as completed
+    if (taskCard.classList.contains("completed")) {
+      completedTaskCard.appendChild(taskCard);
+    }
+  });
 });
