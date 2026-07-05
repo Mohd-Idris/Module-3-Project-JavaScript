@@ -446,7 +446,7 @@ body {
 
 .card p {
   margin-bottom: 0.5rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 i {
@@ -477,7 +477,7 @@ i {
   }
 } */
 
-.top-priority-sign {
+.top-critical-sign {
   /* color: #b0212f; */
   color: var(--critical);
   animation-name: rotate;
@@ -542,13 +542,13 @@ i {
 
 .minor-task-card,
 .major-task-card,
-.priority-task-card,
+.critical-task-card,
 .completed-task-card {
   /* background-color: rgba(255, 255, 255, 0.743); */
 }
 
 .task-card {
-  padding: 0.5rem 0;
+  padding: 0.5rem;
   border-left: 5px solid;
   background: #f8fafc08;
   border-radius: 5px;
@@ -563,12 +563,12 @@ i {
   border-color: var(--major);
 }
 
-.task-card.priority {
+.task-card.critical {
   border-color: var(--critical);
 }
 
 .task-card p {
-  margin: 0.3rem 0 0.3rem;
+  margin: 0.3rem 0;
   font-size: 0.9rem;
   color: var(--text-color);
 }

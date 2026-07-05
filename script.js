@@ -28,14 +28,16 @@ const deleteTask = document.getElementById("btn-delete-task");
 // Declare the task cards
 const minorTaskCard = document.getElementById("minor-task");
 const majorTaskCard = document.getElementById("major-task");
-const criticalTaskCard = document.getElementById("priority-task");
+const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting and refreshing the page
 
   // Get the current values from the form inputs
-  const nameValue = nameInput.value.trim(); // Convert the task name to uppercase
+  const nameValue =
+    nameInput.value.trim().charAt(0).toUpperCase() +
+    nameInput.value.trim().slice(1); // Convert the task name to uppercase
   let priorityValue = priorityInput.value;
 
   // Set a default priority value for the task if the user does not select any from the list.
@@ -63,7 +65,6 @@ todoForm.addEventListener("submit", function (event) {
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
-  // taskCard.classList.add(`task-card ${priorityValue.toLowerCase()}-task-card`);
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
   taskCard.innerHTML = `
     <!-- <h3>${nameValue}</h3> -->
