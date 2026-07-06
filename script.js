@@ -21,9 +21,9 @@ const nameInput = document.getElementById("name-input");
 const priorityInput = document.getElementById("priority-input");
 
 // Declare the buttons
-const addTask = document.getElementById("btn-add-task");
-const editTask = document.getElementById("btn-edit-task");
-const deleteTask = document.getElementById("btn-delete-task");
+const addTask = document.getElementById("btnAddTask");
+const editTask = document.getElementById("btnEditTask");
+const deleteTask = document.getElementById("btnDeleteTask");
 
 // Declare the task cards
 const minorTaskCard = document.getElementById("minor-task");
@@ -75,7 +75,7 @@ todoForm.addEventListener("submit", function (event) {
 
     <p><span class="bold-text">Task:</span> ${nameValue}</p>
     <p><span class="bold-text">Priority:</span> ${priorityValue}</p> 
-    <p><span class="bold-text">Due Day:</span> ${dueDay} days</p> 
+    <p><span class="bold-text">Due Day:</span> ${dueDay} day(s)</p> 
   `;
 
   if (priorityValue === "Minor") {
@@ -93,11 +93,9 @@ todoForm.addEventListener("submit", function (event) {
   // Add an event listener to the task card to mark it as completed when clicked
   taskCard.addEventListener("click", function () {
     // Toggle the completed class on the task card
-    taskCard.classList.toggle("completed");
-
-    // Move the task card to the completed task card container if it is marked as completed
-    if (taskCard.classList.contains("completed")) {
-      completedTaskCard.appendChild(taskCard);
-    }
+    taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
+    taskCard.classList.add("completed");
+    taskCard.onclick = null; // Remove the click event listener to prevent further clicks
+    completedTaskCard.appendChild(taskCard);
   });
 });

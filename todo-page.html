@@ -48,29 +48,28 @@
       <div class="form-data" id="todo-form">
         <form class="task-form" id="task-form">
 
-          <label for="name-input" class="todo-form-label">Name</label>
+          <label class="todo-form-label">Name</label>
 
-          <input type="text" name="name" id="name-input" placeholder="Please add task " required />
+          <input type="text" name="name" id="nameInput" placeholder="Please add task " required />
 
 
-          <label for="priority-input" class="todo-form-label">Priority</label>
-
-          <select name="priority" id="priority-input">
+          <label class="todo-form-label">Priority</label>
+          <select name="priority" id="priorityInput">
             <option value="">-- Choose Priority --</option>
             <option>Minor</option>
             <option>Major</option>
             <option>Critical</option>
           </select>
 
-          <button type="submit" class="btn" id="btn-add-task">
+          <button type="submit" class="btn btn-add" id="btnAddTask">
             Add Task
           </button>
 
-          <!-- <button type="" class="btn btn-edit-task">
+          <button type="button" class="btn btn-edit" id="btnEditTask">
             Edit Task
           </button>
 
-          <button type="" class="btn btn-delete-task">
+          <!-- <button type="" class="btn btn-delete-task">
             Delete Task
           </button> -->
         </form>

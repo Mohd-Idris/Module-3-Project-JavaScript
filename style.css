@@ -325,7 +325,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 400px;
+  max-width: fit-content;
   margin: 0 auto;
   /* background-color: var(--fourth); */
   background: linear-gradient(var(--accent-color), var(--base-color));
@@ -344,6 +344,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 1rem */
+  margin-bottom: 0;
 }
 
 .form-data input,
@@ -372,9 +373,14 @@ body {
   margin-bottom: 1rem;
 }
 
-.form-data .todo-form-label {
+.task-form .todo-form-label {
   color: var(--text-color);
+  margin-bottom: 11.5rem;
 }
+
+/* #piorityInput {
+  margin-top: 0;
+} */
 
 .btn {
   margin-top: 20px;
@@ -388,16 +394,18 @@ body {
   cursor: pointer;
 }
 
-#btn-add-task {
+#btnAddTask {
   background-color: #267d3a;
   width: 100%;
 }
 
-.btn-edit-task {
+#btnEditTask {
   background-color: #b59124;
+  width: 100%;
+  display: none;
 }
 
-.btn-delete-task {
+#btnDeleteTask {
   background-color: #b0212f;
 }
 
@@ -560,7 +568,9 @@ i {
   cursor: pointer;
 }
 
-.task-card:hover {
+.task-card.minor:hover,
+.task-card.major:hover,
+.task-card.critical:hover {
   background: linear-gradient(var(--accent-color), var(--base-color));
   color: var(--text-color);
   box-shadow: 0px 0px 10px 2px var(--accent-color);
@@ -583,15 +593,13 @@ i {
 }
 
 .task-card.completed {
-  border-color: var(--completed);
+  border-color: var(--completed) !important;
 }
 
-.task-card.completed:hover {
-  /* background: linear-gradient(var(--completed), var(--base-color));
-  color: var(--text-color);
-  box-shadow: 0px 0px 10px 2px var(--completed); */
+/* .task-card.completed:hover {
   cursor: not-allowed;
-}
+  
+} */
 
 .task-card p {
   margin: 0.3rem 0;
