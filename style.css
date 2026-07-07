@@ -568,15 +568,15 @@ i {
   cursor: pointer;
 }
 
-.task-card.minor:hover,
+/* .task-card.minor:hover,
 .task-card.major:hover,
 .task-card.critical:hover {
   background: linear-gradient(var(--accent-color), var(--base-color));
   color: var(--text-color);
   box-shadow: 0px 0px 10px 2px var(--accent-color);
   text-decoration: line-through;
-  /* text-align: center; */
-}
+  // text-align: center; 
+} */
 
 
 
@@ -610,6 +610,37 @@ i {
 .task-card .bold-text {
   color: var(--text-color);
   font-weight: 700;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  transition: all 3s ease-in-out;
+  cursor: pointer;
+}
+
+.update-icon {
+  color: var(--ongoing);
+}
+
+.update-icon:hover,
+.delete-icon:hover,
+.done-icon:hover {
+  /* background: linear-gradient(var(--accent-color), var(--base-color)); */
+  transform: scale(1.1);
+  /* border-radius: 50%; */
+}
+
+.delete-icon {
+  color: var(--critical);
+
+}
+
+.done-icon {
+  color: var(--completed);
+
 }
 
 /* --------------Sign Up Page Styling--------------- */
