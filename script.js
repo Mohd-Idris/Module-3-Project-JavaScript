@@ -15,12 +15,12 @@
     the completed task card container.
 */
 
-// Decare the form and input elements
+// Delcare the form and input elements
 const todoForm = document.getElementById("todo-form");
 const nameInput = document.getElementById("nameInput");
 const priorityInput = document.getElementById("priorityInput");
 
-// Declare the buttons
+// // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
 const editTask = document.getElementById("btnEditTask");
 // const deleteTask = document.getElementById("btnDeleteTask");
@@ -31,21 +31,61 @@ const majorTaskCard = document.getElementById("major-task");
 const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
+let editTaskVar = null;
+
+editTask.addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+  const updatedName =
+    nameInput.value.trim().charAt(0).toUpperCase() +
+    nameInput.value.trim().slice(1);
+  const updatedPriority = priorityInput.value;
+
+  // Set DueDay for the task that's been updated based on its priority
+  let newDueDay;
+  if (updatedPriority === "Minor") {
+    newDueDay = 5;
+  } else if (updatedPriority === "Major") {
+    newDueDay = 3;
+  } else if (updatedPriority === "Critical") {
+    newDueDay = 1;
+  }
+
+  editTaskVar.querySelector(".task-name").textContent = updatedName;
+  editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
+  editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
+
+  //update priority class & move the card
+  editTaskVar.classList.remove("minor", "major", "critical");
+  editTaskVar.classList.add(updatedPriority.toLowerCase());
+
+  if (!editTaskVar.classList.contains("completed")) {
+    if (updatedPriority === "Minor") {
+      minorTaskCard.appendChild(editTaskVar);
+    } else if (updatedPriority === "Major") {
+      majorTaskCard.appendChild(editTaskVar);
+    } else if (updatedPriority === "Critical") {
+      criticalTaskCard.appendChild(editTaskVar);
+    }
+  }
+
+  resetForm();
+  editTaskVar = null;
+});
+
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting and refreshing the page
 
-  // Get the current values from the form inputs
+  //   // Get the current values from the form inputs
   const nameValue =
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
   let priorityValue = priorityInput.value;
 
-  // Set a default priority value for the task if the user does not select any from the list.
+  //   // Set a default priority value for the task if the user does not select any from the list.
   priorityValue = !priorityValue ? "Minor" : priorityValue;
 
-  // Set the Due days for the each task due to the priority value. The due days are set as follows:
-  // let dueDay ={"Minor": 5, "Major": 3, "Critical": 1}[priorityValue];
-
+  let dueDay;
   if (priorityValue === "Minor") {
     dueDay = 5;
   } else if (priorityValue === "Major") {
@@ -53,25 +93,16 @@ todoForm.addEventListener("submit", function (event) {
   } else if (priorityValue === "Critical") {
     dueDay = 1;
   }
-  // Test it in console
-  // console.log(
-  //   "The Task is: ",
-  //   nameValue + "\n",
-  //   "The Priority for this task is:",
-  //   priorityValue + "\n",
-  //   "The Due days for this task is:",
-  //   dueDay,
-  // );
 
-  // Create a new task card based on the priority value and add it to the corresponding task card container
+  //   // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
   taskCard.innerHTML = `
 
 
-    <p><span class="bold-text task-text">Task:</span> ${nameValue}</p>
-    <p><span class="bold-text" priority-text>Priority:</span> ${priorityValue}</p> 
-    <p><span class="bold-text due-day-text">Due Day:</span> ${dueDay} day(s)</p> 
+    <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
+    <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
+    <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span> day(s)</p> 
     <div class="task-actions">
       <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>
       <span class="task-action-icon delete-icon"><i class="fa-solid fa-circle-xmark"></i></span>
@@ -79,6 +110,7 @@ todoForm.addEventListener("submit", function (event) {
     </div>
   `;
 
+  //   // Check the priority first and then add it to the right card
   if (priorityValue === "Minor") {
     minorTaskCard.appendChild(taskCard);
   } else if (priorityValue === "Major") {
@@ -87,89 +119,51 @@ todoForm.addEventListener("submit", function (event) {
     criticalTaskCard.appendChild(taskCard);
   }
 
-  // Clear the form inputs after adding the task
-  nameInput.value = "";
-  priorityInput.value = "";
-
-  // Add an event listener to the task card to mark it as completed when clicked
-  taskCard.addEventListener("click", function () {
-    // Toggle the completed class on the task card
-    taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
-    taskCard.classList.add("completed");
-    taskCard.onclick = null; // Remove the click event listener to prevent further clicks
-    completedTaskCard.appendChild(taskCard);
-  });
-
-  // delete the task card when the Delete icon/sign is clicked
+  //   // delete the task card when the Delete icon/sign is clicked
   taskCard
     .querySelector(".delete-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+
       taskCard.remove(); // Remove the task card from the DOM
-      nameInput.value = "";
-      priorityInput.value = "";
+      alert("The Task has been deleted successfullly!");
+      resetForm();
     });
 
-  // update the task when the Update icon/sign is clicked
+  //   // update the task when the Update icon/sign is clicked
   taskCard
     .querySelector(".update-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
-      const currentName = taskCard.querySelector(".task-text").textContent;
-      const currentPriority = taskCard.classList.contains("minor")
-        ? "Minor"
-        : taskCard.classList.contains("major")
-          ? "Major"
-          : "Critical";
 
-      nameInput.value = currentName;
-      priorityInput.value = currentPriority;
+      editTaskVar = taskCard;
+      nameInput.value = taskCard.querySelector(".task-name").textContent;
+      priorityInput.value = taskCard
+        .querySelector(".task-priority")
+        .textContent.trim();
+
       addTask.style.display = "none";
       editTask.style.display = "inline-block";
     });
 
-  // mark the task as completed when the Check icon/sign is clicked
+  //   // mark the task as completed when the Check icon/sign is clicked
   taskCard
     .querySelector(".done-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+
       taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
       taskCard.classList.add("completed");
-      // taskCard.onclick = null; // Remove the click event listener to prevent further clicks
-      taskCard.querySelector(".task-actions").remove(); // Remove the task actions from the task card
+      taskCard.querySelector(".task-actions").remove(); // Remove the task actions(icons) from the task card
       completedTaskCard.appendChild(taskCard);
     });
 
-  editTask.addEventListener("click", function () {
-    const updatedName =
-      nameInput.value.trim().charAt(0).toUpperCase() +
-      nameInput.value.trim().slice(1);
-    const updatedPriority = priorityInput.value;
-
-    taskCard.querySelector("p").textContent = `Task: ${updatedName}`;
-    taskCard.querySelector("p:nth-child(2)").textContent =
-      `Priority: ${updatedPriority}`;
-
-    // Update the priority class on the task card
-    taskCard.classList.remove("minor", "major", "critical");
-    taskCard.classList.add(updatedPriority.toLowerCase());
-
-    //move the task card to the corresponding task card container based on the updated priority value
-    if (!taskCard.classList.contains("completed")) {
-      if (updatedPriority === "Minor") {
-        minorTaskCard.appendChild(taskCard);
-      } else if (updatedPriority === "Major") {
-        majorTaskCard.appendChild(taskCard);
-      } else if (updatedPriority === "Critical") {
-        criticalTaskCard.appendChild(taskCard);
-      }
-    }
-
-    // Clear the form inputs after editing the task
-    nameInput.value = "";
-    priorityInput.value = "";
-
-    addTask.style.display = "inline-block";
-    editTask.style.display = "none";
-  });
+  resetForm();
 });
+
+function resetForm() {
+  nameInput.value = "";
+  priorityInput.value = "";
+  addTask.style.display = "inline-block";
+  editTask.style.display = "none";
+}
