@@ -60,17 +60,17 @@
           <img src="./Images/contactme-picture.avif" alt="Contact Me picture" />
 
           <!-- The action here will send info you've enterd directly to the email below -->
-          <form action="/contact" method="post">
+          <form action="./contact-me.html" method="post">
             <label>Name
-              <input type="text" name="name" id="name" />
+              <input type="text" name="name" id="name" required />
             </label>
 
             <label>Email
-              <input type="email" name="email" id="email" />
+              <input type="email" name="email" id="email" required />
             </label>
 
             <label>Subject
-              <select name="subject" id="subject">
+              <select name="subject" id="subject" required>
                 <option value="">-- Choose Subject --</option>
                 <option>Genaral inquiry</option>
                 <option>Job Opportunity</option>

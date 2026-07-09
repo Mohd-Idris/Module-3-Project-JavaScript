@@ -33,56 +33,22 @@ const completedTaskCard = document.getElementById("completed-task");
 
 let editTaskVar = null;
 
-editTask.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent the form from submitting and refreshing the page
-
-  const updatedName =
-    nameInput.value.trim().charAt(0).toUpperCase() +
-    nameInput.value.trim().slice(1);
-  const updatedPriority = priorityInput.value;
-
-  // Set DueDay for the task that's been updated based on its priority
-  let newDueDay;
-  if (updatedPriority === "Minor") {
-    newDueDay = 5;
-  } else if (updatedPriority === "Major") {
-    newDueDay = 3;
-  } else if (updatedPriority === "Critical") {
-    newDueDay = 1;
-  }
-
-  editTaskVar.querySelector(".task-name").textContent = updatedName;
-  editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
-  editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
-
-  //update priority class & move the card
-  editTaskVar.classList.remove("minor", "major", "critical");
-  editTaskVar.classList.add(updatedPriority.toLowerCase());
-
-  if (!editTaskVar.classList.contains("completed")) {
-    if (updatedPriority === "Minor") {
-      minorTaskCard.appendChild(editTaskVar);
-    } else if (updatedPriority === "Major") {
-      majorTaskCard.appendChild(editTaskVar);
-    } else if (updatedPriority === "Critical") {
-      criticalTaskCard.appendChild(editTaskVar);
-    }
-  }
-
-  resetForm();
-  editTaskVar = null;
-});
-
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting and refreshing the page
 
-  //   // Get the current values from the form inputs
+  const taskNameCheck = nameInput.value.trim();
+  if (taskNameCheck === "") {
+    alert("Please enter a task name first !");
+    return;
+  }
+
+  // Get the current values from the form inputs
   const nameValue =
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
   let priorityValue = priorityInput.value;
 
-  //   // Set a default priority value for the task if the user does not select any from the list.
+  // Set a default priority value for the task if the user does not select any from the list.
   priorityValue = !priorityValue ? "Minor" : priorityValue;
 
   let dueDay;
@@ -94,7 +60,7 @@ todoForm.addEventListener("submit", function (event) {
     dueDay = 1;
   }
 
-  //   // Create a new task card based on the priority value and add it to the corresponding task card container
+  // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
   taskCard.innerHTML = `
@@ -125,9 +91,14 @@ todoForm.addEventListener("submit", function (event) {
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
 
-      taskCard.remove(); // Remove the task card from the DOM
-      alert("The Task has been deleted successfullly!");
-      resetForm();
+      const messageCheck = confirm(
+        "You are going to delete this, Are you sure ?",
+      );
+      if (messageCheck) {
+        taskCard.remove(); // Remove the task card from the DOM
+        alert("The Task has been deleted successfullly!");
+        resetForm();
+      }
     });
 
   //   // update the task when the Update icon/sign is clicked
@@ -159,6 +130,47 @@ todoForm.addEventListener("submit", function (event) {
     });
 
   resetForm();
+});
+
+editTask.addEventListener("click", function (event) {
+  event.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+  const updatedName =
+    nameInput.value.trim().charAt(0).toUpperCase() +
+    nameInput.value.trim().slice(1);
+  const updatedPriority = priorityInput.value;
+
+  // Set DueDay for the task that's been updated based on its priority
+  let newDueDay;
+  if (updatedPriority === "Minor") {
+    newDueDay = 5;
+  } else if (updatedPriority === "Major") {
+    newDueDay = 3;
+  } else if (updatedPriority === "Critical") {
+    newDueDay = 1;
+  }
+
+  // get the updated values
+  editTaskVar.querySelector(".task-name").textContent = updatedName;
+  editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
+  editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
+
+  //update priority class & move the card
+  editTaskVar.classList.remove("minor", "major", "critical");
+  editTaskVar.classList.add(updatedPriority.toLowerCase());
+
+  if (!editTaskVar.classList.contains("completed")) {
+    if (updatedPriority === "Minor") {
+      minorTaskCard.appendChild(editTaskVar);
+    } else if (updatedPriority === "Major") {
+      majorTaskCard.appendChild(editTaskVar);
+    } else if (updatedPriority === "Critical") {
+      criticalTaskCard.appendChild(editTaskVar);
+    }
+  }
+
+  resetForm();
+  editTaskVar = null;
 });
 
 function resetForm() {

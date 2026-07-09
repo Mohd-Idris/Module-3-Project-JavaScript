@@ -25,16 +25,6 @@
   --primary: #0a2947;
   /* Navy */
 
-  /* ----------------Task Color Guidelines-------------------- */
-  /* --primary: #0a2947;*/
-  /* Navy */
-  /* --secondary: #f3e4c9;*/
-  /* Beige */
-  /*--third: #d3d4c0;*/
-  /* Olive */
-  /*--fourth: #8b5e3c;*/
-  /* Brown */
-
   /* ---------------- Task Color Guidelines -------------------- */
 
   --minor: #94a3b8;
@@ -58,8 +48,14 @@
   --github-color: #24292e;
   /* Black-Blue Color */
 
+  /* ---------------- Buttons Color Guidelines -------------------- */
+  --add-button: #267d3a;
+  --add-button-hover: #1e642e;
+  --edit-button: #f59e0b;
+  --edit-button-hover: #d97706;
 
 }
+
 
 /* Scrolling behaviour styling - when you navigate from section to another */
 
@@ -227,22 +223,12 @@ body {
   margin-left: 50px;
 }
 
-.carousel {
-  margin: 10px auto;
-  width: 99%;
-  height: 20vh;
-  /* border: none red; */
-  display: flex;
-  overflow-x: auto;
-  /* To build a carousel to have to set this to auto to make the
-   horizontal scrollbar visible and then to be able to set this to none later */
-}
-
-.carousel::-webkit-scrollbar {
-  display: none;
-}
-
 .technologies .tech-title {
+
+  border-bottom: 3px solid;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 4rem;
   text-transform: capitalize;
   color: var(--base-color);
   font: inherit;
@@ -257,49 +243,59 @@ body {
   color: var(--accent-color);
 }
 
-.tech-group {
+.tech-card-container {
   display: flex;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  animation: slide 5s infinite;
-  padding-right: 1rem;
-  margin-top: 1rem;
+  /* animation: slide 5s infinite; */
+  /* padding-right: 1rem; */
+  /* margin-top: 1rem; */
 }
 
+/* 
 @keyframes slide {
   from {
     translate: 0;
   }
 
   to {
-    translate: -100%;
+    translate: 100%;
   }
-}
+} */
 
 .tech-card {
-  flex: 0 0 7rem;
+  /* flex: 0 0 7rem; */
   /* You have to stop grow and shrink propperties */
-  height: auto;
-  padding: 0.5rem;
-  background-color: #393e46;
-  font-size: 3rem;
+  /* height: auto; */
+  padding: 1.5rem;
+  /* background-color: #393e46; */
+
   border-radius: 1rem;
-  text-align: center;
+
   align-content: center;
   width: 100%;
+  max-width: 200px;
 
 }
 
-
-
-.tech-group img {
-  max-width: 300px;
+.tech-card-container img {
   width: 100%;
+  max-width: 200px;
+
   margin: 0 auto;
-  border: none;
-  outline: none;
-  /* display: flex; */
+  /* border: none;
+  outline: none; */
+  display: flex;
+}
+
+.tech-card-container h3 {
+  margin-top: 1rem;
+  color: var(--base-color);
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 
@@ -395,19 +391,29 @@ body {
 }
 
 #btnAddTask {
-  background-color: #267d3a;
+  background-color: var(--add-button);
   width: 100%;
 }
 
+#btnAddTask:hover {
+  background-color: var(--add-button-hover);
+}
+
 #btnEditTask {
-  background-color: #b59124;
+  /* background-color: #b59124; */
+  background-color: var(--edit-button);
   width: 100%;
   display: none;
 }
 
+#btnEditTask:hover {
+  background-color: var(--edit-button-hover);
+}
+
+/* 
 #btnDeleteTask {
   background-color: #b0212f;
-}
+} */
 
 .to-do-container {
   /* width: 100%; */
@@ -481,7 +487,7 @@ i {
   0% {}
 
   100% {
-    // transform: rotate(-360deg); //
+    /* transform: rotate(-360deg); //
     transform: rotateX(-180deg) rotateY(180deg) rotateZ(180deg);
     border-radius: 50%;
     scale: 1.5;
@@ -1044,7 +1050,7 @@ footer * {
   text-align: center;
   margin-bottom: 1rem;
   font: inherit;
-  font-weight: 400;
+  font-weight: 300;
   color: var(--input-color);
   font-size: 1.2rem;
   text-align: left;
@@ -1058,12 +1064,11 @@ footer * {
 }
 
 
-
-/* About Me, Portfolio, & Contact me paragraphs' span style */
-
 .bold {
   font-weight: 600;
+  text-decoration: underline;
 }
+
 
 /* Contact Me content includes an image, the form , and the button style */
 
@@ -1078,6 +1083,12 @@ footer * {
   border-radius: 10px;
   /* box-shadow: 5px 5px 5px 5px var(--accent-color); */
   box-shadow: 0px 0px 20px 5px var(--accent-color);
+}
+
+.contact-content img {
+  border: none;
+  background: #10b981;
+
 }
 
 /* Contact Me Form content */
