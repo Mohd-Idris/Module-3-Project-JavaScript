@@ -471,50 +471,6 @@ i {
   font-size: 25px;
 }
 
-.checked-sign {
-  /* color: #267d3a; */
-  color: var(--completed);
-  animation-name: side;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 1s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-play-state: running;
-}
-
-/* @keyframes side {
-  0% {}
-
-  100% {
-    /* transform: rotate(-360deg); //
-    transform: rotateX(-180deg) rotateY(180deg) rotateZ(180deg);
-    border-radius: 50%;
-    scale: 1.5;
-  }
-} */
-
-.top-critical-sign {
-  /* color: #b0212f; */
-  color: var(--critical);
-  animation-name: rotate;
-  animation-duration: 3s;
-  animation-timing-function: ease-in-out;
-  animation-delay: 1s;
-  animation-iteration-count: infinite;
-  animation-direction: normal;
-  animation-play-state: running;
-}
-
-/* @keyframes rotate {
-  0% {}
-
-  100% {
-    transform: rotate(180deg);
-    border-radius: 50%;
-  }
-} */
-
 .minor-sign {
   /* color: #f59e0b; */
   color: var(--minor);
@@ -526,15 +482,6 @@ i {
   animation-direction: normal;
   animation-play-state: running;
 }
-
-/* @keyframes spin {
-  0% {}
-
-  100% {
-    transform: rotate(360deg);
-    border-radius: 50%;
-  }
-} */
 
 .major-sign {
   /* color: #f59e0b; */
@@ -550,10 +497,55 @@ i {
 
 /* @keyframes spin {
   0% {}
-
+  
   100% {
     transform: rotate(360deg);
     border-radius: 50%;
+  }
+} */
+
+
+.top-critical-sign {
+  /* color: #b0212f; */
+  color: var(--critical);
+  animation-name: rotate;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+
+/* @keyframes rotate {
+  0% {}
+  
+  100% {
+    transform: rotate(180deg);
+    border-radius: 50%;
+  }
+} */
+
+.checked-sign {
+  /* color: #267d3a; */
+  color: var(--completed);
+  animation-name: side;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-play-state: running;
+}
+
+/* @keyframes side {
+  0% {}
+  
+  100% {
+    /* transform: rotate(-360deg); //
+    transform: rotateX(-180deg) rotateY(180deg) rotateZ(180deg);
+    border-radius: 50%;
+    scale: 1.5;
   }
 } */
 

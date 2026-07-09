@@ -47,17 +47,19 @@ todoForm.addEventListener("submit", function (event) {
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
   let priorityValue = priorityInput.value;
+  let dueDate;
+  let createdDate;
 
   // Set a default priority value for the task if the user does not select any from the list.
   priorityValue = !priorityValue ? "Minor" : priorityValue;
 
   let dueDay;
   if (priorityValue === "Minor") {
-    dueDay = 5;
+    dueDay = "5 days";
   } else if (priorityValue === "Major") {
-    dueDay = 3;
+    dueDay = "3 days";
   } else if (priorityValue === "Critical") {
-    dueDay = 1;
+    dueDay = "1 day";
   }
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
@@ -68,7 +70,10 @@ todoForm.addEventListener("submit", function (event) {
 
     <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
     <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
-    <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span> day(s)</p> 
+    <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span></p> 
+    <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
+    <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
+
     <div class="task-actions">
       <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>
       <span class="task-action-icon delete-icon"><i class="fa-solid fa-circle-xmark"></i></span>
@@ -117,16 +122,25 @@ todoForm.addEventListener("submit", function (event) {
       editTask.style.display = "inline-block";
     });
 
-  //   // mark the task as completed when the Check icon/sign is clicked
+  // mark the task as completed when the Check icon/sign is clicked
   taskCard
     .querySelector(".done-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+      let createdDate;
+      let completeddDate;
+      taskCard.innerHTML = `
+      <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
+      <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
+      <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span></p> 
+      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
+      <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completeddDate}</span></p>
+    `;
 
       taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
       taskCard.classList.add("completed");
-      taskCard.querySelector(".task-actions").remove(); // Remove the task actions(icons) from the task card
       completedTaskCard.appendChild(taskCard);
+      // taskCard.querySelector(".task-actions").remove(); // Remove the task actions(icons) from the task card
     });
 
   resetForm();
@@ -143,17 +157,29 @@ editTask.addEventListener("click", function (event) {
   // Set DueDay for the task that's been updated based on its priority
   let newDueDay;
   if (updatedPriority === "Minor") {
-    newDueDay = 5;
+    newDueDay = "5 days";
   } else if (updatedPriority === "Major") {
-    newDueDay = 3;
+    newDueDay = "3 days";
   } else if (updatedPriority === "Critical") {
-    newDueDay = 1;
+    newDueDay = "1 day";
   }
+
+  // Set DueDate for the task that's been updated based on its priority
+  let newDueDate;
+  // if (updatedPriority === "Minor") {
+  //   newDueDate = "5 days";
+  // } else if (updatedPriority === "Major") {
+  //   newDueDate = "3 days";
+  // } else if (updatedPriority === "Critical") {
+  //   newDueDate = "1 day";
+  // }
 
   // get the updated values
   editTaskVar.querySelector(".task-name").textContent = updatedName;
   editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
   editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
+  // editTask.querySelector(".task-due-date").textContent = newDueDate;
+  // editTask.querySelector(".task-created-date").textContent = newCreatedDate;
 
   //update priority class & move the card
   editTaskVar.classList.remove("minor", "major", "critical");
