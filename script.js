@@ -19,6 +19,7 @@
 const todoForm = document.getElementById("todo-form");
 const nameInput = document.getElementById("nameInput");
 const priorityInput = document.getElementById("priorityInput");
+const dateInput = document.getElementById("dateInput");
 
 // // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
@@ -32,6 +33,10 @@ const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
 let editTaskVar = null;
+
+// Set a minimum date to Today date
+const minDate = new Date().toISOString().split("T")[0];
+dateInput.setAttribute("min", minDate);
 
 todoForm.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent the form from submitting and refreshing the page
@@ -47,8 +52,9 @@ todoForm.addEventListener("submit", function (event) {
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
   let priorityValue = priorityInput.value;
-  let dueDate;
-  let createdDate;
+  const dateValue = dateInput.value.trim();
+  // let dueDate;
+  // let createdDate;
 
   // Set a default priority value for the task if the user does not select any from the list.
   priorityValue = !priorityValue ? "Minor" : priorityValue;
@@ -61,18 +67,40 @@ todoForm.addEventListener("submit", function (event) {
   } else if (priorityValue === "Critical") {
     dueDay = "1 day";
   }
+  // <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
+  // <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${dueDateVar}</span></p>
+
+  let dueDateVar;
+  const selectedDate = new Date(dateValue);
+  const today = new Date();
+
+  if (dateValue !== "") {
+    today.setHours(0, 0, 0, 0);
+    selectedDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      alert("Invalid date");
+      return;
+    }
+
+    dueDateVar = selectedDate.toLocaleDateString("en-IE");
+  } else {
+    // const selectedDate = new Date(dateValue);
+    dueDateVar = today.toLocaleDateString("en-IE");
+  }
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
+  taskCard.dataset.due = dueDateVar;
   taskCard.innerHTML = `
 
 
     <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
     <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
     <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span></p> 
-    <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
-    <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
+    <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDateVar}</span></p> 
+   
 
     <div class="task-actions">
       <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>

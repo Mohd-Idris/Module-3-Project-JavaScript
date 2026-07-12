@@ -48,18 +48,21 @@
       <div class="form-data" id="todo-form">
         <form class="task-form" id="task-form">
 
-          <label class="todo-form-label">Name</label>
+          <label for="nameInput" class="todo-form-label">Name</label>
 
           <input type="text" name="name" id="nameInput" placeholder="Please add task " />
 
 
-          <label class="todo-form-label">Priority</label>
+          <label for="priorityInput" class="todo-form-label">Priority</label>
           <select name="priority" id="priorityInput">
-            <option value="">-- Choose Priority --</option>
+            <option value="">-- Select the priority --</option>
             <option>Minor</option>
             <option>Major</option>
             <option>Critical</option>
           </select>
+
+          <label for="dateInput" class="todo-form-label">Due Date</label>
+          <input type="date" name="date" id="dateInput" min="">
 
           <button type="submit" class="btn btn-add" id="btnAddTask">
             Add Task
@@ -68,12 +71,37 @@
           <button type="button" class="btn btn-edit" id="btnEditTask">
             Edit Task
           </button>
-
-          <!-- <button type="" class="btn btn-delete-task">
-            Delete Task
-          </button> -->
         </form>
       </div>
+
+      <!-- <form class="task-form" id="task-form">
+
+        <div class="form-group name-data">
+          <label for="nameInput" class="todo-form-label">Name</label>
+          <input type="text" name="name" id="nameInput" placeholder="Please add task " />
+        </div>
+
+        <div class="form-group priority-data">
+          <label for="priorityInput" class="todo-form-label">Priority</label>
+          <select name="priority" id="priorityInput">
+            <option value="">-- Choose Priority --</option>
+            <option>Minor</option>
+            <option>Major</option>
+            <option>Critical</option>
+          </select>
+        </div>
+
+        <div class="form-group buttons-data">
+          <button type="submit" class="btn btn-add" id="btnAddTask">
+            Add Task
+          </button>
+          
+          <button type="button" class="btn btn-edit" id="btnEditTask">
+            Edit Task
+          </button>
+        </div>
+
+      </form> -->
 
 
       <div class="to-do-container">
