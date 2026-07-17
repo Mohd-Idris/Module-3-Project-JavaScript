@@ -51,6 +51,7 @@ todoForm.addEventListener("submit", function (event) {
   const nameValue =
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
+
   let priorityValue = priorityInput.value;
   const dateValue = dateInput.value.trim();
   // let dueDate;
@@ -83,10 +84,16 @@ todoForm.addEventListener("submit", function (event) {
       return;
     }
 
-    dueDateVar = selectedDate.toLocaleDateString("en-IE");
+    const day = String(selectedDate.getDate()).padStart(2, "0");
+    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const year = selectedDate.getFullYear();
+
+    dueDateVar = `${day}/${month}/${year}`;
   } else {
-    // const selectedDate = new Date(dateValue);
-    dueDateVar = today.toLocaleDateString("en-IE");
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+    dueDateVar = `${day}/${month}/${year}`;
   }
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
@@ -109,7 +116,7 @@ todoForm.addEventListener("submit", function (event) {
     </div>
   `;
 
-  //   // Check the priority first and then add it to the right card
+  // Check the priority first and then add it to the right card
   if (priorityValue === "Minor") {
     minorTaskCard.appendChild(taskCard);
   } else if (priorityValue === "Major") {
@@ -118,14 +125,14 @@ todoForm.addEventListener("submit", function (event) {
     criticalTaskCard.appendChild(taskCard);
   }
 
-  //   // delete the task card when the Delete icon/sign is clicked
+  // delete the task card when the Delete icon/sign is clicked
   taskCard
     .querySelector(".delete-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
 
       const messageCheck = confirm(
-        "You are going to delete this, Are you sure ?",
+        "You are going to delete this task, Are you sure ?",
       );
       if (messageCheck) {
         taskCard.remove(); // Remove the task card from the DOM
@@ -134,7 +141,7 @@ todoForm.addEventListener("submit", function (event) {
       }
     });
 
-  //   // update the task when the Update icon/sign is clicked
+  // update the task when the Update icon/sign is clicked
   taskCard
     .querySelector(".update-icon")
     .addEventListener("click", function (event) {
@@ -145,6 +152,11 @@ todoForm.addEventListener("submit", function (event) {
       priorityInput.value = taskCard
         .querySelector(".task-priority")
         .textContent.trim();
+      const savedData = taskCard
+        .querySelector(".task-due-date")
+        .textContent.trim();
+      const [day, month, year] = savedData.split("/");
+      dateInput.value = `${year}-${month}-${day}`;
 
       addTask.style.display = "none";
       editTask.style.display = "inline-block";
@@ -156,7 +168,7 @@ todoForm.addEventListener("submit", function (event) {
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
       let createdDate;
-      let completeddDate;
+      let completeddDate; // should display the completed task date when make as done - come back
       taskCard.innerHTML = `
       <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
       <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
@@ -181,6 +193,37 @@ editTask.addEventListener("click", function (event) {
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1);
   const updatedPriority = priorityInput.value;
+  const updateDueDate = dateInput.value;
+
+  // -------------------------
+  let updateDueDateVar;
+  const selectedDate = new Date(updateDueDate);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (updateDueDate !== "") {
+    selectedDate.setHours(0, 0, 0, 0);
+
+    if (selectedDate < today) {
+      alert("Invalid date");
+      return;
+    }
+
+    const day = String(selectedDate.getDate()).padStart(2, "0");
+    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const year = selectedDate.getFullYear();
+
+    updateDueDateVar = `${day}/${month}/${year}`;
+  } else {
+    const day = String(today.getDate()).padStart(2, "0");
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const year = today.getFullYear();
+
+    updateDueDateVar = `${day}/${month}/${year}`;
+  }
+
+  editTaskVar.dataset.due = updateDueDateVar;
+  // -------------------------
 
   // Set DueDay for the task that's been updated based on its priority
   let newDueDay;
@@ -202,11 +245,19 @@ editTask.addEventListener("click", function (event) {
   //   newDueDate = "1 day";
   // }
 
+  // const savedData = editTaskVar.dataset.due;
+  // // if (savedData){
+
+  // //   const [day, month, year] = savedData.split("/");
+  // //   dateInput.value
+
+  // // }
+
   // get the updated values
   editTaskVar.querySelector(".task-name").textContent = updatedName;
   editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
   editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
-  // editTask.querySelector(".task-due-date").textContent = newDueDate;
+  editTaskVar.querySelector(".task-due-date").textContent = updateDueDateVar;
   // editTask.querySelector(".task-created-date").textContent = newCreatedDate;
 
   //update priority class & move the card
@@ -230,6 +281,7 @@ editTask.addEventListener("click", function (event) {
 function resetForm() {
   nameInput.value = "";
   priorityInput.value = "";
+  dateInput.value = "";
   addTask.style.display = "inline-block";
   editTask.style.display = "none";
 }
