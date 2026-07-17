@@ -35,7 +35,7 @@ const completedTaskCard = document.getElementById("completed-task");
 let editTaskVar = null;
 
 // Set a minimum date to Today date
-const minDate = new Date().toISOString().split("T")[0];
+const minDate = new Date().toISOString().split("T")[0]; // This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z
 dateInput.setAttribute("min", minDate);
 
 todoForm.addEventListener("submit", function (event) {
@@ -52,13 +52,10 @@ todoForm.addEventListener("submit", function (event) {
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1); // Convert the task name to uppercase
 
-  let priorityValue = priorityInput.value;
+  const priorityValue = priorityInput.value || "Minor"; // Set a default value for the priority input, if it's not been selected by the user .
   const dateValue = dateInput.value.trim();
-  // let dueDate;
-  // let createdDate;
 
-  // Set a default priority value for the task if the user does not select any from the list.
-  priorityValue = !priorityValue ? "Minor" : priorityValue;
+  // priorityValue = !priorityValue ? "Minor" : priorityValue;
 
   let dueDay;
   if (priorityValue === "Minor") {
@@ -68,8 +65,6 @@ todoForm.addEventListener("submit", function (event) {
   } else if (priorityValue === "Critical") {
     dueDay = "1 day";
   }
-  // <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
-  // <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${dueDateVar}</span></p>
 
   let dueDateVar;
   const selectedDate = new Date(dateValue);
@@ -155,7 +150,7 @@ todoForm.addEventListener("submit", function (event) {
       const savedData = taskCard
         .querySelector(".task-due-date")
         .textContent.trim();
-      const [day, month, year] = savedData.split("/");
+      const [day, month, year] = savedData.split("/"); // A shorthand way to assign the same value to these variables
       dateInput.value = `${year}-${month}-${day}`;
 
       addTask.style.display = "none";
@@ -167,20 +162,25 @@ todoForm.addEventListener("submit", function (event) {
     .querySelector(".done-icon")
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
-      let createdDate;
-      let completeddDate; // should display the completed task date when make as done - come back
+
+      const today = new Date();
+
+      const completedDay = String(today.getDate()).padStart(2, "0");
+      const completedMonth = String(today.getMonth() + 1).padStart(2, "0");
+      const completedYear = today.getFullYear();
+
+      const completeddDate = `${completedDay}/${completedMonth}/${completedYear}`;
+
       taskCard.innerHTML = `
       <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
       <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
-      <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span></p> 
-      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
+      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${dueDateVar}</span></p>
       <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completeddDate}</span></p>
     `;
 
       taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
       taskCard.classList.add("completed");
       completedTaskCard.appendChild(taskCard);
-      // taskCard.querySelector(".task-actions").remove(); // Remove the task actions(icons) from the task card
     });
 
   resetForm();
@@ -195,7 +195,6 @@ editTask.addEventListener("click", function (event) {
   const updatedPriority = priorityInput.value;
   const updateDueDate = dateInput.value;
 
-  // -------------------------
   let updateDueDateVar;
   const selectedDate = new Date(updateDueDate);
   const today = new Date();
@@ -223,7 +222,6 @@ editTask.addEventListener("click", function (event) {
   }
 
   editTaskVar.dataset.due = updateDueDateVar;
-  // -------------------------
 
   // Set DueDay for the task that's been updated based on its priority
   let newDueDay;
@@ -235,30 +233,11 @@ editTask.addEventListener("click", function (event) {
     newDueDay = "1 day";
   }
 
-  // Set DueDate for the task that's been updated based on its priority
-  let newDueDate;
-  // if (updatedPriority === "Minor") {
-  //   newDueDate = "5 days";
-  // } else if (updatedPriority === "Major") {
-  //   newDueDate = "3 days";
-  // } else if (updatedPriority === "Critical") {
-  //   newDueDate = "1 day";
-  // }
-
-  // const savedData = editTaskVar.dataset.due;
-  // // if (savedData){
-
-  // //   const [day, month, year] = savedData.split("/");
-  // //   dateInput.value
-
-  // // }
-
   // get the updated values
   editTaskVar.querySelector(".task-name").textContent = updatedName;
   editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
   editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
   editTaskVar.querySelector(".task-due-date").textContent = updateDueDateVar;
-  // editTask.querySelector(".task-created-date").textContent = newCreatedDate;
 
   //update priority class & move the card
   editTaskVar.classList.remove("minor", "major", "critical");
