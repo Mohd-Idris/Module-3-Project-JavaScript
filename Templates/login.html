@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="en" id="sign-up-html">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My JS Project</title>
   <!-- An external link CSS style  -->
-  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="../CSS/style.css" />
   <!-- Fonts -->
   <!-- An external font (Poppins font) for the website -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,53 +19,64 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- Google Icons (all styles: Filled, Outlined, Rounded, Sharp) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
 </head>
 
-<body id="sign-up-body">
+<body>
   <!-- Navigation Links Section -->
   <header>
     <div class="hearder-container container">
       <div class="logo">
-        <a href="./index.html">My<span class="header-span span">JSPro</span></a>
+        <a href="./Templates/index.html">My<span class="header-span span">JSPro</span></a>
       </div>
       <div class="nav-div">
         <nav class="nav-bar">
           <ul class="nav-links">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./todo-page.html">Application</a></li>
-            <li><a href="./contact-me.html">Contact Me</a></li>
-            <li><a href="./sign-up.html" class="active-page">Sign Up</a></li>
+            <li><a href="/Templates/index.html">Home</a></li>
+            <li><a href="/Templates/todo-page.html">Application</a></li>
+            <li><a href="/Templates/contact-me.html">Contact Me</a></li>
+            <li><a href="/Templates/login.html" class="active-page">Login</a></li>
           </ul>
         </nav>
       </div>
   </header>
-
-
-
-
   <main>
 
-    <section class="sign-up">
-      <div class="sign-up-container">
-        <h1 class="sign-up-title"><span class="sign-up-span">S</span>ign <span class="sign-up-span">U</span>p</h1>
-        <form class="sign-up-form">
+    <!-- <section class="login">
+      <div class="login-title">
+        <h1 class="title">Login </h1>
+      </div>
+      <div class="login-form-data">
+        <form>
+          <label class="label lbl-username">Username
+            <input type="text" name="name" id="name-input" placeholder="Please enter your username " required />
 
-          <div class="sign-up-form-content">
-            <label class="label lbl-fullname"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" />
-              </svg>
-            </label>
+            <label class="label lbl-password">Password
+              <input type="password" name="password" id="password-input" placeholder="Please enter your password "
+                required />
 
-            <input type="text" name="fulltname" id="fullname-input" placeholder="Enter your Full Name" required />
-          </div>
+        </form>
+
+        <button class="btn" id="btn-login">
+          Log In
+        </button>
+
+        <button class="btn btn-reset">
+          Reset
+        </button>
+
+        <a href="sign-up.html" class="register-text">Register now</a>
+      </div> -->
 
 
-          <div class="sign-up-form-content">
+
+    <section class="login">
+      <div class="login-container">
+        <h1 class="login-title"><span class="login-span">L</span>ogin</h1>
+        <form class="login-form">
+
+
+
+          <div class="login-form-content">
             <label class="label lbl-email"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 -960 960 960" fill="currentColor">
                 <path
@@ -76,7 +86,7 @@
             <input type="email" name="email" id="email-input" placeholder="Enter your Email " required />
           </div>
 
-          <div class="sign-up-form-content">
+          <div class="login-form-content">
             <label class="label lbl-password"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 -960 960 960" fill="currentColor">
                 <path
@@ -87,32 +97,14 @@
               required />
           </div>
 
-          <div class="sign-up-form-content">
-            <label class="label lbl-confirm-password"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
-              </svg>
-            </label>
-            <input type="password" name="confirm-password" id="confirm-password-input"
-              placeholder="Please confirm your password " required />
-          </div>
 
-          <button class="submit btn-sign-up">Sign up</button>
+
+          <button class="submit btn-login">Login</button>
         </form>
-        <p>Already registered <a href="./login.html" class="sign-up-link">login</a></p>
+        <p>Don't you have account <a href="sign-up.html" class="login-link">Create account</a></p>
+        <!-- <p>Already registered <a href="login.html" class="login-link">login</a></p> -->
       </div>
 
-      <!-- <button class="btn" id="btn-login">
-              Log In
-            </button>
-
-            <button class="btn btn-reset">
-              Reset
-            </button>
-
-            <a href="#" class="register-text">Register now</a> -->
-      <!-- </div> -->
 
 
   </main>
@@ -138,7 +130,7 @@
       </div>
     </div>
   </footer>
-  <script src="script.js"></script>
+  <script src="./JavaScript/sign-in.js"></script>
 </body>
 
 </html>

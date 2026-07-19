@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en" id="sign-up-html">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My JS Project</title>
+  <!-- An external link CSS style  -->
+  <link rel="stylesheet" href="../CSS/style.css" />
+  <!-- Fonts -->
+  <!-- An external font (Poppins font) for the website -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <!-- Icons -->
+  <!-- A link to generate icons for the website -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Google Icons (all styles: Filled, Outlined, Rounded, Sharp) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+</head>
+
+<body id="sign-up-body">
+  <!-- Navigation Links Section -->
+  <header>
+    <div class="hearder-container container">
+      <div class="logo">
+        <a href="./Templates/index.html">My<span class="header-span span">JSPro</span></a>
+      </div>
+      <div class="nav-div">
+        <nav class="nav-bar">
+          <ul class="nav-links">
+            <li><a href="./Templates/index.html">Home</a></li>
+            <li><a href="./Templates/todo-page.html">Application</a></li>
+            <li><a href="./Templates/contact-me.html">Contact Me</a></li>
+            <li><a href="./Templates/sign-up.html" class="active-page">Sign Up</a></li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+
+
+
+
+  <main>
+
+    <section class="sign-up">
+      <div class="sign-up-container">
+        <h1 class="sign-up-title"><span class="sign-up-span">S</span>ign <span class="sign-up-span">U</span>p</h1>
+        <form class="sign-up-form" id="sign-up-form">
+
+          <div class="sign-up-form-content">
+            <label for="fullname-input" class="label lbl-fullname">Name
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" />
+              </svg> -->
+            </label>
+
+            <input type="text" name="fulltname" id="fullname-input" placeholder="Enter your Full Name" />
+          </div>
+
+
+          <div class="sign-up-form-content">
+            <label for="email-input" class="label lbl-email">Email
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200Zm-320-280v-80 480-400Z" />
+              </svg> -->
+            </label>
+            <input type="email" name="email" id="email-input" placeholder="Enter your Email " />
+          </div>
+
+          <div class="sign-up-form-content">
+            <label for="password-input" class="label lbl-password"> password
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+              </svg> -->
+            </label>
+            <input type="password" name="password" id="password-input" placeholder="Please enter your password " />
+          </div>
+
+          <div class="sign-up-form-content">
+            <label for="confirm-password-input" class="label lbl-confirm-password">Confirm password
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                viewBox="0 -960 960 960" fill="currentColor">
+                <path
+                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+              </svg> -->
+            </label>
+            <input type="password" name="confirm-password" id="confirm-password-input"
+              placeholder="Please confirm your password " />
+          </div>
+
+          <button type="submit" class="btn-sign-up" id="btnSignUp">Sign up</button>
+        </form>
+        <p>Already registered <a href="./login.html" class="sign-up-link">login</a></p>
+      </div>
+
+      <!-- <button class="btn" id="btn-login">
+              Log In
+            </button>
+
+            <button class="btn btn-reset">
+              Reset
+            </button>
+
+            <a href="#" class="register-text">Register now</a> -->
+      <!-- </div> -->
+
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 MyJSPro | All rights reserved</p>
+      <!-- <a href="#" class="scroll-up" aria-label="An arrorw points up " aria-labelledby="an anchor link "
+            title="An arrow"><i class="fa-solid fa-arrow-up"></i></a> -->
+      <div class="social-icons">
+        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
+          <i class="fa-brands fa-youtube you-red"></i></a>
+
+        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website">
+          <i class="fa-brands fa-linkedin link-blue"></i></a>
+
+        <a href="https://x.com" target="_blank" aria-label="X Website ">
+          <i class="fa-brands fa-x-twitter x-black"></i></a>
+
+        <a href="https://github.com" target="_blank" aria-label="GitHub Website">
+          <i class="fa-brands fa-github git-black"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="./JavaScript/sign-up.js"></script>
+</body>
+
+</html>
