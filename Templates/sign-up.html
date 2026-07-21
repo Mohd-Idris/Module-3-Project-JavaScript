@@ -30,15 +30,15 @@
   <header>
     <div class="hearder-container container">
       <div class="logo">
-        <a href="./Templates/index.html">My<span class="header-span span">JSPro</span></a>
+        <a href="index.html">My<span class="header-span span">JSPro</span></a>
       </div>
       <div class="nav-div">
         <nav class="nav-bar">
           <ul class="nav-links">
-            <li><a href="./Templates/index.html">Home</a></li>
-            <li><a href="./Templates/todo-page.html">Application</a></li>
-            <li><a href="./Templates/contact-me.html">Contact Me</a></li>
-            <li><a href="./Templates/sign-up.html" class="active-page">Sign Up</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="todo-page.html">Application</a></li>
+            <li><a href="contact-me.html">Contact Me</a></li>
+            <li><a href="sign-up.html" class="active-page">Sign Up</a></li>
           </ul>
         </nav>
       </div>
@@ -57,48 +57,52 @@
           <div class="sign-up-form-content">
             <label for="fullname-input" class="label lbl-fullname">Name
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" />
-              </svg> -->
+              viewBox="0 -960 960 960" fill="currentColor">
+              <path
+              d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z" />
+            </svg> -->
             </label>
 
             <input type="text" name="fulltname" id="fullname-input" placeholder="Enter your Full Name" />
+            <span class="error-message-input"></span>
           </div>
 
 
           <div class="sign-up-form-content">
             <label for="email-input" class="label lbl-email">Email
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200Zm-320-280v-80 480-400Z" />
-              </svg> -->
+              viewBox="0 -960 960 960" fill="currentColor">
+              <path
+              d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200Zm-320-280v-80 480-400Z" />
+            </svg> -->
             </label>
             <input type="email" name="email" id="email-input" placeholder="Enter your Email " />
+            <span class="error-message-input"></span>
           </div>
 
           <div class="sign-up-form-content">
             <label for="password-input" class="label lbl-password"> password
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
-              </svg> -->
+              viewBox="0 -960 960 960" fill="currentColor">
+              <path
+              d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+            </svg> -->
             </label>
             <input type="password" name="password" id="password-input" placeholder="Please enter your password " />
+            <span class="error-message-input"></span>
           </div>
 
           <div class="sign-up-form-content">
             <label for="confirm-password-input" class="label lbl-confirm-password">Confirm password
               <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 -960 960 960" fill="currentColor">
-                <path
-                  d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
-              </svg> -->
+              viewBox="0 -960 960 960" fill="currentColor">
+              <path
+              d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm240-200q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80Z" />
+            </svg> -->
             </label>
             <input type="password" name="confirm-password" id="confirm-password-input"
               placeholder="Please confirm your password " />
+            <span class="error-message-input"></span>
           </div>
 
           <button type="submit" class="btn-sign-up" id="btnSignUp">Sign up</button>
@@ -143,7 +147,7 @@
   </footer>
 
 
-  <script src="./JavaScript/sign-up.js"></script>
+  <script src="../JavaScript/sign-up.js"></script>
 </body>
 
 </html>

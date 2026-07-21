@@ -24,6 +24,7 @@
   /* Lavender Color / Foumdation White Color / Pale Blue Color */
   --primary: #0a2947;
   /* Navy */
+  --error-message-color: #dc3545;
 
   /* ---------------- Task Color Guidelines -------------------- */
 
@@ -635,7 +636,7 @@ i {
   align-items: center;
 }
 
-.sign-up-form>div {
+.sign-up-form-content {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -728,6 +729,20 @@ i {
   text-decoration: underline;
   font-weight: 700;
   text-transform: capitalize;
+}
+
+.error-message-input {
+  display: block;
+  margin: 10px 0;
+  color: var(--error-message-color);
+  font-size: 12px;
+  margin-top: 5px;
+  min-height: 16px;
+}
+
+.input-error {
+  border: 2px solid var(--error-message-color) !important;
+  /* background-color: #fff8f8; */
 }
 
 /* --------------Login Page Styling--------------- */

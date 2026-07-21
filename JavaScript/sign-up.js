@@ -16,24 +16,24 @@
 */
 
 // Delcare the Sign-Up form input elements
-const signUpForm = document.getElementById("sign-up-form");
-const fullNameInput = document.getElementById("fullname-input");
-const emailInput = document.getElementById("email-input");
-const passwordInput = document.getElementById("password-input");
-const confirmPasswordInput = document.getElementById("confirm-password-input");
+const signUpForm = document.querySelector(".sign-up-form");
+const fullNameInput = document.querySelector(".fullname-input");
+const emailInput = document.querySelector(".email-input");
+const passwordInput = document.querySelector(".password-input");
+const confirmPasswordInput = document.querySelector(".confirm-password-input");
 
 // Valid the pattern of the inputs
 const namePattern = /^[A-Za-z ]{2, }$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 
 signUpForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+  editTask.preventDefault();
 
   // Get the values from the Sign Up form inputs
   const fullnameValue = fullNameInput.value.trim();
   const emailValue = emailInput.value.trim().toLowerCase();
-  const passwordValue = passwordInput.value;
-  const confirmPasswordValue = confirmPasswordInput.value;
+  const passwordValue = passwordInput.value.trim();
+  const confirmPasswordValue = confirmPasswordInput.value.trim();
 
   // Check all the form empty fields
   if (
@@ -63,13 +63,13 @@ signUpForm.addEventListener("submit", function (event) {
   }
 
   // Check Password length
-  if (passwordValue.length < 8) {
+  if (!passwordValue.length < 8) {
     alert("Passsword must have at least 8 characters");
     return;
   }
 
   // Check Confirm Password is matching the Password input
-  if (passwordValue !== confirmPasswordValue) {
+  if (confirmPasswordValue !== passwordValue) {
     alert("The passwords you entered are not matching, Please try again ... ");
     return;
   }

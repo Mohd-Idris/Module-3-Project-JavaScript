@@ -165,19 +165,25 @@ todoForm.addEventListener("submit", function (event) {
     .addEventListener("click", function (event) {
       event.stopPropagation(); // Prevent the click event from bubbling up to the task card
 
+      // Get the current values
+      const currentName = taskCard.querySelector(".task-name").textContent;
+      const currentPriority =
+        taskCard.querySelector(".task-priority").textContent;
+      // const currentCreatedDate = taskCard.querySelector(".task-created-date").textContent.trim();
+
       const today = new Date();
 
       const completedDay = String(today.getDate()).padStart(2, "0");
       const completedMonth = String(today.getMonth() + 1).padStart(2, "0");
       const completedYear = today.getFullYear();
 
-      const completeddDate = `${completedDay}/${completedMonth}/${completedYear}`;
+      const completedDate = `${completedDay}/${completedMonth}/${completedYear}`;
 
       taskCard.innerHTML = `
-      <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
-      <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
+      <p><span class="bold-text">Task:</span> <span class="task-name"> ${currentName}</span></p>
+      <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${currentPriority}</span></p> 
       <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${dueDateVar}</span></p>
-      <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completeddDate}</span></p>
+      <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completedDate}</span></p>
     `;
 
       taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
