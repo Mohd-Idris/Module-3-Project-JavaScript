@@ -579,46 +579,28 @@ i {
 }
 
 #sign-up-body {
-  min-height: 100vh;
-  /* background-image: url(./Images/sign-up-background-image.jpg); */
-  /* background-size: cover;
-  background-position: right;
-  overflow: hidden; */
-}
-
-.sign-up {
-  background-color: var(--text-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* height: 100vh; */
+  /* min-height: 100vh; */
 }
 
 .sign-up-container {
   background-color: var(--base-color);
-  /* height: 100vh; */
-  /* width: max(40%, 600px); */
-  /* you can use clamp(minimum, ideal, maximum) */
   width: 100%;
-  max-width: 500px;
-  padding: 2rem 0;
-  margin: 2rem 0;
-  border-radius: 20px;
+  max-width: 600px;
+  margin: 2rem auto;
+  /* margin-top: 2rem; */
   display: flex;
   flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
+  padding: 2rem 0;
+  border-radius: 20px;
   transition: all 3s ease-in-out;
   box-shadow: 3px 3px 40px 5px var(--accent-color);
-
 }
 
-.sign-up .sign-up-title {
-  text-transform: capitalize;
+.sign-up-title {
   color: var(--accent-color);
-  font: inherit;
-  font-size: 3rem;
-  font-weight: 600;
 }
 
 .sign-up-title .sign-up-span {
@@ -626,71 +608,56 @@ i {
 }
 
 .sign-up-form {
-  width: min(400px, 100%);
-  /* you can use clamp(minimum, ideal, maximum) */
-  margin: 20px 0 50px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   align-items: center;
+  margin: 20px 0 50px;
 }
 
-.sign-up-form-content {
+.sign-up-form .sign-up-form-content {
+  /* border: 2px solid red; */
   width: 100%;
   display: flex;
+  gap: 20px;
   justify-content: center;
 }
 
-/* .sign-up-form .label {
-  flex-shrink: 0;
-  height: 50px;
-  width: 50px;
-  background-color: var(--accent-color);
-  color: var(--base-color);
-  border-radius: 10px 0 0 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 500;
-} */
-
-.sign-up-form .label {
+.sign-up-form-content .label {
 
   background-color: var(--accent-color);
   color: var(--base-color);
   width: 100%;
   max-width: 100px;
+  margin: 0 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 0.5rem;
-  border-radius: 10px 0 0 10px;
+  border-radius: 15px;
   font-size: 0.9rem;
 }
 
-.sign-up-form input {
-  flex-grow: 1;
-  min-width: 0;
-  height: 50px;
+.sign-up-form-content input {
+  width: 100%;
+  /* max-width: 300px; */
   padding: 1rem;
-  font: inherit;
-  border-radius: 0 10px 10px 0;
   border: 2px solid var(--input-color);
-  /* border-left: none; */
-  background-color: var(--input-color);
+  border-radius: 10px;
+  margin-bottom: 5px;
   transition: all 150ms ease-in-out;
+  text-align: center;
 }
 
-.sign-up-form input:hover {
-  /* border:  2px solid var(--accent-color); */
+.sign-up-form-content input:hover {
   border-color: var(--accent-color);
 }
 
-.sign-up-form input:focus {
+.sign-up-form-content input:focus {
   outline: none;
   border-color: var(--text-color);
+
 }
 
 .sign-up-form-content:has(input:focus)>.label {
@@ -702,16 +669,15 @@ i {
   color: var(--base-color);
   margin: 10px 0 0 0;
   padding: 1rem 3rem;
-  font: inherit;
   font-weight: 600;
   border: none;
   border-radius: 30px;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
 .sign-up-form button:hover {
   background-color: var(--text-color);
+  text-transform: uppercase;
   text-decoration: underline;
 }
 
@@ -720,15 +686,18 @@ i {
   outline: none;
 }
 
-.sign-up-container .sign-up-link {
-  color: var(--accent-color);
-  /* background-color: var(--text-color); */
+.sign-up-container p {
+  margin: 10px;
 }
 
-.sign-up-container .sign-up-link:hover {
-  text-decoration: underline;
-  font-weight: 700;
+.sign-up-form .sign-up-link {
+  color: var(--accent-color);
+}
+
+.sign-up-form .sign-up-link:hover {
   text-transform: capitalize;
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 .error-message-input {
@@ -742,7 +711,6 @@ i {
 
 .input-error {
   border: 2px solid var(--error-message-color) !important;
-  /* background-color: #fff8f8; */
 }
 
 /* --------------Login Page Styling--------------- */

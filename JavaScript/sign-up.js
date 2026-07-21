@@ -1,19 +1,19 @@
-// Pseudo code for the To-Do Application Sign up Page
-//---------------------------------------------------
-/* 
-1. Get the form inputs from the user (Full Name, Email, Password and Confirm Password).
-2. Wait the user to click the "Sign Up" button.
-3. Read the values that the user entered in the form inputs.
-4. Check if the data is valid (not empty).
-   4.1 Enter a valid name.
-   4.2 Check the email if the enterted email meets requirements.
-   4.3 Check the password if the enterted password meets requirements.
-   4.4 Check the confirm password if matches the password.
-5. When the user clicks the "Sign Up" button, get the values from the form inputs.
-6. Show a message that the account has been created successfully.
-7. Clear all the inputs.
-8. Re-direct the user to the Login/Sign In page. 
-*/
+// // Pseudo code for the To-Do Application Sign up Page
+// //---------------------------------------------------
+// /*
+// 1. Get the form inputs from the user (Full Name, Email, Password and Confirm Password).
+// 2. Wait the user to click the "Sign Up" button.
+// 3. Read the values that the user entered in the form inputs.
+// 4. Check if the data is valid (not empty).
+//    4.1 Enter a valid name.
+//    4.2 Check the email if the enterted email meets requirements.
+//    4.3 Check the password if the enterted password meets requirements.
+//    4.4 Check the confirm password if matches the password.
+// 5. When the user clicks the "Sign Up" button, get the values from the form inputs.
+// 6. Show a message that the account has been created successfully.
+// 7. Clear all the inputs.
+// 8. Re-direct the user to the Login/Sign In page.
+// */
 
 // Delcare the Sign-Up form input elements
 const signUpForm = document.querySelector(".sign-up-form");
@@ -27,7 +27,7 @@ const namePattern = /^[A-Za-z ]{2, }$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 
 signUpForm.addEventListener("submit", function (event) {
-  editTask.preventDefault();
+  event.preventDefault();
 
   // Get the values from the Sign Up form inputs
   const fullnameValue = fullNameInput.value.trim();
