@@ -700,6 +700,14 @@ i {
   text-decoration: underline;
 }
 
+.sign-up-error-message {
+  /* background-color: red; */
+  /* border: 3px solid rgb(182, 9, 9); */
+  /* width: 100%; */
+  /* max-width: fit-content; */
+  color: black;
+}
+
 .error-message-input {
   display: block;
   margin: 10px 0;
@@ -710,6 +718,10 @@ i {
 }
 
 .input-error {
+  border: 2px solid var(--error-message-color) !important;
+}
+
+.incorrect {
   border: 2px solid var(--error-message-color) !important;
 }
 
