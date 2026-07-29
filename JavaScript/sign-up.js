@@ -101,7 +101,7 @@ const confirmPasswordInput = document.querySelector("#confirm-password-input");
 const errorMessageSignUp = document.querySelector("#sign-up-error-message");
 
 // Valid the pattern of the inputs
-const namePattern = /^[A-Za-z ]{2, }$/;
+const namePattern = /^[A-Za-z ]{2,}$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 
 // Get the values from the Sign Up form inputs
@@ -133,26 +133,35 @@ signUpForm.addEventListener("submit", function (event) {
 
 function getSignUpErrors(fullName, email, password, confirmPassword) {
   let errorMessages = [];
-  if (fullName === "" || fullName == null) {
-    errorMessages.push("Your Full Name is required !");
-    fullNameInput.parentElement.classList.add("incorrect");
+  if (!fullName) {
+    errorMessages.push("- Your Full Name is required !");
+    fullNameInput.classList.add("incorrect");
+  } else if (!namePattern.test(fullName)) {
+    errorMessages.push("- Sorry your name should at least be 2 characters !");
+    fullNameInput.classList.add("incorrect");
   }
-  if (email === "" || email == null) {
-    errorMessages.push("Your Email address is required !");
-    emailInput.parentElement.classList.add("incorrect");
+
+  if (!email) {
+    errorMessages.push("- Your Email address is required !");
+    emailInput.classList.add("incorrect");
+  } else if (!emailPattern.test(email)) {
+    errorMessages.push("- Please make sure you write your email correctly !");
+    emailInput.classList.add("incorrect");
   }
-  if (password === "" || password == null) {
-    errorMessages.push("Your Password is required !");
-    passwordInput.parentElement.classList.add("incorrect");
+  if (!password) {
+    errorMessages.push("- Your Password is required !");
+    passwordInput.classList.add("incorrect");
+  } else if (password.length < 8) {
+    errorMessages.push("- The password must be at least 8 characters !");
+    passwordInput.classList.add("incorrect");
   }
-  if (password.length < 8) {
-    errorMessages.push("The password must be at least 8 characters !");
-    passwordInput.parentElement.classList.add("incorrect");
-  }
-  if (password !== confirmPassword) {
-    errorMessages.push("The Password does not match Confirm Password !");
-    passwordInput.parentElement.classList.add("incorrect");
-    confirmPasswordInput.parentElement.classList.add("incorrect");
+  if (!confirmPassword) {
+    errorMessages.push("- Please write your password to confirm it !");
+    confirmPasswordInput.classList.add("incorrect");
+  } else if (password !== confirmPassword) {
+    errorMessages.push("- The Password does not match Confirm Password !");
+    passwordInput.classList.add("incorrect");
+    confirmPasswordInput.classList.add("incorrect");
   }
   return errorMessages;
 }
@@ -165,8 +174,8 @@ const allInputs = [
 ];
 allInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    if (input.parentElement.classList.contains("incorrect")) {
-      input.parentElement.classList.remove("incorrect");
+    if (input.classList.contains("incorrect")) {
+      input.classList.remove("incorrect");
       errorMessageSignUp.innerHTML = "";
     }
   });

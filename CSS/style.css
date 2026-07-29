@@ -635,7 +635,7 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 15px;
+  border-radius: 10px;
   font-size: 0.9rem;
 }
 
@@ -646,6 +646,7 @@ i {
   border: 2px solid var(--input-color);
   border-radius: 10px;
   margin-bottom: 5px;
+  margin-right: 8px;
   transition: all 150ms ease-in-out;
   text-align: center;
 }
@@ -712,18 +713,38 @@ i {
   display: block;
   margin: 10px 0;
   color: var(--error-message-color);
-  font-size: 12px;
+  font-size: 15px;
   margin-top: 5px;
   min-height: 16px;
 }
 
-.input-error {
+/* .input-error {
   border: 2px solid var(--error-message-color) !important;
+} */
+
+.sign-up-form-content .incorrect {
+  border: 2px solid var(--error-message-color);
 }
 
-.incorrect {
-  border: 2px solid var(--error-message-color) !important;
+form div.incorrect lable {
+  background-color: var(--error-message-color);
 }
+
+form div.incorrect input {
+  background-color: var(--error-message-color);
+}
+
+/* form div.incorrect label {
+  background-color: #f06272;
+}
+
+form div.incorrect input {
+  border-color: #f06272;
+}
+
+#error-message {
+  color: #f06272;
+} */
 
 /* --------------Login Page Styling--------------- */
 .login {
