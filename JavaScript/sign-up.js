@@ -113,9 +113,14 @@ const confirmPasswordValue = confirmPasswordInput.value.trim();
 signUpForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  // Defined an array to put all the errors messages into it
   let errorMessages = [];
 
+  // This condition is to check where we are
   if (fullNameInput) {
+    /* if we have a fullname input that means we are a Sign up form, 
+       else we are inside a Login form */
+
     errorMessages = getSignUpErrors(
       fullNameInput.value,
       emailInput.value,
@@ -126,39 +131,53 @@ signUpForm.addEventListener("submit", function (event) {
     errorMessages = getLoginErrors(emailInput.value, passwordInput.value);
   }
   if (errorMessages.length > 0) {
-    event.preventDefault();
+    // event.preventDefault();
     errorMessageSignUp.innerText = errorMessages.join(".\n");
   }
 });
 
+// Defined a function to get all error messages of the Sign up form
 function getSignUpErrors(fullName, email, password, confirmPassword) {
+  // Defined an array to put all the errors messages into it
   let errorMessages = [];
+
+  // Check the Full name input if it is empty or not
   if (!fullName) {
     errorMessages.push("- Your Full Name is required !");
     fullNameInput.classList.add("incorrect");
-  } else if (!namePattern.test(fullName)) {
+  }
+  // Validate the Full name input with the pattern that we set
+  else if (!namePattern.test(fullName)) {
     errorMessages.push("- Sorry your name should at least be 2 characters !");
     fullNameInput.classList.add("incorrect");
   }
-
+  // Check the Email input if it is empty or not
   if (!email) {
     errorMessages.push("- Your Email address is required !");
     emailInput.classList.add("incorrect");
-  } else if (!emailPattern.test(email)) {
+  }
+  // Validate the Email input with the pattern that we set
+  else if (!emailPattern.test(email)) {
     errorMessages.push("- Please make sure you write your email correctly !");
     emailInput.classList.add("incorrect");
   }
+  // Check the Password input if it is empty or not
   if (!password) {
     errorMessages.push("- Your Password is required !");
     passwordInput.classList.add("incorrect");
-  } else if (password.length < 8) {
+  }
+  // Validate the length of the Password input
+  else if (password.length < 8) {
     errorMessages.push("- The password must be at least 8 characters !");
     passwordInput.classList.add("incorrect");
   }
+  // Check the Confirm Password input if it is empty or not
   if (!confirmPassword) {
     errorMessages.push("- Please write your password to confirm it !");
     confirmPasswordInput.classList.add("incorrect");
-  } else if (password !== confirmPassword) {
+  }
+  // Validate the Confirm Password input with the Password input if they match each others
+  else if (password !== confirmPassword) {
     errorMessages.push("- The Password does not match Confirm Password !");
     passwordInput.classList.add("incorrect");
     confirmPasswordInput.classList.add("incorrect");
