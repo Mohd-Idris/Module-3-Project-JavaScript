@@ -722,6 +722,10 @@ i {
   border: 2px solid var(--error-message-color);
 }
 
+.login-form-content .incorrect {
+  border: 2px solid var(--error-message-color);
+}
+
 
 /* --------------Login Page Styling--------------- */
 .login {
@@ -736,7 +740,7 @@ i {
   background-color: var(--base-color);
   /* width: max(40%, 600px); */
   width: 100%;
-  max-width: 500px;
+  max-width: 700px;
   margin: 2rem 0;
   /* you can use clamp(minimum, ideal, maximum) */
   padding: 10px;
@@ -763,7 +767,7 @@ i {
 }
 
 .login-form {
-  width: min(400px, 100%);
+  width: 100%;
   /* you can use clamp(minimum, ideal, maximum) */
   margin: 20px 0 50px;
   display: flex;
@@ -777,39 +781,40 @@ i {
 
 .login-form>div {
   width: 100%;
+  /* max-width: 700px; */
   display: flex;
   justify-content: center;
+  /* border:2px solid red; */
 }
 
 .login-form .label {
-  flex-shrink: 0;
-  height: 50px;
-  width: 50px;
   background-color: var(--accent-color);
   color: var(--base-color);
-  border-radius: 10px 0 0 10px;
+  width: 100%;
+  max-width: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  /* this make a space between lable and input */
+  border-radius: 10px;
+  font: inherit;
 }
 
 .login-form input {
-  flex-grow: 1;
-  min-width: 0;
-  height: 50px;
+  width: 100%;
   padding: 1rem;
   font: inherit;
-  border-radius: 0 10px 10px 0;
   border: 2px solid var(--input-color);
-  /* border-left: none; */
-  background-color: var(--input-color);
+  border-radius: 10px;
+  margin-right: 8px;
+  margin-bottom: 5px;
+  text-align: center;
   transition: all 150ms ease-in-out;
 }
 
 .login-form input:hover {
-  /* border:  2px solid var(--accent-color); */
   border-color: var(--accent-color);
 }
 
@@ -831,12 +836,12 @@ i {
   font-weight: 600;
   border: none;
   border-radius: 30px;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
 .login-form button:hover {
   background-color: var(--text-color);
+  text-transform: uppercase;
   text-decoration: underline;
 }
 
@@ -847,8 +852,6 @@ i {
 
 .login-container .login-link {
   color: var(--accent-color);
-
-  /* background-color: var(--text-color); */
 }
 
 .login-container .login-link:hover {

@@ -91,79 +91,50 @@
 // 7. Clear all the inputs.
 // 8. Re-direct the user to the Login/Sign In page.
 // */
-// document.addEventListener("DOMContentLoaded", function () {
+
 // Delcare the Sign-Up form input elements
-const signUpForm = document.querySelector("#sign-up-form");
-const fullNameInput = document.querySelector("#fullname-input");
+const loginForm = document.querySelector("#login-form");
 const emailInput = document.querySelector("#email-input");
 const passwordInput = document.querySelector("#password-input");
-const confirmPasswordInput = document.querySelector("#confirm-password-input");
+
 const accountCreated = document.querySelector("#account-created");
 const errorMessageForm = document.querySelector("#error-message");
 
 // Valid the pattern of the inputs using Regex Pattern
-const namePattern = /^[a-zA-Z ]{2,}$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&]{8,}$/;
 
 // Get the values from the Sign Up form inputs
-const fullnameValue = fullNameInput.value.trim();
 const emailValue = emailInput.value.trim().toLowerCase();
 const passwordValue = passwordInput.value.trim();
-const confirmPasswordValue = confirmPasswordInput.value.trim();
 
-signUpForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Defined an array to put all the errors messages into it
   let errorMessages = [];
 
-  // This condition is to check where we are
-  if (fullNameInput) {
-    /* if we have a fullname input that means we are a Sign up form, 
-       else we are inside a Login form */
+  errorMessages = getLoginFormErrors(emailInput.value, passwordInput.value);
 
-    errorMessages = getSignUpFormErrors(
-      fullNameInput.value,
-      emailInput.value,
-      passwordInput.value,
-      confirmPasswordInput.value,
-    );
-  } else {
-    errorMessages = getLoginFormErrors(emailInput.value, passwordInput.value);
-  }
   if (errorMessages.length > 0) {
-    event.preventDefault();
+    // event.preventDefault();
     errorMessageForm.innerText = errorMessages.join(".\n");
-  } else if (fullNameInput) {
-    accountCreated.innerText = `✅ The account has created successfully !`;
-    // This will make the message disappeared after 5 seconds
-    setTimeout(() => accountCreated.remove(), 5000);
+  } else {
+    errorMessageForm.innerText = "";
   }
 });
 
 // Defined a function to get all error messages of the Sign up form
-function getSignUpFormErrors(fullName, email, password, confirmPassword) {
-  // Defined an array to put all the errors messages into it
+function getLoginFormErrors(email, password) {
   let errorMessages = [];
 
-  // Check the Full name input if it is empty or not
-  if (!fullName) {
-    errorMessages.push("⚠️ Your Full Name is required");
-    fullNameInput.classList.add("incorrect");
-  }
-  // Validate the Full name input with the pattern that we set
-  else if (!namePattern.test(fullName)) {
-    errorMessages.push("⚠️ Sorry your name should at least be 2 characters");
-    fullNameInput.classList.add("incorrect");
-  }
   // Check the Email input if it is empty or not
   if (!email) {
     errorMessages.push("⚠️ Your Email address is required");
     emailInput.classList.add("incorrect");
   }
   // Validate the Email input with the pattern that we set
-  else if (!emailPattern.test(email)) {
+  else if (emailPattern.test(email)) {
     errorMessages.push("⚠️ Please make sure you write your email correctly");
     emailInput.classList.add("incorrect");
   }
@@ -174,52 +145,13 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
   }
   // Validate the Password input with the pattern that we set
   else if (!passwordPattern.test(password)) {
-    errorMessages.push(
-      `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, carefull no spaces allowed`,
-    );
+    errorMessages.push(`⚠️ The password must contain at least 1 letter,
+    1 number, and 8 or more characters, carefull no spaces allowed`);
     passwordInput.classList.add("incorrect");
   }
-  // Check the Confirm Password input if it is empty or not
-  if (!confirmPassword) {
-    errorMessages.push("⚠️ Please write your password to confirm it");
-    confirmPasswordInput.classList.add("incorrect");
-  }
-  // Validate the Confirm Password input with the Password input if they match each others
-  else if (password !== confirmPassword) {
-    errorMessages.push("⚠️ The Password does not match Confirm Password");
-    passwordInput.classList.add("incorrect");
-    confirmPasswordInput.classList.add("incorrect");
-  }
+
   return errorMessages;
 }
-
-// function getLoginFormErrors(email, password) {
-//   let errorMessages = [];
-
-//   // Check the Email input if it is empty or not
-//   if (!email) {
-//     errorMessages.push("⚠️ Your Email address is required");
-//     emailInput.parentElement.classList.add("incorrect");
-//   }
-//   // Validate the Email input with the pattern that we set
-//   else if (emailPattern.test(email)) {
-//     errorMessages.push("⚠️ Please make sure you write your email correctly");
-//     emailInput.parentElement.classList.add("incorrect");
-//   }
-//   // Check the Password input if it is empty or not
-//   if (!password) {
-//     errorMessages.push("⚠️ Your Password is required");
-//     passwordInput.parentElement.classList.add("incorrect");
-//   }
-//   // Validate the Password input with the pattern that we set
-//   else if (!passwordPattern.test(password)) {
-//     errorMessages.push(`⚠️ The password must contain at least 1 letter,
-//   1 number, and 8 or more characters, carefull no spaces allowed`);
-//     passwordInput.parentElement.classList.add("incorrect");
-//   }
-
-//   return errorMessages;
-// }
 
 // Defines an array contains all the inputs
 const allInputs = [
@@ -238,4 +170,3 @@ allInputs.forEach((input) => {
     }
   });
 });
-// });
