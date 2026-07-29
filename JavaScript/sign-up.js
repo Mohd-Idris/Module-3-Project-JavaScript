@@ -98,11 +98,13 @@ const fullNameInput = document.querySelector("#fullname-input");
 const emailInput = document.querySelector("#email-input");
 const passwordInput = document.querySelector("#password-input");
 const confirmPasswordInput = document.querySelector("#confirm-password-input");
+const accountCreated = document.querySelector("#account-created");
 const errorMessageSignUp = document.querySelector("#sign-up-error-message");
 
-// Valid the pattern of the inputs
-const namePattern = /^[A-Za-z ]{2,}$/;
+// Valid the pattern of the inputs using Regex Pattern
+const namePattern = /^[a-zA-Z ]{2,}$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
+const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&]{8,}$/;
 
 // Get the values from the Sign Up form inputs
 const fullnameValue = fullNameInput.value.trim();
@@ -131,8 +133,11 @@ signUpForm.addEventListener("submit", function (event) {
     errorMessages = getLoginErrors(emailInput.value, passwordInput.value);
   }
   if (errorMessages.length > 0) {
-    // event.preventDefault();
     errorMessageSignUp.innerText = errorMessages.join(".\n");
+  } else {
+    accountCreated.innerText = `✅ The account has created successfully !`;
+    // This will make the message disappeared after 5 seconds
+    setTimeout(() => accountCreated.remove(), 5000);
   }
 });
 
@@ -143,59 +148,63 @@ function getSignUpErrors(fullName, email, password, confirmPassword) {
 
   // Check the Full name input if it is empty or not
   if (!fullName) {
-    errorMessages.push("- Your Full Name is required !");
+    errorMessages.push("⚠️ Your Full Name is required");
     fullNameInput.classList.add("incorrect");
   }
   // Validate the Full name input with the pattern that we set
   else if (!namePattern.test(fullName)) {
-    errorMessages.push("- Sorry your name should at least be 2 characters !");
+    errorMessages.push("⚠️ Sorry your name should at least be 2 characters");
     fullNameInput.classList.add("incorrect");
   }
   // Check the Email input if it is empty or not
   if (!email) {
-    errorMessages.push("- Your Email address is required !");
+    errorMessages.push("⚠️ Your Email address is required");
     emailInput.classList.add("incorrect");
   }
   // Validate the Email input with the pattern that we set
   else if (!emailPattern.test(email)) {
-    errorMessages.push("- Please make sure you write your email correctly !");
+    errorMessages.push("⚠️ Please make sure you write your email correctly");
     emailInput.classList.add("incorrect");
   }
   // Check the Password input if it is empty or not
   if (!password) {
-    errorMessages.push("- Your Password is required !");
+    errorMessages.push("⚠️ Your Password is required");
     passwordInput.classList.add("incorrect");
   }
   // Validate the length of the Password input
-  else if (password.length < 8) {
-    errorMessages.push("- The password must be at least 8 characters !");
+  else if (!passwordPattern.test(password)) {
+    errorMessages.push(
+      `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, carefull no spaces allowed`,
+    );
     passwordInput.classList.add("incorrect");
   }
   // Check the Confirm Password input if it is empty or not
   if (!confirmPassword) {
-    errorMessages.push("- Please write your password to confirm it !");
+    errorMessages.push("⚠️ Please write your password to confirm it");
     confirmPasswordInput.classList.add("incorrect");
   }
   // Validate the Confirm Password input with the Password input if they match each others
   else if (password !== confirmPassword) {
-    errorMessages.push("- The Password does not match Confirm Password !");
+    errorMessages.push("⚠️ The Password does not match Confirm Password");
     passwordInput.classList.add("incorrect");
     confirmPasswordInput.classList.add("incorrect");
   }
   return errorMessages;
 }
-
+// Defines an array contains all the inputs
 const allInputs = [
   fullNameInput,
   emailInput,
   passwordInput,
   confirmPasswordInput,
 ];
+
+// Clearing the inputs that have errors
 allInputs.forEach((input) => {
   input.addEventListener("input", () => {
     if (input.classList.contains("incorrect")) {
       input.classList.remove("incorrect");
-      errorMessageSignUp.innerHTML = "";
+      errorMessageSignUp.innerText = "";
     }
   });
 });

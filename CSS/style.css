@@ -701,12 +701,12 @@ i {
   text-decoration: underline;
 }
 
-.sign-up-error-message {
-  /* background-color: red; */
-  /* border: 3px solid rgb(182, 9, 9); */
-  /* width: 100%; */
-  /* max-width: fit-content; */
-  color: black;
+#account-created {
+  background-color: var(--completed);
+  color: var(--base-color);
+  padding: 0 0.5rem;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .error-message-input {
@@ -718,33 +718,10 @@ i {
   min-height: 16px;
 }
 
-/* .input-error {
-  border: 2px solid var(--error-message-color) !important;
-} */
-
 .sign-up-form-content .incorrect {
   border: 2px solid var(--error-message-color);
 }
 
-form div.incorrect lable {
-  background-color: var(--error-message-color);
-}
-
-form div.incorrect input {
-  background-color: var(--error-message-color);
-}
-
-/* form div.incorrect label {
-  background-color: #f06272;
-}
-
-form div.incorrect input {
-  border-color: #f06272;
-}
-
-#error-message {
-  color: #f06272;
-} */
 
 /* --------------Login Page Styling--------------- */
 .login {
