@@ -709,6 +709,15 @@ i {
   text-align: center;
 }
 
+#login-message {
+  /* background-color: var(--completed); */
+  color: var(--completed);
+  padding: 0 0.5rem;
+  border-radius: 8px;
+  font-size: 15px;
+  text-align: center;
+}
+
 .error-message-input {
   display: block;
   margin: 10px 0;

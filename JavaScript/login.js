@@ -97,36 +97,71 @@ const loginForm = document.querySelector("#login-form");
 const emailInput = document.querySelector("#email-input");
 const passwordInput = document.querySelector("#password-input");
 
-const accountCreated = document.querySelector("#account-created");
+const loginMessage = document.querySelector("#login-message");
 const errorMessageForm = document.querySelector("#error-message");
 
 // Valid the pattern of the inputs using Regex Pattern
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&]{8,}$/;
 
-// Get the values from the Sign Up form inputs
-const emailValue = emailInput.value.trim().toLowerCase();
-const passwordValue = passwordInput.value.trim();
-
 loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
+  // Get the values from the Sign Up form inputs
+  const emailValue = emailInput.value.trim().toLowerCase();
+  const passwordValue = passwordInput.value.trim();
 
   // Defined an array to put all the errors messages into it
   let errorMessages = [];
 
-  errorMessages = getLoginFormErrors(emailInput.value, passwordInput.value);
+  errorMessages = getLoginFormErrors(emailValue, passwordValue);
 
   if (errorMessages.length > 0) {
     // event.preventDefault();
     errorMessageForm.innerText = errorMessages.join(".\n");
   } else {
-    errorMessageForm.innerText = "";
+    const savedUser = JSON.parse(localStorage.getItem("appUsers")) || [];
+    // errorMessageForm.innerText = "";
+    const foundUser = savedUser.find((user) => user.email === emailValue);
+    // && user.password === passwordValue);
+    if (!foundUser) {
+      errorMessageForm.innerText =
+        "⚠️ email not found, please try again or Sign Up first";
+      emailInput.classList.add("incorrect");
+      passwordInput.classList.add("incorrect");
+      return;
+    }
+    if (foundUser.password !== passwordValue) {
+      errorMessageForm.innerText = "⚠️ Incorrect Password, Please try again";
+      passwordInput.classList.add("incorrect");
+      return;
+    }
+
+    // Login successful message
+    loginMessage.innerText = "✅ Login successful! Redirecting Now ...";
+
+    // Save the logged-in user to localStorage
+    localStorage.setItem(
+      "logged-in-User",
+      JSON.stringify({ name: foundUser.fullname, email: foundUser.email }),
+    );
+    clearInputs();
+
+    // Redirect to the index.html page after a short delay
+    setTimeout(() => {
+      window.location.href = "../Templates/index.html";
+    }, 3000); // Redirect after 3 seconds
   }
+
+  // }
 });
 
 // Defined a function to get all error messages of the Sign up form
 function getLoginFormErrors(email, password) {
   let errorMessages = [];
+
+  // Phase 1: Check if the inputs are empty or not
+  //----------------------------------------------
 
   // Check the Email input if it is empty or not
   if (!email) {
@@ -139,6 +174,9 @@ function getLoginFormErrors(email, password) {
     passwordInput.classList.add("incorrect");
   }
 
+  // Phase 2: Check if the inputs are following the patterns that we set for them
+  //-----------------------------------------------------------------------------
+
   if (errorMessages.length === 0) {
     // Validate the Email input with the pattern that we set
     if (!emailPattern.test(email)) {
@@ -148,7 +186,7 @@ function getLoginFormErrors(email, password) {
     // Validate the Password input with the pattern that we set
     if (!passwordPattern.test(password)) {
       errorMessages.push(
-        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, carefull no spaces allowed`,
+        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, No spaces allowed`,
       );
       passwordInput.classList.add("incorrect");
     }
@@ -163,9 +201,14 @@ const allInputs = [emailInput, passwordInput].filter((input) => input != null);
 // Clearing the inputs that have errors
 allInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    if (input.classList.contains("incorrect")) {
-      input.classList.remove("incorrect");
-      errorMessageForm.innerText = "";
-    }
+    // if (input.classList.contains("incorrect")) {
+    input.classList.remove("incorrect");
+    errorMessageForm.innerText = "";
+    // }
   });
 });
+
+// Function to clear all the inputs of the Sign Up form
+function clearInputs() {
+  loginForm.reset();
+}

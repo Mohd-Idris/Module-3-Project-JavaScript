@@ -239,7 +239,7 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
     // Validate the Password input with the pattern that we set
     if (!passwordPattern.test(password)) {
       errorMessages.push(
-        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, carefull no spaces allowed`,
+        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, No spaces allowed`,
       );
       passwordInput.classList.add("incorrect");
     }
@@ -265,10 +265,10 @@ const formInputs = [
 // Clearing the inputs that have errors
 formInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    if (input.classList.contains("incorrect")) {
-      input.classList.remove("incorrect");
-      errorMessageForm.innerText = "";
-    }
+    // if (input.classList.contains("incorrect")) {
+    input.classList.remove("incorrect");
+    errorMessageForm.innerText = "";
+    // }
   });
 });
 
