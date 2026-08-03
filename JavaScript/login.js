@@ -133,33 +133,32 @@ function getLoginFormErrors(email, password) {
     errorMessages.push("⚠️ Your Email address is required");
     emailInput.classList.add("incorrect");
   }
-  // Validate the Email input with the pattern that we set
-  else if (emailPattern.test(email)) {
-    errorMessages.push("⚠️ Please make sure you write your email correctly");
-    emailInput.classList.add("incorrect");
-  }
-  // Check the Password input if it is empty or not
+
   if (!password) {
     errorMessages.push("⚠️ Your Password is required");
     passwordInput.classList.add("incorrect");
   }
-  // Validate the Password input with the pattern that we set
-  else if (!passwordPattern.test(password)) {
-    errorMessages.push(`⚠️ The password must contain at least 1 letter,
-    1 number, and 8 or more characters, carefull no spaces allowed`);
-    passwordInput.classList.add("incorrect");
+
+  if (errorMessages.length === 0) {
+    // Validate the Email input with the pattern that we set
+    if (!emailPattern.test(email)) {
+      errorMessages.push("⚠️ Please make sure you write your email correctly");
+      emailInput.classList.add("incorrect");
+    }
+    // Validate the Password input with the pattern that we set
+    if (!passwordPattern.test(password)) {
+      errorMessages.push(
+        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, carefull no spaces allowed`,
+      );
+      passwordInput.classList.add("incorrect");
+    }
   }
 
   return errorMessages;
 }
 
 // Defines an array contains all the inputs
-const allInputs = [
-  fullNameInput,
-  emailInput,
-  passwordInput,
-  confirmPasswordInput,
-].filter((input) => input != null);
+const allInputs = [emailInput, passwordInput].filter((input) => input != null);
 
 // Clearing the inputs that have errors
 allInputs.forEach((input) => {

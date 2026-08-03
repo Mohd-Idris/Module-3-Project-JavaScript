@@ -718,11 +718,11 @@ i {
   min-height: 16px;
 }
 
-.sign-up-form-content .incorrect {
+.sign-up-form-content input.incorrect {
   border: 2px solid var(--error-message-color);
 }
 
-.login-form-content .incorrect {
+.login-form-content input.incorrect {
   border: 2px solid var(--error-message-color);
 }
 
