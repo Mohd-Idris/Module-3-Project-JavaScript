@@ -136,6 +136,17 @@ body {
   font-weight: 600;
 }
 
+.welcome-item {
+  padding: 0 1rem;
+  /* color: #2563eb; */
+  color: var(--base-color);
+  font-weight: 500;
+}
+
+#logout-link {
+  display: none;
+}
+
 /* --------------- End of Header Styling --------------- */
 
 /* --------------- Start Hero-Section Styling --------------- */

@@ -272,5 +272,3 @@ function resetForm() {
   addTask.style.display = "inline-block";
   editTask.style.display = "none";
 }
-
-// ------------------------------------------------------------------------------------------------------------------------
