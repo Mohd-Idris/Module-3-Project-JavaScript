@@ -12,8 +12,7 @@
 7. Clear the form inputs after adding the task.
 8. Allow the user to edit or delete tasks by clicking the corresponding buttons on each task card.
 9. Update/delete the task card container when a task is edited or deleted (if the user has the privilege).  
-10. Allow the user to mark tasks as completed and move them to 
-    the completed task card container.
+10. Allow the user to mark tasks as completed and move them to the completed task card container.
 11. Clear all the inputs.
 */
 
@@ -34,14 +33,41 @@ const majorTaskCard = document.getElementById("major-task");
 const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
+// Variable to hold the task card being edited
 let editTaskVar = null;
 
-// Set a minimum date to Today date
-const minDate = new Date().toISOString().split("T")[0]; // This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z
+// Function to format the date to "dd/mm/yyyy" format
+function formatDate(date) {
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+// Function to get created date and auto calculate the due date by priority
+function getDueDate(priority) {
+  const createdDate = new Date();
+  let dueDate = new Date(createdDate);
+
+  if (priority === "Minor") {
+    dueDate.setDate(createdDate.getDate() + 5);
+  } else if (priority === "Major") {
+    dueDate.setDate(createdDate.getDate() + 3);
+  } else if (priority === "Critical") {
+    dueDate.setDate(createdDate.getDate() + 1);
+  }
+  // Return the formatted created date and due date
+  return { createdDate: formatDate(createdDate), dueDate: formatDate(dueDate) };
+}
+
+/* Set a minimum date to Today date, so the user can't select a past date for the task
+ This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z */
+const minDate = new Date().toISOString().split("T")[0];
 dateInput.setAttribute("min", minDate);
 
 todoForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the form from submitting and refreshing the page
+  // Prevent the form from submitting and refreshing the page
+  event.preventDefault();
 
   const taskNameCheck = nameInput.value.trim();
   if (taskNameCheck === "") {
@@ -51,59 +77,68 @@ todoForm.addEventListener("submit", function (event) {
 
   // Get the current values from the form inputs
   const nameValue =
+    // Convert the 1st letter of the task name to uppercase
     nameInput.value.trim().charAt(0).toUpperCase() +
-    nameInput.value.trim().slice(1); // Convert the task name to uppercase
+    nameInput.value.trim().slice(1);
 
-  const priorityValue = priorityInput.value || "Minor"; // Set a default value for the priority input, if it's not been selected by the user .
-  const dateValue = dateInput.value.trim();
+  // Set a default value for the priority input, if it's not been selected by the user .
+  const priorityValue = priorityInput.value || "Minor";
+
+  // Get the due date based on the priority value
+  const { createdDate, dueDate } = getDueDate(priorityValue);
+  // /**/const dateValue = dateInput.value.trim();
 
   // priorityValue = !priorityValue ? "Minor" : priorityValue;
 
-  let dueDay;
-  if (priorityValue === "Minor") {
-    dueDay = "5 days";
-  } else if (priorityValue === "Major") {
-    dueDay = "3 days";
-  } else if (priorityValue === "Critical") {
-    dueDay = "1 day";
-  }
+  // Set the due day based on the priority value
+  // let dueDay;
+  // if (priorityValue === "Minor") {
+  //   dueDay = "5 days";
+  // } else if (priorityValue === "Major") {
+  //   dueDay = "3 days";
+  // } else if (priorityValue === "Critical") {
+  //   dueDay = "1 day";
+  // }
 
-  let dueDateVar;
-  const selectedDate = new Date(dateValue);
-  const today = new Date();
+  // Set the due date based on the selected date or default to today's date
+  // let dueDateVar;
+  // const selectedDate = new Date(dateValue);
+  // const today = new Date();
 
-  if (dateValue !== "") {
-    today.setHours(0, 0, 0, 0);
-    selectedDate.setHours(0, 0, 0, 0);
+  // if (dateValue !== "") {
+  //   today.setHours(0, 0, 0, 0);
+  //   selectedDate.setHours(0, 0, 0, 0);
 
-    if (selectedDate < today) {
-      alert("Invalid date");
-      return;
-    }
+  //   if (selectedDate < today) {
+  //     alert("Invalid date");
+  //     return;
+  //   }
 
-    const day = String(selectedDate.getDate()).padStart(2, "0");
-    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-    const year = selectedDate.getFullYear();
+  // Format the selected date as "dd/mm/yyyy"
+  //   const day = String(selectedDate.getDate()).padStart(2, "0");
+  //   const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+  //   const year = selectedDate.getFullYear();
 
-    dueDateVar = `${day}/${month}/${year}`;
-  } else {
-    const day = String(today.getDate()).padStart(2, "0");
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const year = today.getFullYear();
-    dueDateVar = `${day}/${month}/${year}`;
-  }
+  //   dueDateVar = `${day}/${month}/${year}`;
+  // } else {
+  //   // If no date is selected, use today's date as the due date
+  //   const day = String(today.getDate()).padStart(2, "0");
+  //   const month = String(today.getMonth() + 1).padStart(2, "0");
+  //   const year = today.getFullYear();
+  //   dueDateVar = `${day}/${month}/${year}`;
+  // }
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
-  taskCard.dataset.due = dueDateVar;
+  taskCard.dataset.due = dueDate; // Store the due date in a data attribute for later use
   taskCard.innerHTML = `
 
 
     <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
     <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
-    <p><span class="bold-text">Due Day:</span> <span class="task-due-day"> ${dueDay}</span></p> 
-    <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDateVar}</span></p> 
+    <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p> 
+    <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p> 
    
 
     <div class="task-actions">
@@ -169,20 +204,23 @@ todoForm.addEventListener("submit", function (event) {
       const currentName = taskCard.querySelector(".task-name").textContent;
       const currentPriority =
         taskCard.querySelector(".task-priority").textContent;
-      // const currentCreatedDate = taskCard.querySelector(".task-created-date").textContent.trim();
+      const currentCreatedDate = taskCard
+        .querySelector(".task-created-date")
+        .textContent.trim();
 
-      const today = new Date();
+      // const today = new Date();
 
-      const completedDay = String(today.getDate()).padStart(2, "0");
-      const completedMonth = String(today.getMonth() + 1).padStart(2, "0");
-      const completedYear = today.getFullYear();
+      // const completedDay = String(today.getDate()).padStart(2, "0");
+      // const completedMonth = String(today.getMonth() + 1).padStart(2, "0");
+      // const completedYear = today.getFullYear();
 
-      const completedDate = `${completedDay}/${completedMonth}/${completedYear}`;
+      // const completedDate = `${completedDay}/${completedMonth}/${completedYear}`;
+      const completedDate = formatDate(new Date());
 
       taskCard.innerHTML = `
       <p><span class="bold-text">Task:</span> <span class="task-name"> ${currentName}</span></p>
       <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${currentPriority}</span></p> 
-      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${dueDateVar}</span></p>
+      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${currentCreatedDate}</span></p>
       <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completedDate}</span></p>
     `;
 
@@ -200,52 +238,58 @@ editTask.addEventListener("click", function (event) {
   const updatedName =
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1);
-  const updatedPriority = priorityInput.value;
-  const updateDueDate = dateInput.value;
+  const updatedPriority = priorityInput.value || "Minor"; // Set a default value for the priority input, if it's not been selected by the user
+  const { createdDate: updatedCreatedDate, dueDate: updatedDueDate } =
+    getDueDate(updatedPriority);
 
-  let updateDueDateVar;
-  const selectedDate = new Date(updateDueDate);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // const updateDueDate = dateInput.value;
 
-  if (updateDueDate !== "") {
-    selectedDate.setHours(0, 0, 0, 0);
+  // let updateDueDateVar;
+  // const selectedDate = new Date(updateDueDate);
+  // const today = new Date();
+  // today.setHours(0, 0, 0, 0);
 
-    if (selectedDate < today) {
-      alert("Invalid date");
-      return;
-    }
+  // if (updateDueDate !== "") {
+  //   selectedDate.setHours(0, 0, 0, 0);
 
-    const day = String(selectedDate.getDate()).padStart(2, "0");
-    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-    const year = selectedDate.getFullYear();
+  //   if (selectedDate < today) {
+  //     alert("Invalid date");
+  //     return;
+  //   }
 
-    updateDueDateVar = `${day}/${month}/${year}`;
-  } else {
-    const day = String(today.getDate()).padStart(2, "0");
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const year = today.getFullYear();
+  //   const day = String(selectedDate.getDate()).padStart(2, "0");
+  //   const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+  //   const year = selectedDate.getFullYear();
 
-    updateDueDateVar = `${day}/${month}/${year}`;
-  }
+  //   updateDueDateVar = `${day}/${month}/${year}`;
+  // } else {
+  //   const day = String(today.getDate()).padStart(2, "0");
+  //   const month = String(today.getMonth() + 1).padStart(2, "0");
+  //   const year = today.getFullYear();
 
-  editTaskVar.dataset.due = updateDueDateVar;
+  //   updateDueDateVar = `${day}/${month}/${year}`;
+  // }
 
-  // Set DueDay for the task that's been updated based on its priority
-  let newDueDay;
-  if (updatedPriority === "Minor") {
-    newDueDay = "5 days";
-  } else if (updatedPriority === "Major") {
-    newDueDay = "3 days";
-  } else if (updatedPriority === "Critical") {
-    newDueDay = "1 day";
-  }
+  // editTaskVar.dataset.due = updateDueDateVar;
+
+  // // Set DueDay for the task that's been updated based on its priority
+  // let newDueDay;
+  // if (updatedPriority === "Minor") {
+  //   newDueDay = "5 days";
+  // } else if (updatedPriority === "Major") {
+  //   newDueDay = "3 days";
+  // } else if (updatedPriority === "Critical") {
+  //   newDueDay = "1 day";
+  // }
 
   // get the updated values
   editTaskVar.querySelector(".task-name").textContent = updatedName;
   editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
-  editTaskVar.querySelector(".task-due-day").textContent = newDueDay;
-  editTaskVar.querySelector(".task-due-date").textContent = updateDueDateVar;
+  editTaskVar.querySelector(".task-created-date").textContent =
+    updatedCreatedDate;
+  editTaskVar.querySelector(".task-due-date").textContent = updatedDueDate;
+
+  editTaskVar.dataset.due = updatedDueDate; // Update the due date in the data attribute
 
   //update priority class & move the card
   editTaskVar.classList.remove("minor", "major", "critical");
@@ -262,6 +306,7 @@ editTask.addEventListener("click", function (event) {
   }
 
   resetForm();
+  // Reset the editTaskVar to null after editing
   editTaskVar = null;
 });
 
