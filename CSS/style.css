@@ -538,9 +538,15 @@ i {
   border-color: var(--critical);
 }
 
+.task-card.custom {
+  /* border-color: var(--ongoing); */
+  border-color: #0ea5e9;
+}
+
 .task-card.completed {
   border-color: var(--completed) !important;
 }
+
 
 .task-card p {
   margin: 0.3rem 0;
@@ -712,6 +718,25 @@ i {
   text-decoration: underline;
 }
 
+/* ---------Sign up hint message ----------- */
+/* .hint {
+  display: block;
+  font-size: 12px;
+  color: var(--accent-color);
+  margin-top: 2px;
+  text-align: center;
+}
+
+.error-msg {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--error-message-color);
+  margin-top: 2px;
+  text-align: center;
+  min-height: 1.2em;
+} */
+
+/* ------------------------- */
 #account-created {
   background-color: var(--completed);
   color: var(--base-color);
@@ -725,7 +750,7 @@ i {
   color: var(--completed);
   padding: 0 0.5rem;
   border-radius: 8px;
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
 }
 
@@ -733,7 +758,7 @@ i {
   display: block;
   margin: 10px 0;
   color: var(--error-message-color);
-  font-size: 15px;
+  font-size: 13px;
   margin-top: 5px;
   min-height: 16px;
 }
@@ -760,7 +785,7 @@ i {
   background-color: var(--base-color);
   /* width: max(40%, 600px); */
   width: 100%;
-  max-width: 700px;
+  max-width: 600px;
   margin: 2rem 0;
   /* you can use clamp(minimum, ideal, maximum) */
   padding: 10px;
@@ -824,6 +849,7 @@ i {
 
 .login-form input {
   width: 100%;
+  max-width: 400px;
   padding: 1rem;
   font: inherit;
   border: 2px solid var(--input-color);

@@ -12,7 +12,7 @@
 5. When the user clicks the "Sign Up" button, get the values from the form inputs.
 6. Show a message that the account has been created successfully.
 7. Clear all the inputs.
-8. Re-direct the user to the Login/Sign In page.
+8. Re-direct the user to the Login page.
 */
 
 // Delcare the Sign-Up form input elements
@@ -94,53 +94,63 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
 
   // Check the Full name input if it is empty or not
   if (!fullName) {
-    errorMessages.push("⚠️ Your Full Name is required");
+    errorMessages.push("❌ Your Full Name is required");
     fullNameInput.classList.add("incorrect");
   }
 
   // Check the Email input if it is empty or not
   if (!email) {
-    errorMessages.push("⚠️ Your Email address is required");
+    errorMessages.push("❌ Your Email address is required");
     emailInput.classList.add("incorrect");
   }
 
   // Check the Password input if it is empty or not
   if (!password) {
-    errorMessages.push("⚠️ Your Password is required");
+    errorMessages.push("❌ Your Password is required");
     passwordInput.classList.add("incorrect");
   }
 
   // Check the Confirm Password input if it is empty or not
   if (!confirmPassword) {
-    errorMessages.push("⚠️ Please write your password to confirm it");
+    errorMessages.push("❌ Please write your password to confirm it");
     confirmPasswordInput.classList.add("incorrect");
   }
 
-  // Phase 2: Check if the inputs are following the patterns that we set for them
+  // Phase 2: Check if the inputs are following the Regex patterns that we set for them
   //-----------------------------------------------------------------------------
   if (errorMessages.length === 0) {
     // Validate the Full name input with the pattern that we set
     if (!namePattern.test(fullName)) {
-      errorMessages.push("⚠️ Sorry your name should at least be 2 characters");
+      errorMessages.push(
+        "❌ Sorry your name should have at least 2 characters",
+      );
       fullNameInput.classList.add("incorrect");
     }
 
     // Validate the Email input with the pattern that we set
     if (!emailPattern.test(email)) {
-      errorMessages.push("⚠️ Please make sure you write your email correctly");
+      errorMessages.push("❌ Please make sure you write your email correctly");
       emailInput.classList.add("incorrect");
     }
     // Validate the Password input with the pattern that we set
     if (!passwordPattern.test(password)) {
       errorMessages.push(
-        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, No spaces allowed`,
+        `❌ The password must have at least 8 characters, including a letter and a number`,
       );
       passwordInput.classList.add("incorrect");
     }
 
+    // validate the Confirm Password input with the pattern that we set and then check if it matches the Password input
+    if (!passwordPattern.test(confirmPassword)) {
+      errorMessages.push(
+        `❌ The confirm password must have at least 8 characters, including a letter and a number`,
+      );
+      confirmPasswordInput.classList.add("incorrect");
+    }
+
     // Validate the Confirm Password input with the Password input if they match each others
     if (password !== confirmPassword) {
-      errorMessages.push("⚠️ The Password does not match Confirm Password");
+      errorMessages.push("❌ The Password does not match Confirm Password");
       passwordInput.classList.add("incorrect");
       confirmPasswordInput.classList.add("incorrect");
     }

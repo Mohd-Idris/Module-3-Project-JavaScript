@@ -45,25 +45,48 @@ function formatDate(date) {
 }
 
 // Function to get created date and auto calculate the due date by priority
-function getDueDate(priority) {
+function getDueDate(priority, customDate = null) {
   const createdDate = new Date();
-  let dueDate = new Date(createdDate);
+  let dueDate;
 
-  if (priority === "Minor") {
-    dueDate.setDate(createdDate.getDate() + 5);
-  } else if (priority === "Major") {
-    dueDate.setDate(createdDate.getDate() + 3);
-  } else if (priority === "Critical") {
-    dueDate.setDate(createdDate.getDate() + 1);
+  // Check if the priority is "Custom" and use the custom date provided by the user
+  if (priority === "Custom") {
+    dueDate = new Date(customDate);
+  } else {
+    // Calculate the due date based on the priority value
+    dueDate = new Date(createdDate);
+
+    if (priority === "Minor") {
+      dueDate.setDate(createdDate.getDate() + 5);
+    } else if (priority === "Major") {
+      dueDate.setDate(createdDate.getDate() + 3);
+    } else if (priority === "Critical") {
+      dueDate.setDate(createdDate.getDate() + 1);
+    }
   }
   // Return the formatted created date and due date
   return { createdDate: formatDate(createdDate), dueDate: formatDate(dueDate) };
 }
 
+priorityInput.addEventListener("change", function () {
+  if (priorityInput.value === "Custom") {
+    // Enable the date input field when "Custom" is selected
+    dateInput.disabled = false;
+    dateInput.value = "";
+  } else {
+    // Disable the date input field for other priority values
+    dateInput.disabled = true;
+    dateInput.value = "";
+  }
+});
+
 /* Set a minimum date to Today date, so the user can't select a past date for the task
  This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z */
 const minDate = new Date().toISOString().split("T")[0];
 dateInput.setAttribute("min", minDate);
+
+// Disable the date input field by default until "Custom" is selected
+dateInput.disabled = true;
 
 todoForm.addEventListener("submit", function (event) {
   // Prevent the form from submitting and refreshing the page
@@ -84,54 +107,26 @@ todoForm.addEventListener("submit", function (event) {
   // Set a default value for the priority input, if it's not been selected by the user .
   const priorityValue = priorityInput.value || "Minor";
 
-  // Get the due date based on the priority value
-  const { createdDate, dueDate } = getDueDate(priorityValue);
-  // /**/const dateValue = dateInput.value.trim();
+  // Check if the priority is "Custom" and the date input is empty
+  if (priorityValue === "Custom" && dateInput.value === "") {
+    alert("Please select a due date for the custom priority task.");
+    return;
+  }
 
-  // priorityValue = !priorityValue ? "Minor" : priorityValue;
-
-  // Set the due day based on the priority value
-  // let dueDay;
-  // if (priorityValue === "Minor") {
-  //   dueDay = "5 days";
-  // } else if (priorityValue === "Major") {
-  //   dueDay = "3 days";
-  // } else if (priorityValue === "Critical") {
-  //   dueDay = "1 day";
-  // }
-
-  // Set the due date based on the selected date or default to today's date
-  // let dueDateVar;
-  // const selectedDate = new Date(dateValue);
-  // const today = new Date();
-
-  // if (dateValue !== "") {
-  //   today.setHours(0, 0, 0, 0);
-  //   selectedDate.setHours(0, 0, 0, 0);
-
-  //   if (selectedDate < today) {
-  //     alert("Invalid date");
-  //     return;
-  //   }
-
-  // Format the selected date as "dd/mm/yyyy"
-  //   const day = String(selectedDate.getDate()).padStart(2, "0");
-  //   const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-  //   const year = selectedDate.getFullYear();
-
-  //   dueDateVar = `${day}/${month}/${year}`;
-  // } else {
-  //   // If no date is selected, use today's date as the due date
-  //   const day = String(today.getDate()).padStart(2, "0");
-  //   const month = String(today.getMonth() + 1).padStart(2, "0");
-  //   const year = today.getFullYear();
-  //   dueDateVar = `${day}/${month}/${year}`;
-  // }
+  // If the priority is "Custom", use the date input value provided by the user
+  const { createdDate, dueDate } = getDueDate(priorityValue, dateInput.value);
 
   // Create a new task card based on the priority value and add it to the corresponding task card container
   const taskCard = document.createElement("div");
   taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
-  taskCard.dataset.due = dueDate; // Store the due date in a data attribute for later use
+
+  // Store the due date in a data attribute for later use
+  taskCard.dataset.due = dueDate;
+
+  // Store the priority in a data attribute for later use
+  taskCard.dataset.priority = priorityValue;
+
+  // Set the inner HTML of the task card with the task details and action icons
   taskCard.innerHTML = `
 
 
@@ -149,7 +144,7 @@ todoForm.addEventListener("submit", function (event) {
   `;
 
   // Check the priority first and then add it to the right card
-  if (priorityValue === "Minor") {
+  if (priorityValue === "Minor" || priorityValue === "Custom") {
     minorTaskCard.appendChild(taskCard);
   } else if (priorityValue === "Major") {
     majorTaskCard.appendChild(taskCard);
@@ -161,13 +156,15 @@ todoForm.addEventListener("submit", function (event) {
   taskCard
     .querySelector(".delete-icon")
     .addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+      // Prevent the click event from bubbling up to the task card
+      event.stopPropagation();
 
       const messageCheck = confirm(
         "You are going to delete this task, Are you sure ?",
       );
       if (messageCheck) {
-        taskCard.remove(); // Remove the task card from the DOM
+        // Remove the task card from the DOM
+        taskCard.remove();
         alert("The Task has been deleted successfullly!");
         resetForm();
       }
@@ -177,18 +174,37 @@ todoForm.addEventListener("submit", function (event) {
   taskCard
     .querySelector(".update-icon")
     .addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+      // Prevent the click event from bubbling up to the task card
+      event.stopPropagation();
 
+      // Store the task card being edited in the editTaskVar variable
       editTaskVar = taskCard;
+
       nameInput.value = taskCard.querySelector(".task-name").textContent;
       priorityInput.value = taskCard
         .querySelector(".task-priority")
         .textContent.trim();
-      const savedData = taskCard
+
+      const savedPriority = taskCard
+        .querySelector(".task-priority")
+        .textContent.trim();
+
+      const savedDueDate = taskCard
         .querySelector(".task-due-date")
         .textContent.trim();
-      const [day, month, year] = savedData.split("/"); // A shorthand way to assign the same value to these variables
-      dateInput.value = `${year}-${month}-${day}`;
+
+      // A shorthand way to assign the same value to these variables
+      const [day, month, year] = savedDueDate.split("/");
+      // dateInput.value = `${year}-${month}-${day}`;
+
+      // Enable the date input field if the saved priority is "Custom", otherwise disable it
+      if (savedPriority === "Custom") {
+        dateInput.disabled = false;
+        dateInput.value = `${year}-${month}-${day}`;
+      } else {
+        dateInput.disabled = true;
+        dateInput.value = "";
+      }
 
       addTask.style.display = "none";
       editTask.style.display = "inline-block";
@@ -198,7 +214,8 @@ todoForm.addEventListener("submit", function (event) {
   taskCard
     .querySelector(".done-icon")
     .addEventListener("click", function (event) {
-      event.stopPropagation(); // Prevent the click event from bubbling up to the task card
+      // Prevent the click event from bubbling up to the task card
+      event.stopPropagation();
 
       // Get the current values
       const currentName = taskCard.querySelector(".task-name").textContent;
@@ -208,13 +225,6 @@ todoForm.addEventListener("submit", function (event) {
         .querySelector(".task-created-date")
         .textContent.trim();
 
-      // const today = new Date();
-
-      // const completedDay = String(today.getDate()).padStart(2, "0");
-      // const completedMonth = String(today.getMonth() + 1).padStart(2, "0");
-      // const completedYear = today.getFullYear();
-
-      // const completedDate = `${completedDay}/${completedMonth}/${completedYear}`;
       const completedDate = formatDate(new Date());
 
       taskCard.innerHTML = `
@@ -233,70 +243,43 @@ todoForm.addEventListener("submit", function (event) {
 });
 
 editTask.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent the form from submitting and refreshing the page
+  // Prevent the form from submitting and refreshing the page
+  event.preventDefault();
 
   const updatedName =
     nameInput.value.trim().charAt(0).toUpperCase() +
     nameInput.value.trim().slice(1);
-  const updatedPriority = priorityInput.value || "Minor"; // Set a default value for the priority input, if it's not been selected by the user
+
+  // Set a default value for the priority input, if it's not been selected by the user
+  const updatedPriority = priorityInput.value || "Minor";
+
+  if (updatedPriority === "Custom" && dateInput.value === "") {
+    alert("Please select a due date for the custom priority task.");
+    return;
+  }
+
+  // Get the updated created date and due date based on the updated priority value
   const { createdDate: updatedCreatedDate, dueDate: updatedDueDate } =
-    getDueDate(updatedPriority);
+    getDueDate(updatedPriority, dateInput.value);
 
-  // const updateDueDate = dateInput.value;
-
-  // let updateDueDateVar;
-  // const selectedDate = new Date(updateDueDate);
-  // const today = new Date();
-  // today.setHours(0, 0, 0, 0);
-
-  // if (updateDueDate !== "") {
-  //   selectedDate.setHours(0, 0, 0, 0);
-
-  //   if (selectedDate < today) {
-  //     alert("Invalid date");
-  //     return;
-  //   }
-
-  //   const day = String(selectedDate.getDate()).padStart(2, "0");
-  //   const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
-  //   const year = selectedDate.getFullYear();
-
-  //   updateDueDateVar = `${day}/${month}/${year}`;
-  // } else {
-  //   const day = String(today.getDate()).padStart(2, "0");
-  //   const month = String(today.getMonth() + 1).padStart(2, "0");
-  //   const year = today.getFullYear();
-
-  //   updateDueDateVar = `${day}/${month}/${year}`;
-  // }
-
-  // editTaskVar.dataset.due = updateDueDateVar;
-
-  // // Set DueDay for the task that's been updated based on its priority
-  // let newDueDay;
-  // if (updatedPriority === "Minor") {
-  //   newDueDay = "5 days";
-  // } else if (updatedPriority === "Major") {
-  //   newDueDay = "3 days";
-  // } else if (updatedPriority === "Critical") {
-  //   newDueDay = "1 day";
-  // }
-
-  // get the updated values
+  // get the updated values and update the task card with the new values
   editTaskVar.querySelector(".task-name").textContent = updatedName;
   editTaskVar.querySelector(".task-priority").textContent = updatedPriority;
   editTaskVar.querySelector(".task-created-date").textContent =
     updatedCreatedDate;
   editTaskVar.querySelector(".task-due-date").textContent = updatedDueDate;
 
-  editTaskVar.dataset.due = updatedDueDate; // Update the due date in the data attribute
+  // Update the due date in the data attribute
+  editTaskVar.dataset.due = updatedDueDate;
+  // Update the priority in the data attribute
+  editTaskVar.dataset.priority = updatedPriority;
 
   //update priority class & move the card
-  editTaskVar.classList.remove("minor", "major", "critical");
+  editTaskVar.classList.remove("minor", "major", "critical", "custom");
   editTaskVar.classList.add(updatedPriority.toLowerCase());
 
   if (!editTaskVar.classList.contains("completed")) {
-    if (updatedPriority === "Minor") {
+    if (updatedPriority === "Minor" || updatedPriority === "Custom") {
       minorTaskCard.appendChild(editTaskVar);
     } else if (updatedPriority === "Major") {
       majorTaskCard.appendChild(editTaskVar);
@@ -304,8 +287,9 @@ editTask.addEventListener("click", function (event) {
       criticalTaskCard.appendChild(editTaskVar);
     }
   }
-
+  // Clear the form inputs and reset the buttons
   resetForm();
+
   // Reset the editTaskVar to null after editing
   editTaskVar = null;
 });
@@ -314,6 +298,9 @@ function resetForm() {
   nameInput.value = "";
   priorityInput.value = "";
   dateInput.value = "";
+  // Disable the date input field by default until "Custom" is selected
+  dateInput.disabled = true;
+  // Reset the buttons visibility
   addTask.style.display = "inline-block";
   editTask.style.display = "none";
 }

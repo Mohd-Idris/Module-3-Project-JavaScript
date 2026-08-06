@@ -48,13 +48,13 @@ loginForm.addEventListener("submit", function (event) {
     // && user.password === passwordValue);
     if (!foundUser) {
       errorMessageForm.innerText =
-        "⚠️ email not found, please try again or Sign Up first";
+        "❌ email not found, please try again or Sign Up first";
       emailInput.classList.add("incorrect");
       passwordInput.classList.add("incorrect");
       return;
     }
     if (foundUser.password !== passwordValue) {
-      errorMessageForm.innerText = "⚠️ Incorrect Password, Please try again";
+      errorMessageForm.innerText = "❌ Incorrect Password, Please try again";
       passwordInput.classList.add("incorrect");
       return;
     }
@@ -87,28 +87,30 @@ function getLoginFormErrors(email, password) {
 
   // Check the Email input if it is empty or not
   if (!email) {
-    errorMessages.push("⚠️ Your Email address is required");
+    errorMessages.push("❌ Your Email address is required");
     emailInput.classList.add("incorrect");
   }
 
   if (!password) {
-    errorMessages.push("⚠️ Your Password is required");
+    errorMessages.push("❌ Your Password is required");
     passwordInput.classList.add("incorrect");
   }
 
-  // Phase 2: Check if the inputs are following the patterns that we set for them
+  // Phase 2: Check if the inputs are following the Regex patterns that we set for them
   //-----------------------------------------------------------------------------
 
   if (errorMessages.length === 0) {
     // Validate the Email input with the pattern that we set
     if (!emailPattern.test(email)) {
-      errorMessages.push("⚠️ Please make sure you write your email correctly");
+      errorMessages.push(
+        "❌ Please make sure your email is correct e.g example@domain.com",
+      );
       emailInput.classList.add("incorrect");
     }
     // Validate the Password input with the pattern that we set
     if (!passwordPattern.test(password)) {
       errorMessages.push(
-        `⚠️ The password must have at least 1 letter, 1 number, and 8 or more characters, No spaces allowed`,
+        `❌ The password must have at least 8 characters, including a letter and a number`,
       );
       passwordInput.classList.add("incorrect");
     }

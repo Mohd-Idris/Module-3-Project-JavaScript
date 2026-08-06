@@ -57,13 +57,14 @@
           <label for="priorityInput" class="todo-form-label">Priority</label>
           <select name="priority" id="priorityInput">
             <option value="">-- Select the priority --</option>
-            <option>Minor</option>
-            <option>Major</option>
-            <option>Critical</option>
+            <option value="Minor">Minor</option>
+            <option value="Major">Major</option>
+            <option value="Critical">Critical</option>
+            <option value="Custom">Custom</option>
           </select>
 
           <label for="dateInput" class="todo-form-label">Due Date</label>
-          <input type="date" name="date" id="dateInput" min="">
+          <input type="date" name="date" id="dateInput" min="" disabled>
 
           <button type="submit" class="btn btn-add" id="btnAddTask">
             Add Task
@@ -111,7 +112,7 @@
             <!-- <i class="fa-solid fa-spinner minor-sign"></i> -->
             <!-- <i class="fa-solid fa-clipboard minor-sign"></i> -->
             <i class="fa-solid fa-clipboard-list minor-sign"></i>
-            Minor Task
+            Minor Task / Custom Tasks
           </h3>
           <!-- <p>-Task Name</p>
           <p>- Priority Type: Minor</p>
@@ -122,7 +123,7 @@
         <div id="major-task" class="card major-task-card">
           <h3 id="major-task-heading" class="card-heading">
             <i class="fa-solid fa-thumbtack major-sign"></i>
-            Major Task
+            Major Tasks
           </h3>
           <!-- <p>-Task Name</p>
           <p>- Priority Type: Major</p>
@@ -133,7 +134,7 @@
         <div id="critical-task" class="card critical-task-card">
           <h3 id="critical-task-heading" class="card-heading">
             <i class="fa-solid fa-circle-exclamation top-critical-sign"></i>
-            Top Priority Task
+            Top Priority Tasks
           </h3>
           <!-- <p>-Task Name</p>
           <p>- Priority Type: Critical</p>
@@ -145,7 +146,7 @@
           <h3 id="completed-task-heading" class="card-heading">
             <!-- <i class="fa-solid fa-circle-check checked-sign"></i> -->
             <i class="fa-solid fa-clipboard-check checked-sign"></i>
-            Completed Task
+            Completed Tasks
           </h3>
           <!-- <p>-Task Name</p>
           <p>- Completed Date</p>
