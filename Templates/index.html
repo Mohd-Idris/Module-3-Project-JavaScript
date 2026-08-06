@@ -121,6 +121,15 @@
 
   <script src="../JavaScript/welcome-message.js"></script>
   <script src="../JavaScript/script.js"></script>
+  <script>
+    // Check if the user is logged in 
+    const userLogin = localStorage.getItem("logged-in-User");
+
+    // If the user is not logged in, redirect to the login page
+    if (!userLogin) {
+      window.location.replace("login.html");
+    }
+  </script>
 </body>
 
 </html>
