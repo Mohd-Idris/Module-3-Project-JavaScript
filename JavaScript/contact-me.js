@@ -32,16 +32,29 @@ contactForm.addEventListener("submit", function (event) {
   );
 
   if (errorMessages.length > 0) {
+    event.preventDefault();
     errorMessageForm.innerText = errorMessages.join(".\n");
     return;
   }
 
+  // get all trimmed values into inputs
+  nameInput.value = nameValue;
+  emailInput.value = emailValue;
+  subjectInput.value = subjectValue;
+  messageInput.value = messageValue;
+
   errorMessageForm.innerText = "";
   messageDelivered.innerText = `✅ The message has been sent successfully !`;
   messageDelivered.style.display = "inline-block";
-  // This will make the message disappeared after 5 seconds
-  setTimeout(() => messageDelivered.remove(), 5000);
-  contactForm.reset();
+
+  setTimeout(() => {
+    contactForm.submit();
+  }, 10);
+
+  setTimeout(() => {
+    contactForm.reset();
+    messageDelivered.innerText = "";
+  }, 3000);
 });
 
 // Defined a function to get all error messages of the Contact me form
