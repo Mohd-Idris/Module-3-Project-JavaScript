@@ -61,19 +61,21 @@
           <img src="../Images/contactme-picture.avif" alt="Contact Me picture" />
 
           <!-- The action here will send info you've enterd directly to the email below -->
-          <form action="#" id="contact-form" method="post">
+          <form id="contact-form" action="https://formspree.io/f/xvkpzpge" method="POST">
+            <span id="error-message" class="error-message-input"></span>
+            <span id="message-delivered" class="message-delivered"></span>
 
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" name="name" id="name" placeholder="Enter your name" />
-              <span class="error-text" id="name-error"></span>
+              <!-- <span class="error-text" id="name-error"></span> -->
             </div>
 
 
             <div class="form-group">
               <label for="email">Email</label>
               <input type="email" name="email" id="email" placeholder="Enter your email" />
-              <span class="error-text" id="email-error"></span>
+              <!-- <span class="error-text" id="email-error"></span> -->
             </div>
 
             <div class="form-group">
@@ -86,13 +88,13 @@
                 <option>Meeting with Client</option>
                 <option>Send Feedback</option>
               </select>
-              <span class="error-text" id="subject-error"></span>
+              <!-- <span class="error-text" id="subject-error"></span> -->
             </div>
 
             <div class="form-group">
               <label for="message">Message</label>
               <textarea name="message" id="message" cols="30" rows="10" placeholder="Enter your message"></textarea>
-              <span class="error-text" id="message-error"></span>
+              <!-- <span class="error-text" id="message-error"></span> -->
             </div>
 
             <button type="submit" class="btn-contactMe">Send Message</button>
@@ -127,7 +129,8 @@
 
 
   <script src="../JavaScript/welcome-message.js"></script>
-  <script src="../JavaScript/script.js"></script>
+  <script src="../JavaScript/contact-me.js"></script>
+  <!-- <script src="../JavaScript/script.js"></script> -->
 </body>
 
 </html>

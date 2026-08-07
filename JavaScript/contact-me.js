@@ -3,23 +3,12 @@ const nameInput = document.getElementById("name");
 const emailInput = document.getElementById("email");
 const subjectInput = document.getElementById("subject");
 const messageInput = document.getElementById("message");
-
-const nameError = document.getElementById("name-error");
-const emailError = document.getElementById("email-error");
-const subjectError = document.getElementById("subject-error");
-const messageError = document.getElementById("message-error");
+const errorMessageForm = document.getElementById("error-message");
+const messageDelivered = document.getElementById("message-delivered");
 
 // Valid the pattern of the inputs using Regex Pattern
 const namePattern = /^[a-zA-Z '.-]{2,}$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
-
-function ShowError(inputElement, message) {
-  inputElement.textContent = "❌ " + message;
-}
-
-function clearError(inputElement) {
-  inputElement.textContent = "";
-}
 
 contactForm.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -32,63 +21,94 @@ contactForm.addEventListener("submit", function (event) {
   const subjectValue = subjectInput.value.trim();
   const messageValue = messageInput.value.trim();
 
-  // Validate the Name input
-  if (!nameValue) {
-    ShowError(nameError, "Name is required");
-    isValid = false;
-  } else if (!namePattern.test(nameValue)) {
-    ShowError(nameError, "Please enter a valid name");
-    isValid = false;
-  } else {
-    clearError(nameError);
+  // Defined an array to put all the errors messages into it
+  let errorMessages = [];
+
+  errorMessages = getContactFormErrors(
+    nameValue,
+    emailValue,
+    subjectValue,
+    messageValue,
+  );
+
+  if (errorMessages.length > 0) {
+    errorMessageForm.innerText = errorMessages.join(".\n");
+    return;
   }
 
-  // Validate the Email input
-  if (!emailValue) {
-    ShowError(emailError, "Email is required");
-    isValid = false;
-  } else if (!emailPattern.test(emailValue)) {
-    ShowError(emailError, "Please enter a valid email address");
-    isValid = false;
-  } else {
-    clearError(emailError);
+  errorMessageForm.innerText = "";
+  messageDelivered.innerText = `✅ The message has been sent successfully !`;
+  messageDelivered.style.display = "inline-block";
+  // This will make the message disappeared after 5 seconds
+  setTimeout(() => messageDelivered.remove(), 5000);
+  contactForm.reset();
+});
+
+// Defined a function to get all error messages of the Contact me form
+function getContactFormErrors(name, email, subject, message) {
+  // Defined an array to put all the errors messages into it
+  let errorMessages = [];
+
+  // Phase 1: Check if the inputs are empty or not
+  //----------------------------------------------
+
+  // Check Name input if it is empty or not
+  if (!name) {
+    errorMessages.push("❌ Your Full Name is required");
+    nameInput.classList.add("incorrect");
   }
 
-  // Validate the Subject input
-  if (!subjectValue) {
-    ShowError(subjectError, "Subject is required");
-    isValid = false;
-  } else {
-    clearError(subjectError);
+  // Check Email input if it is empty or not
+  if (!email) {
+    errorMessages.push("❌ Your Email address is required");
+    emailInput.classList.add("incorrect");
   }
 
-  // Validate the Message input
-  if (!messageValue) {
-    ShowError(messageError, "Message is required");
-    isValid = false;
-  } else {
-    clearError(messageError);
+  // Check Password input if it is empty or not
+  if (!subject) {
+    errorMessages.push("❌ Your Subject is required");
+    subjectInput.classList.add("incorrect");
   }
 
-  if (isValid) {
-    // decalare the email address to send the message to
-    const mymail = "moidriz91@gmail.com";
-
-    // Create the mailto link with the form data
-    const mailtoLink = `mailto:${mymail}?subject=${encodeURIComponent(
-      subjectValue,
-    )}&body=${encodeURIComponent(
-      `Name: ${nameValue}\nEmail: ${emailValue}\n\nMessage:\n${messageValue}`,
-    )}`;
-
-    // success message
-    alert("✅ Your message has been sent successfully!");
-
-    // Open the default email client with the mailto link
-    window.location.href = mailtoLink;
-    // If all inputs are valid, you can proceed with form submission or further processing
-    console.log("Form submitted successfully!");
-    // You can also reset the form if needed
-    contactForm.reset();
+  // Check Confirm Password input if it is empty or not
+  if (!message) {
+    errorMessages.push("❌ Please write your message");
+    messageInput.classList.add("incorrect");
   }
+
+  // Phase 2: Check if the inputs are following the Regex patterns that we set for them
+  //-----------------------------------------------------------------------------
+  if (errorMessages.length === 0) {
+    // Validate the Full name input with the pattern that we set
+    if (!namePattern.test(name)) {
+      errorMessages.push(
+        "❌ Sorry your name should have at least 2 characters",
+      );
+      nameInput.classList.add("incorrect");
+    }
+
+    // Validate the Email input with the pattern that we set
+    if (!emailPattern.test(email)) {
+      errorMessages.push(
+        "❌ Please make sure your email is correct e.g example@domain.com",
+      );
+      emailInput.classList.add("incorrect");
+    }
+  }
+  return errorMessages;
+}
+
+// Defines an array contains all the inputs
+const formInputs = [nameInput, emailInput, subjectInput, messageInput].filter(
+  (input) => input != null,
+);
+
+// Clearing the inputs that have errors
+formInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    // if (input.classList.contains("incorrect")) {
+    input.classList.remove("incorrect");
+    errorMessageForm.innerText = "";
+    // }
+  });
 });

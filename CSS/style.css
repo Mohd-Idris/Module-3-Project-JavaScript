@@ -340,13 +340,37 @@ body {
   margin-top: 2rem;
 } */
 
-.form-data {
+#todo-form {
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center; */
+
+  padding: 1rem;
   margin: 2rem;
   background: linear-gradient(var(--accent-color), var(--base-color));
   color: var(--input-color);
-  padding: 1.5rem;
   border-radius: 20px;
+  transition: all 3s ease;
 }
+
+/* #date-input {
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  border: none;
+  pointer-events: none;
+  transition: all 3s ease;
+}
+
+#date-input.visible {
+  opacity: 1;
+  width: auto;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 4px;
+  pointer-events: auto;
+} */
 
 .task-form {
   display: flex;
@@ -737,10 +761,15 @@ i {
 } */
 
 /* ------------------------- */
-#account-created {
-  background-color: var(--completed);
-  color: var(--base-color);
-  padding: 0 0.5rem;
+#message-delivered {
+  display: none;
+}
+
+#account-created,
+#message-delivered {
+  /* background-color: var(--completed); */
+  color: var(--completed);
+  padding: 0.5rem 0.7rem;
   border-radius: 8px;
   text-align: center;
 }
@@ -771,6 +800,15 @@ i {
   border: 2px solid var(--error-message-color);
 }
 
+#contact-form .form-group input.incorrect,
+#contact-form .form-group #subject.incorrect,
+#contact-form .form-group #message.incorrect {
+  border: 2px solid var(--error-message-color);
+}
+
+/* #contact-form .form-group input.incorrect{
+  background-color: red;
+} */
 
 /* --------------Login Page Styling--------------- */
 .login {
