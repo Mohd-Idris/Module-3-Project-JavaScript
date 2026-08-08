@@ -613,6 +613,35 @@ i {
   transform: scale(1.1);
 }
 
+/* An animation for todo form when the user clicks on update icon to drag user's attention */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-color);
+  }
+
+  50% {
+    box-shadow: 0 0 25px 8px var(--accent-color),
+      0 0 25px 8px var(--base-color);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.edit-mode {
+  background: linear-gradient(var(--base-color), var(--accent-color)) !important;
+  border: 2px solid var(--base-color) !important;
+  padding: 15px;
+  border-radius: 10px;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+.edit-mode.pulse-active {
+  animation: pulseGlow 1.2s ease-in-out;
+}
+
 /* --------------Sign Up Page Styling--------------- */
 #sign-up-html {
   color: var(--text-color);
