@@ -52,7 +52,8 @@
   /* ---------------- Buttons Color Guidelines -------------------- */
   --add-button: #267d3a;
   --add-button-hover: #1e642e;
-  --edit-button: #f59e0b;
+  /* --edit-button: #f59e0b; */
+  --edit-button: #b45309;
   --edit-button-hover: #d97706;
 
 }
@@ -138,13 +139,14 @@ body {
 
 .welcome-item {
   padding: 0 1rem;
-  /* color: #2563eb; */
+  /* //color: #2563eb; */
   color: var(--base-color);
   font-weight: 500;
 }
 
+
 #logout-link {
-  display: none;
+  /* display: none; */
 }
 
 /* --------------- End of Header Styling --------------- */
@@ -324,59 +326,33 @@ body {
   padding: 0.5rem 1rem;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  box-shadow: 0px 0px 10px 5px var(--input-color);
 }
-
-/* .form-data {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: fit-content;
-  margin: 0 auto;
-  background: linear-gradient(var(--accent-color), var(--base-color));
-  padding: 40px;
-  border-radius: 20px;
-  color: var(--input-color);
-  margin-top: 2rem;
-} */
 
 #todo-form {
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center; */
-
-  padding: 1rem;
-  margin: 2rem;
   background: linear-gradient(var(--accent-color), var(--base-color));
   color: var(--input-color);
-  border-radius: 20px;
+  width: 100%;
+  max-width: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto 0;
+  padding: 1rem;
+  border-radius: 30px;
   transition: all 3s ease;
-}
 
-/* #date-input {
-  opacity: 0;
-  width: 0;
-  padding: 0;
-  border: none;
-  pointer-events: none;
-  transition: all 3s ease;
 }
-
-#date-input.visible {
-  opacity: 1;
-  width: auto;
-  padding: 0.5rem 0.7rem;
-  border: 1px solid var(--accent-color);
-  border-radius: 4px;
-  pointer-events: auto;
-} */
 
 .task-form {
   display: flex;
+  flex-wrap: nowrap;
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  padding: 0 1rem;
   margin: 1rem 0.5rem;
 }
 
@@ -386,8 +362,8 @@ body {
   font-weight: 500;
 }
 
-.form-data input,
-.form-data select {
+.task-form input,
+.task-form select {
   width: 100%;
   border-radius: 25px;
   border: 1px solid var(--accent-color);
@@ -399,9 +375,17 @@ body {
   max-width: 400px;
 }
 
-.form-data input:focus,
-.form-data select:focus {
+.task-form input:focus,
+.task-form select:focus {
   outline: none;
+}
+
+#date-wrapper {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
 .btn {

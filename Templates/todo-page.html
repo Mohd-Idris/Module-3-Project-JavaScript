@@ -33,9 +33,11 @@
           <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="todo-page.html" class="active-page">Application</a></li>
+            <!-- <li><a href="todo-page.html" id="application-link">Application</a></li> -->
             <li><a href="contact-me.html">Contact Me</a></li>
-            <li><a href="login.html">Log out</a></li>
+            <li id="logout-link"><a href="#">Log out</a></li>
             <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
+            <!-- <div id="welcome-area"></div> -->
           </ul>
         </nav>
       </div>
@@ -63,8 +65,10 @@
             <option value="Custom">Custom</option>
           </select>
 
-          <label for="dateInput" class="todo-form-label">Due Date</label>
-          <input type="date" name="date" id="dateInput" min="" disabled>
+          <div id="date-wrapper">
+            <label for="dateInput" class="todo-form-label">Due Date</label>
+            <input type="date" name="date" id="dateInput" min="">
+          </div>
 
           <button type="submit" class="btn btn-add" id="btnAddTask">
             Add Task

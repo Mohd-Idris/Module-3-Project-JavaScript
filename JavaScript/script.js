@@ -22,6 +22,11 @@ const nameInput = document.getElementById("nameInput");
 const priorityInput = document.getElementById("priorityInput");
 const dateInput = document.getElementById("dateInput");
 
+const dateWrapper = document.getElementById("date-wrapper");
+const applicationLink = document.getElementById("application-link");
+// const WelcomeArea = document.getElementById("welcome-area");
+const welcomeMessage = document.getElementById("welcome-message");
+
 // // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
 const editTask = document.getElementById("btnEditTask");
@@ -70,12 +75,14 @@ function getDueDate(priority, customDate = null) {
 
 priorityInput.addEventListener("change", function () {
   if (priorityInput.value === "Custom") {
+    dateWrapper.style.display = "flex";
     // Enable the date input field when "Custom" is selected
-    dateInput.disabled = false;
+    // dateInput.disabled = false; // should change this to be removed
     dateInput.value = "";
   } else {
+    dateWrapper.style.display = "none";
     // Disable the date input field for other priority values
-    dateInput.disabled = true;
+    // dateInput.disabled = true;
     dateInput.value = "";
   }
 });
@@ -86,7 +93,7 @@ const minDate = new Date().toISOString().split("T")[0];
 dateInput.setAttribute("min", minDate);
 
 // Disable the date input field by default until "Custom" is selected
-dateInput.disabled = true;
+// dateInput.disabled = true;
 
 todoForm.addEventListener("submit", function (event) {
   // Prevent the form from submitting and refreshing the page
@@ -181,13 +188,14 @@ todoForm.addEventListener("submit", function (event) {
       editTaskVar = taskCard;
 
       nameInput.value = taskCard.querySelector(".task-name").textContent;
+
       priorityInput.value = taskCard
         .querySelector(".task-priority")
         .textContent.trim();
 
       const savedPriority = taskCard
         .querySelector(".task-priority")
-        .textContent.trim();
+        .textContent.trim(); // priorityInput.value
 
       const savedDueDate = taskCard
         .querySelector(".task-due-date")
@@ -199,15 +207,27 @@ todoForm.addEventListener("submit", function (event) {
 
       // Enable the date input field if the saved priority is "Custom", otherwise disable it
       if (savedPriority === "Custom") {
-        dateInput.disabled = false;
+        dateWrapper.style.display = "flex";
+        // dateInput.disabled = false;
         dateInput.value = `${year}-${month}-${day}`;
       } else {
-        dateInput.disabled = true;
+        dateWrapper.style.display = "none";
+        // dateInput.disabled = true;
         dateInput.value = "";
       }
 
       addTask.style.display = "none";
       editTask.style.display = "inline-block";
+
+      // Smooth scroll
+      todoForm.scrollIntoView({ behavior: "smooth", block: "center" });
+      todoForm.classList.add("edit-mode", "pulse-active");
+      setTimeout(() => {
+        todoForm.classList.remove("pulse-active");
+      }, 1200);
+
+      nameInput.focus();
+      nameInput.select();
     });
 
   // mark the task as completed when the Check icon/sign is clicked
@@ -298,9 +318,10 @@ function resetForm() {
   nameInput.value = "";
   priorityInput.value = "";
   dateInput.value = "";
-  // Disable the date input field by default until "Custom" is selected
-  dateInput.disabled = true;
+  // Hide date wrapper when form resets
+  dateWrapper.style.display = "none";
   // Reset the buttons visibility
   addTask.style.display = "inline-block";
   editTask.style.display = "none";
+  todoForm.classList.remove("edit-mode", "pulse-active");
 }
