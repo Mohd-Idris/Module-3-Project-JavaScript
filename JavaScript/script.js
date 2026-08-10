@@ -23,9 +23,9 @@ const priorityInput = document.getElementById("priorityInput");
 const dateInput = document.getElementById("dateInput");
 
 const dateWrapper = document.getElementById("date-wrapper");
-const applicationLink = document.getElementById("application-link");
+// const applicationLink = document.getElementById("application-link");
 // const WelcomeArea = document.getElementById("welcome-area");
-const welcomeMessage = document.getElementById("welcome-message");
+// const welcomeMessage = document.getElementById("welcome-message");
 
 // // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
@@ -131,29 +131,30 @@ try {
     try {
       const taskNameCheck = nameInput.value.trim();
       if (taskNameCheck === "") {
-        alert("Please enter a task name first !");
+        alert("⚠️ Please enter a task name first !");
         return;
-        // Get the current values from the form inputs
-        const nameValue =
-          // Convert the 1st letter of the task name to uppercase
-          nameInput.value.trim().charAt(0).toUpperCase() +
-          nameInput.value.trim().slice(1);
-
-        // Set a default value for the priority input, if it's not been selected by the user .
-        const priorityValue = priorityInput.value || "Minor";
-
-        // Check if the priority is "Custom" and the date input is empty
-        if (priorityValue === "Custom" && dateInput.value === "") {
-          alert("Please select a due date for the custom priority task.");
-          return;
-        }
-
-        // If the priority is "Custom", use the date input value provided by the user
-        const { createdDate, dueDate } = getDueDate(
-          priorityValue,
-          dateInput.value,
-        );
       }
+      // Get the current values from the form inputs
+      const nameValue =
+        // Convert the 1st letter of the task name to uppercase
+        nameInput.value.trim().charAt(0).toUpperCase() +
+        nameInput.value.trim().slice(1);
+
+      // Set a default value for the priority input, if it's not been selected by the user .
+      const priorityValue = priorityInput.value || "Minor";
+
+      // Check if the priority is "Custom" and the date input is empty
+      if (priorityValue === "Custom" && dateInput.value === "") {
+        alert("⚠️ Please select a due date for the custom priority task.");
+        return;
+      }
+
+      // If the priority is "Custom", use the date input value provided by the user
+      const { createdDate, dueDate } = getDueDate(
+        priorityValue,
+        dateInput.value,
+      );
+      // }
       // Create a new task card based on the priority value and add it to the corresponding task card container
       const taskCard = document.createElement("div");
       taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
@@ -215,7 +216,7 @@ function attchTaskEvents(taskCard) {
         if (messageCheck) {
           // Remove the task card from the DOM
           taskCard.remove();
-          alert("The Task has been deleted successfullly!");
+          alert("✅ The Task has been deleted successfullly!");
           resetForm();
         }
       } catch (error) {
@@ -267,7 +268,7 @@ function attchTaskEvents(taskCard) {
         addTask.style.display = "none";
         editTask.style.display = "inline-block";
 
-        // Smooth scroll
+        // Smooth scroll + pulse movement to drag the user attention when update a certain task
         todoForm.scrollIntoView({ behavior: "smooth", block: "center" });
         todoForm.classList.add("edit-mode", "pulse-active");
         setTimeout(() => {
@@ -333,7 +334,7 @@ try {
       const updatedPriority = priorityInput.value || "Minor";
 
       if (updatedPriority === "Custom" && dateInput.value === "") {
-        alert("Please select a due date for the custom priority task.");
+        alert("⚠️ Please select a due date for the custom priority task.");
         return;
       }
 
