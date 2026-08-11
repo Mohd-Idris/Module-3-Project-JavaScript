@@ -144,7 +144,7 @@ function getLoginFormErrors(email, password) {
     return errorMessages;
   } catch (error) {
     console.error("❌ Validation error: ", error.message);
-    return "Validation failed, please check your inputs";
+    return ["Validation failed, please check your inputs"]; // because errorMessages is an array
   }
 }
 

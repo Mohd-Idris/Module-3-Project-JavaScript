@@ -80,68 +80,97 @@ const welcomeMessage = document.getElementById("welcome-message");
 const loginLink = document.getElementById("login-link");
 const signUpLink = document.getElementById("sign-up-link");
 
-// Check if logged in
-if (applicationLink) {
-  applicationLink.addEventListener("click", function (event) {
-    event.preventDefault();
+try {
+  // Check if logged in
+  if (applicationLink) {
+    applicationLink.addEventListener("click", function (event) {
+      event.preventDefault();
 
+      try {
+        const savedUserData = localStorage.getItem("logged-in-User");
+
+        if (savedUserData) {
+          // Already logged in, No message needed
+          window.location.href = "../Templates/todo-page.html";
+        } else {
+          const confirmMessage = confirm(
+            "🔐 If you want to see this page, you have to log in first",
+          );
+
+          if (confirmMessage) {
+            window.location.href = "../Templates/login.html";
+          }
+        }
+      } catch (error) {
+        console.error("❌ Application link error: ", error.message);
+        alert("❌ Something went wrong, please try again");
+      }
+    });
+  }
+} catch (error) {
+  console.error("❌ Application setup error: ", error.message);
+}
+
+try {
+  if (loginLink || logoutLink) {
     const savedUserData = localStorage.getItem("logged-in-User");
 
     if (savedUserData) {
-      // Already logged in, No message needed
-      window.location.href = "../Templates/todo-page.html";
+      // after user logged in hide these links
+      if (loginLink) loginLink.style.display = "none";
+      if (signUpLink) signUpLink.style.display = "none";
+      if (logoutLink) logoutLink.style.display = "flex";
     } else {
-      const confirmMessage = confirm(
-        "🔐 If you want to see this page, you have to log in first",
-      );
+      // if (loginLink) loginLink.style.display = "flex";
+      // if (signUpLink) signUpLink.style.display = "flex";
+      if (logoutLink) logoutLink.style.display = "none";
+    }
+  }
+} catch (error) {
+  console.error("❌ Error showing / hiding links: ", error.message);
+}
 
-      if (confirmMessage) {
-        window.location.href = "../Templates/login.html";
+try {
+  // Log out link
+  if (logoutLink) {
+    logoutLink.addEventListener("click", function (event) {
+      event.preventDefault();
+      try {
+        const confirmLogout = confirm("⚠️ Are you sure you want to log out?");
+
+        if (confirmLogout) {
+          localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
+          alert("✅ You have been logged out successfully.");
+          window.location.href = "index.html";
+        }
+      } catch (error) {
+        console.error("❌ Logout error: ", error.message);
+        alert("❌ Could not log out, please try again");
+      }
+    });
+  }
+} catch (error) {
+  console.error("❌ Logout link setup error: ", error.message);
+}
+
+try {
+  // Welcome Message
+  if (welcomeMessage) {
+    const savedUserData = localStorage.getItem("logged-in-User");
+    if (savedUserData) {
+      try {
+        const user = JSON.parse(savedUserData);
+        welcomeMessage.textContent = `Welcome, ${user.name}`;
+      } catch (error) {
+        console.error("❌ Error reading user data: ", error.message);
+        welcomeMessage.textContent = "Welcome, Guest!";
       }
     }
-  });
-}
-
-if (loginLink || logoutLink) {
-  const savedUserData = localStorage.getItem("logged-in-User");
-
-  if (savedUserData) {
-    // after user logged in hide these links
-    if (loginLink) loginLink.style.display = "none";
-    if (signUpLink) signUpLink.style.display = "none";
-    if (logoutLink) logoutLink.style.display = "flex";
-  } else {
-    // if (loginLink) loginLink.style.display = "flex";
-    // if (signUpLink) signUpLink.style.display = "flex";
-    if (logoutLink) logoutLink.style.display = "none";
+    // else {
+    //   alert("🔐 Please log in first!");
+    //   window.location.href = "../Templates/login.html";
+    // }
   }
-}
-
-// Log out link
-if (logoutLink) {
-  logoutLink.addEventListener("click", function (event) {
-    event.preventDefault();
-
-    const confirmLogout = confirm("⚠️ Are you sure you want to log out?");
-
-    if (confirmLogout) {
-      localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
-      alert("✅ You have been logged out successfully.");
-      window.location.href = "index.html";
-    }
-  });
-}
-
-// Welcome Message
-if (welcomeMessage) {
-  const savedUserData = localStorage.getItem("logged-in-User");
-
-  if (savedUserData) {
-    const user = JSON.parse(savedUserData);
-    welcomeMessage.textContent = `Welcome, ${user.name}`;
-  }
-  // else {
-  //   alert("🔐 Please log in first!");
-  //   window.location.href = "../Templates/login.html";
-  // }
+} catch (error) {
+  console.error("❌ Welcome message error: ", error.message);
 }

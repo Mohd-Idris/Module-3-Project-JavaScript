@@ -117,7 +117,7 @@ try {
   /* Set a minimum date to Today date, so the user can't select a past date for the task
    This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z */
   const minDate = new Date().toISOString().split("T")[0];
-  dateInput.setAttribute("min", minDate);
+  dateInput?.setAttribute("min", minDate);
 
   // Disable the date input field by default until "Custom" is selected
   // dateInput.disabled = true;
@@ -211,7 +211,7 @@ function attchTaskEvents(taskCard) {
 
       try {
         const messageCheck = confirm(
-          "You are going to delete this task, Are you sure ?",
+          "⚠️ You are going to delete this task, Are you sure ?",
         );
         if (messageCheck) {
           // Remove the task card from the DOM
