@@ -77,6 +77,9 @@ const applicationLink = document.getElementById("application-link");
 const logoutLink = document.getElementById("logout-link");
 const welcomeMessage = document.getElementById("welcome-message");
 
+const loginLink = document.getElementById("login-link");
+const signUpLink = document.getElementById("sign-up-link");
+
 // Check if logged in
 if (applicationLink) {
   applicationLink.addEventListener("click", function (event) {
@@ -97,6 +100,21 @@ if (applicationLink) {
       }
     }
   });
+}
+
+if (loginLink || logoutLink) {
+  const savedUserData = localStorage.getItem("logged-in-User");
+
+  if (savedUserData) {
+    // after user logged in hide these links
+    if (loginLink) loginLink.style.display = "none";
+    if (signUpLink) signUpLink.style.display = "none";
+    if (logoutLink) logoutLink.style.display = "flex";
+  } else {
+    // if (loginLink) loginLink.style.display = "flex";
+    // if (signUpLink) signUpLink.style.display = "flex";
+    if (logoutLink) logoutLink.style.display = "none";
+  }
 }
 
 // Log out link
@@ -121,8 +139,9 @@ if (welcomeMessage) {
   if (savedUserData) {
     const user = JSON.parse(savedUserData);
     welcomeMessage.textContent = `Welcome, ${user.name}`;
-  } else {
-    alert("🔐 Please log in first!");
-    window.location.href = "../Templates/login.html";
   }
+  // else {
+  //   alert("🔐 Please log in first!");
+  //   window.location.href = "../Templates/login.html";
+  // }
 }
