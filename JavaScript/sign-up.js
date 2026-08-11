@@ -29,154 +29,196 @@ const namePattern = /^[a-zA-Z '.-]{2,}$/;
 const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&]{8,}$/;
 
-signUpForm.addEventListener("submit", function (event) {
-  event.preventDefault();
+try {
+  signUpForm?.addEventListener("submit", function (event) {
+    event.preventDefault();
+    try {
+      // Get the values from the Sign Up form inputs
+      const fullnameValue = fullNameInput.value.trim();
+      const emailValue = emailInput.value.trim().toLowerCase();
+      const passwordValue = passwordInput.value.trim();
+      const confirmPasswordValue = confirmPasswordInput.value.trim();
 
-  // Get the values from the Sign Up form inputs
-  const fullnameValue = fullNameInput.value.trim();
-  const emailValue = emailInput.value.trim().toLowerCase();
-  const passwordValue = passwordInput.value.trim();
-  const confirmPasswordValue = confirmPasswordInput.value.trim();
+      // Defined an array to put all the errors messages into it
+      let errorMessages = [];
 
-  // Defined an array to put all the errors messages into it
-  let errorMessages = [];
+      errorMessages = getSignUpFormErrors(
+        fullNameInput.value,
+        emailInput.value,
+        passwordInput.value,
+        confirmPasswordInput.value,
+      );
 
-  errorMessages = getSignUpFormErrors(
-    fullNameInput.value,
-    emailInput.value,
-    passwordInput.value,
-    confirmPasswordInput.value,
-  );
+      if (errorMessages.length > 0) {
+        errorMessageForm.innerText = errorMessages.join(".\n");
+      } else {
+        let userData;
+        try {
+          // Save the data to the local storage
+          // Get the existing user data from local storage or initialize an empty array
+          userData = JSON.parse(localStorage.getItem("appUsers")) || [];
+        } catch (error) {
+          console.error("❌ Error reading saved user: ", error.message);
+          userData = [];
+        }
 
-  if (errorMessages.length > 0) {
-    errorMessageForm.innerText = errorMessages.join(".\n");
-  } else {
-    // Save the data to the local storage
-    // Get the existing user data from local storage or initialize an empty array
-    let userData = JSON.parse(localStorage.getItem("appUsers")) || [];
+        // Check if the email already exists in the local storage
+        const existEmail = userData.find((user) => user.email === emailValue);
+        if (existEmail) {
+          errorMessageForm.innerText = "⚠️ This email is already registered";
+          emailInput.classList.add("incorrect");
+          return;
+        }
+        // Save the user data to the local storage
+        userData.push({
+          fullname: fullnameValue,
+          email: emailValue,
+          password: passwordValue,
+        });
 
-    // Check if the email already exists in the local storage
-    const existEmail = userData.find((user) => user.email === emailValue);
-    if (existEmail) {
-      errorMessageForm.innerText = "⚠️ This email is already registered";
-      emailInput.classList.add("incorrect");
-      return;
+        try {
+          // Store the updated user data back to local storage
+          localStorage.setItem("appUsers", JSON.stringify(userData));
+        } catch (error) {
+          console.error("❌ Error saving this user", error.message);
+          errorMessageForm.innerHTML =
+            "❌ Could not save this account, please try again";
+          return;
+        }
+        errorMessageForm.innerText = "";
+        if (accountCreated) {
+          accountCreated.innerText = `✅ The account has created successfully !`;
+          // This will make the message disappeared after 5 seconds
+          setTimeout(() => accountCreated.remove(), 5000);
+        }
+        clearInputs();
+        // Redirect the user to the Login page after 3 seconds after the account has been created successfully
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 3000);
+      }
+    } catch (error) {
+      console.error("❌ Sign up submit error: ", error.message);
+      errorMessageForm.innerHTML = "❌ Something went wrong, please try again";
     }
-    // Save the user data to the local storage
-    userData.push({
-      fullname: fullnameValue,
-      email: emailValue,
-      password: passwordValue,
-    });
-    // Store the updated user data back to local storage
-    localStorage.setItem("appUsers", JSON.stringify(userData));
-
-    errorMessageForm.innerText = "";
-    accountCreated.innerText = `✅ The account has created successfully !`;
-    // This will make the message disappeared after 5 seconds
-    setTimeout(() => accountCreated.remove(), 5000);
-    clearInputs();
-
-    // Redirect the user to the Login page after 3 seconds after the account has been created successfully
-    setTimeout(() => {
-      window.location.href = "login.html";
-    }, 3000);
-  }
-});
+  });
+} catch (error) {
+  console.error("❌ Sign up form error: ", error.message);
+}
 
 // Defined a function to get all error messages of the Sign up form
 function getSignUpFormErrors(fullName, email, password, confirmPassword) {
-  // Defined an array to put all the errors messages into it
-  let errorMessages = [];
+  try {
+    // Defined an array to put all the errors messages into it
+    let errorMessages = [];
 
-  // Phase 1: Check if the inputs are empty or not
-  //----------------------------------------------
+    // Phase 1: Check if the inputs are empty or not
+    //----------------------------------------------
 
-  // Check the Full name input if it is empty or not
-  if (!fullName) {
-    errorMessages.push("❌ Your Full Name is required");
-    fullNameInput.classList.add("incorrect");
-  }
-
-  // Check the Email input if it is empty or not
-  if (!email) {
-    errorMessages.push("❌ Your Email address is required");
-    emailInput.classList.add("incorrect");
-  }
-
-  // Check the Password input if it is empty or not
-  if (!password) {
-    errorMessages.push("❌ Your Password is required");
-    passwordInput.classList.add("incorrect");
-  }
-
-  // Check the Confirm Password input if it is empty or not
-  if (!confirmPassword) {
-    errorMessages.push("❌ Please write your password to confirm it");
-    confirmPasswordInput.classList.add("incorrect");
-  }
-
-  // Phase 2: Check if the inputs are following the Regex patterns that we set for them
-  //-----------------------------------------------------------------------------
-  if (errorMessages.length === 0) {
-    // Validate the Full name input with the pattern that we set
-    if (!namePattern.test(fullName)) {
-      errorMessages.push(
-        "❌ Sorry your name should have at least 2 characters",
-      );
+    // Check the Full name input if it is empty or not
+    if (!fullName) {
+      errorMessages.push("❌ Your Full Name is required");
       fullNameInput.classList.add("incorrect");
     }
 
-    // Validate the Email input with the pattern that we set
-    if (!emailPattern.test(email)) {
-      errorMessages.push("❌ Please make sure you write your email correctly");
+    // Check the Email input if it is empty or not
+    if (!email) {
+      errorMessages.push("❌ Your Email address is required");
       emailInput.classList.add("incorrect");
     }
-    // Validate the Password input with the pattern that we set
-    if (!passwordPattern.test(password)) {
-      errorMessages.push(
-        `❌ The password must have at least 8 characters, including a letter and a number`,
-      );
+
+    // Check the Password input if it is empty or not
+    if (!password) {
+      errorMessages.push("❌ Your Password is required");
       passwordInput.classList.add("incorrect");
     }
 
-    // validate the Confirm Password input with the pattern that we set and then check if it matches the Password input
-    if (!passwordPattern.test(confirmPassword)) {
-      errorMessages.push(
-        `❌ The confirm password must have at least 8 characters, including a letter and a number`,
-      );
+    // Check the Confirm Password input if it is empty or not
+    if (!confirmPassword) {
+      errorMessages.push("❌ Please write your password to confirm it");
       confirmPasswordInput.classList.add("incorrect");
     }
 
-    // Validate the Confirm Password input with the Password input if they match each others
-    if (password !== confirmPassword) {
-      errorMessages.push("❌ The Password does not match Confirm Password");
-      passwordInput.classList.add("incorrect");
-      confirmPasswordInput.classList.add("incorrect");
+    // Phase 2: Check if the inputs are following the Regex patterns that we set for them
+    //-----------------------------------------------------------------------------
+    if (errorMessages.length === 0) {
+      // Validate the Full name input with the pattern that we set
+      if (!namePattern.test(fullName)) {
+        errorMessages.push(
+          "❌ Sorry your name should have at least 2 characters",
+        );
+        fullNameInput.classList.add("incorrect");
+      }
+
+      // Validate the Email input with the pattern that we set
+      if (!emailPattern.test(email)) {
+        errorMessages.push(
+          "❌ Please make sure you write your email correctly",
+        );
+        emailInput.classList.add("incorrect");
+      }
+      // Validate the Password input with the pattern that we set
+      if (!passwordPattern.test(password)) {
+        errorMessages.push(
+          `❌ The password must have at least 8 characters, including a letter and a number`,
+        );
+        passwordInput.classList.add("incorrect");
+      }
+
+      // validate the Confirm Password input with the pattern that we set and then check if it matches the Password input
+      if (!passwordPattern.test(confirmPassword)) {
+        errorMessages.push(
+          `❌ The confirm password must have at least 8 characters, including a letter and a number`,
+        );
+        confirmPasswordInput.classList.add("incorrect");
+      }
+
+      // Validate the Confirm Password input with the Password input if they match each others
+      if (password !== confirmPassword) {
+        errorMessages.push("❌ The Password does not match Confirm Password");
+        passwordInput.classList.add("incorrect");
+        confirmPasswordInput.classList.add("incorrect");
+      }
     }
+    return errorMessages;
+  } catch (error) {
+    console.error("❌ Validation error: ", error.message);
+    return ["❌ Validation failed, please check your inputs"];
   }
-  return errorMessages;
 }
 
-// Defines an array contains all the inputs
-const formInputs = [
-  fullNameInput,
-  emailInput,
-  passwordInput,
-  confirmPasswordInput,
-].filter((input) => input != null);
+try {
+  // Defines an array contains all the inputs
+  const formInputs = [
+    fullNameInput,
+    emailInput,
+    passwordInput,
+    confirmPasswordInput,
+  ].filter((input) => input != null);
 
-// Clearing the inputs that have errors
-formInputs.forEach((input) => {
-  input.addEventListener("input", () => {
-    // if (input.classList.contains("incorrect")) {
-    input.classList.remove("incorrect");
-    errorMessageForm.innerText = "";
-    // }
+  // Clearing the inputs that have errors
+  formInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      try {
+        // if (input.classList.contains("incorrect")) {
+        input.classList.remove("incorrect");
+        if (errorMessageForm) {
+          errorMessageForm.innerText = "";
+        }
+      } catch (error) {
+        console.error("❌ Input clear error: ", error.message);
+      }
+    });
   });
-});
+} catch (error) {
+  console.error("❌ Input listenser error: ", error.message);
+}
 
 // Function to clear all the inputs of the Sign Up form
 function clearInputs() {
-  signUpForm.reset();
+  try {
+    signUpForm.reset();
+  } catch (error) {
+    console.error("❌ Error clearing form: ", error.message);
+  }
 }
