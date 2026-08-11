@@ -104,11 +104,11 @@ if (logoutLink) {
   logoutLink.addEventListener("click", function (event) {
     event.preventDefault();
 
-    const confirmLogout = confirm("Are you sure you want to log out?");
+    const confirmLogout = confirm("⚠️ Are you sure you want to log out?");
 
     if (confirmLogout) {
       localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
-      alert("You have been logged out successfully.");
+      alert("✅ You have been logged out successfully.");
       window.location.href = "index.html";
     }
   });
