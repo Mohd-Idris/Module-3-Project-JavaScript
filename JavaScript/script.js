@@ -132,6 +132,7 @@ try {
       const taskNameCheck = nameInput.value.trim();
       if (taskNameCheck === "") {
         alert("⚠️ Please enter a task name first !");
+        nameInput.select();
         return;
       }
       // Get the current values from the form inputs
@@ -158,29 +159,119 @@ try {
       // Create a new task card based on the priority value and add it to the corresponding task card container
       const taskCard = document.createElement("div");
       taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
-
       // Store the due date in a data attribute for later use
       taskCard.dataset.due = dueDate;
-
       // Store the priority in a data attribute for later use
       taskCard.dataset.priority = priorityValue;
 
-      // Set the inner HTML of the task card with the task details and action icons
-      taskCard.innerHTML = `
-  
-  
-      <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
-      <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p> 
-      <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p> 
-      <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p> 
-     
-  
-      <div class="task-actions">
-        <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>
-        <span class="task-action-icon delete-icon"><i class="fa-solid fa-circle-xmark"></i></span>
-        <span class="task-action-icon done-icon"><i class="fa-solid fa-circle-check"></i></span>
-      </div>
-    `;
+      // Convert from innerHTML to best practice approach using createElement
+
+      // 1. Task Name
+      const nameParagraph = document.createElement("p");
+
+      const nameSpanLabel = document.createElement("span");
+      nameSpanLabel.classList.add("bold-text");
+      nameSpanLabel.textContent = "Task: ";
+
+      const nameSpanValue = document.createElement("span");
+      nameSpanValue.classList.add("task-name");
+      nameSpanValue.textContent = `${nameValue}`;
+
+      nameParagraph.appendChild(nameSpanLabel);
+      nameParagraph.appendChild(nameSpanValue);
+
+      // 2. Task Priority
+      const priorityParagraph = document.createElement("p");
+
+      const prioritySpanLabel = document.createElement("span");
+      prioritySpanLabel.classList.add("bold-text");
+      prioritySpanLabel.textContent = "Priority: ";
+
+      const prioritySpanValue = document.createElement("span");
+      prioritySpanValue.classList.add("task-priority");
+      prioritySpanValue.textContent = `${priorityValue}`;
+
+      priorityParagraph.appendChild(prioritySpanLabel);
+      priorityParagraph.appendChild(prioritySpanValue);
+
+      // 3. Task Created Date
+      const createdDateParagraph = document.createElement("p");
+
+      const createdDateSpanLabel = document.createElement("span");
+      createdDateSpanLabel.classList.add("bold-text");
+      createdDateSpanLabel.textContent = "Created Date: ";
+
+      const createdDateSpanValue = document.createElement("span");
+      createdDateSpanValue.classList.add("task-created-date");
+      createdDateSpanValue.textContent = `${createdDate}`;
+
+      createdDateParagraph.appendChild(createdDateSpanLabel);
+      createdDateParagraph.appendChild(createdDateSpanValue);
+
+      // 4. Task Due Date
+      const dueDateParagraph = document.createElement("p");
+
+      const dueDateSpanLabel = document.createElement("span");
+      dueDateSpanLabel.classList.add("bold-text");
+      dueDateSpanLabel.textContent = "Due Date: ";
+
+      const dueDateSpanValue = document.createElement("span");
+      dueDateSpanValue.classList.add("task-due-date");
+      dueDateSpanValue.textContent = `${dueDate}`;
+
+      dueDateParagraph.appendChild(dueDateSpanLabel);
+      dueDateParagraph.appendChild(dueDateSpanValue);
+
+      // 5. Task Action Icons (Update, Delete, and Complete)
+      const taskActions = document.createElement("div");
+      taskActions.classList.add("task-actions");
+
+      // 5.1 Update Icon
+      const updateIcon = document.createElement("span");
+      updateIcon.classList.add("task-action-icon", "update-icon");
+      updateIcon.innerHTML = '<i class="fa-solid fa-pencil"></i>';
+
+      // 5.2 Delete Icon
+      const deleteIcon = document.createElement("span");
+      deleteIcon.classList.add("task-action-icon", "delete-icon");
+      deleteIcon.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+
+      // 5.3 Complete/Done Icon
+      const doneIcon = document.createElement("span");
+      doneIcon.classList.add("task-action-icon", "done-icon");
+      doneIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+
+      taskActions.appendChild(updateIcon);
+      taskActions.appendChild(deleteIcon);
+      taskActions.appendChild(doneIcon);
+
+      // Wrap everything into the task card
+      taskCard.appendChild(nameParagraph);
+      taskCard.appendChild(priorityParagraph);
+      taskCard.appendChild(createdDateParagraph);
+      taskCard.appendChild(dueDateParagraph);
+      taskCard.appendChild(taskActions);
+
+      //   // Store the due date in a data attribute for later use
+      //   taskCard.dataset.due = dueDate;
+
+      //   // Store the priority in a data attribute for later use
+      //   taskCard.dataset.priority = priorityValue;
+
+      //   // Set the inner HTML of the task card with the task details and action icons
+      //   taskCard.innerHTML = `
+
+      //   <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
+      //   <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p>
+      //   <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
+      //   <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
+
+      //   <div class="task-actions">
+      //     <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>
+      //     <span class="task-action-icon delete-icon"><i class="fa-solid fa-circle-xmark"></i></span>
+      //     <span class="task-action-icon done-icon"><i class="fa-solid fa-circle-check"></i></span>
+      //   </div>
+      // `;
       // Check the priority first and then add it to the right card
       if (priorityValue === "Minor" || priorityValue === "Custom") {
         minorTaskCard.appendChild(taskCard);
