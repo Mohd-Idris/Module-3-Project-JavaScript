@@ -94,7 +94,7 @@ try {
           window.location.href = "../Templates/todo-page.html";
         } else {
           const confirmMessage = confirm(
-            "🔐 If you want to see this page, you have to log in first",
+            "🔐 If you want to access this page, you have to log in first",
           );
 
           if (confirmMessage) {
