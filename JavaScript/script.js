@@ -164,7 +164,7 @@ try {
       // Store the priority in a data attribute for later use
       taskCard.dataset.priority = priorityValue;
 
-      // Convert from innerHTML to best practice approach using createElement
+      // Convert Add Task from innerHTML to best practice approach using createElement
 
       // 1. Task Name
       const nameParagraph = document.createElement("p");
@@ -393,15 +393,78 @@ function attchTaskEvents(taskCard) {
           .textContent.trim();
 
         const completedDate = formatDate(new Date());
+        taskCard.innerHTML = "";
+        // Convert Mark as done Task from innerHTML to best practice approach using createElement
+        // 1. Task Name
+        const doneNameParagraph = document.createElement("p");
 
-        taskCard.innerHTML = `
-              <p><span class="bold-text">Task:</span> <span class="task-name"> ${currentName}</span></p>
-              <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${currentPriority}</span></p> 
-              <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${currentCreatedDate}</span></p>
-              <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completedDate}</span></p>
-            `;
+        const doneNameSpanLabel = document.createElement("span");
+        doneNameSpanLabel.classList.add("bold-text");
+        doneNameSpanLabel.textContent = "Task: ";
 
-        taskCard.classList.remove("minor", "major", "critical"); // Remove the priority classes from the task card
+        const doneNameSpanValue = document.createElement("span");
+        doneNameSpanValue.classList.add("task-name");
+        doneNameSpanValue.textContent = `${currentName}`;
+
+        doneNameParagraph.appendChild(doneNameSpanLabel);
+        doneNameParagraph.appendChild(doneNameSpanValue);
+
+        // 2. Task Priority
+        const donePriorityParagraph = document.createElement("p");
+
+        const donePrioritySpanLabel = document.createElement("span");
+        donePrioritySpanLabel.classList.add("bold-text");
+        donePrioritySpanLabel.textContent = "Priority: ";
+
+        const donePrioritySpanValue = document.createElement("span");
+        donePrioritySpanValue.classList.add("task-priority");
+        donePrioritySpanValue.textContent = `${currentPriority}`;
+
+        donePriorityParagraph.appendChild(donePrioritySpanLabel);
+        donePriorityParagraph.appendChild(donePrioritySpanValue);
+
+        // 3. Task Created Date
+        const doneCreatedDateParagraph = document.createElement("p");
+
+        const doneCreatedDateSpanLabel = document.createElement("span");
+        doneCreatedDateSpanLabel.classList.add("bold-text");
+        doneCreatedDateSpanLabel.textContent = "Created Date: ";
+
+        const doneCreatedDateSpanValue = document.createElement("span");
+        doneCreatedDateSpanValue.classList.add("task-created-date");
+        doneCreatedDateSpanValue.textContent = `${currentCreatedDate}`;
+
+        doneCreatedDateParagraph.appendChild(doneCreatedDateSpanLabel);
+        doneCreatedDateParagraph.appendChild(doneCreatedDateSpanValue);
+
+        // 4. Task Completed Date
+        const doneCompletedDateParagraph = document.createElement("p");
+
+        const doneCompletedDateSpanLabel = document.createElement("span");
+        doneCompletedDateSpanLabel.classList.add("bold-text");
+        doneCompletedDateSpanLabel.textContent = "Completed Date: ";
+
+        const doneCompletedDateSpanValue = document.createElement("span");
+        doneCompletedDateSpanValue.classList.add("task-completed-date");
+        doneCompletedDateSpanValue.textContent = `${completedDate}`;
+
+        doneCompletedDateParagraph.appendChild(doneCompletedDateSpanLabel);
+        doneCompletedDateParagraph.appendChild(doneCompletedDateSpanValue);
+
+        // Wrap everything into the card
+        taskCard.appendChild(doneNameParagraph);
+        taskCard.appendChild(donePriorityParagraph);
+        taskCard.appendChild(doneCreatedDateParagraph);
+        taskCard.appendChild(doneCompletedDateParagraph);
+
+        // taskCard.innerHTML = `
+        //       <p><span class="bold-text">Task:</span> <span class="task-name"> ${currentName}</span></p>
+        //       <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${currentPriority}</span></p>
+        //       <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${currentCreatedDate}</span></p>
+        //       <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completedDate}</span></p>
+        //     `;
+
+        taskCard.classList.remove("minor", "major", "critical", "custom"); // Remove the priority classes from the task card
         taskCard.classList.add("completed");
         completedTaskCard.appendChild(taskCard);
       } catch (error) {
