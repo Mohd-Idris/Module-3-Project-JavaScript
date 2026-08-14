@@ -567,6 +567,10 @@ i {
   font-weight: 700;
 }
 
+.task-card .bold-text::after {
+  /* content: " "; */
+}
+
 .task-actions {
   display: flex;
   gap: 10px;
@@ -1182,4 +1186,97 @@ select {
   width: 100%;
   align-self: center;
   object-fit: contain;
+}
+
+
+/* Responsiveness for screen up to 768px */
+@media (max-width: 768px) {
+
+  /* Navigation Bar */
+  .hearder-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 25px;
+  }
+
+  /* Hero Section */
+  .hero-page-container {}
+
+  .hero-page-content {
+    margin-top: 4rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+  }
+
+  /* Start - HomePage Page */
+  /* -------------------- */
+  .hero-page-content .hero-page-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-page-content .hero-page-text {
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+
+  .hero-page-content .hero-page-text br {
+    display: none;
+  }
+
+  .hero-page-content img {
+    height: 250px;
+  }
+
+  .btn-homepage {
+    padding: 1rem 2rem;
+  }
+
+  /* Technologies Section */
+  .technologies .tech-title {
+    font-size: 2.2rem;
+  }
+
+  .tech-card {
+    max-width: 180px;
+  }
+
+  .tech-card-container h3 {
+    font-size: 1.3rem;
+  }
+
+  /* End - HomePage Page */
+  /* ------------------ */
+
+  /* Start - Application Page */
+  /* ----------------------- */
+  /* End - Application Page */
+  /* --------------------- */
+
+  /* Start - Contact Me Page */
+  /* --------------------- */
+  /* End - Contact Me Page */
+  /* -------------------- */
+
+  /* Start - Sign up Page */
+  /* ------------------- */
+
+  /* End - Sign up Page */
+  /* ----------------- */
+
+  /* Start - Login Page */
+  /* ----------------- */
+  /* End - Login Page */
+  /* --------------- */
+
 }
