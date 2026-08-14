@@ -1203,10 +1203,10 @@ select {
   .nav-links {
     justify-content: center;
     gap: 25px;
+    text-wrap: nowrap;
   }
 
   /* Hero Section */
-  .hero-page-container {}
 
   .hero-page-content {
     margin-top: 4rem;
@@ -1223,7 +1223,7 @@ select {
   /* Start - HomePage Page */
   /* -------------------- */
   .hero-page-content .hero-page-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero-page-content .hero-page-text {
@@ -1272,7 +1272,7 @@ select {
   /* Start - Sign up Page */
   /* ------------------- */
   .sign-up {
-    padding: 4rem 0;
+    padding: 1rem 5%;
   }
 
   /* End - Sign up Page */
@@ -1281,11 +1281,146 @@ select {
   /* Start - Login Page */
   /* ----------------- */
   .login {
-
     height: 80vh;
+    padding: 1rem 5%;
   }
 
   /* End - Login Page */
   /* --------------- */
 
+}
+
+/* Responsiveness for screen up to 768px */
+@media (max-width: 528px) {
+
+  /* Navigation Bar */
+  .hearder-container {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px 5%;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 15px;
+    text-wrap: nowrap;
+  }
+
+  /* Hero Section */
+  .hero-page-content {
+    margin-top: 2rem;
+  }
+
+  /* Start - HomePage Page */
+  /* -------------------- */
+  .hero-page-content .hero-page-title {
+    font-size: 1.7rem;
+  }
+
+  .hero-page-content .hero-page-text {
+    font-size: 0.9rem;
+    text-align: justify;
+  }
+
+  .hero-page-content .hero-page-text br {
+    display: none;
+  }
+
+  .hero-page-content img {
+    height: 200px;
+  }
+
+  .btn-homepage {
+    padding: 1rem;
+  }
+
+  /* Technologies Section */
+  .technologies .tech-title {
+    font-size: 2rem;
+  }
+
+  .tech-card {
+    max-width: 150px;
+  }
+
+  .tech-card-container h3 {
+    font-size: 1.2rem;
+  }
+
+  /* End - HomePage Page */
+  /* ------------------ */
+
+
+
+  /* Start - Sign up Page */
+  /* ------------------- */
+  .sign-up {
+    padding: 1rem 5%;
+  }
+
+  .sign-up-container {
+    max-width: 450px;
+  }
+
+  .sign-up-form-content .label {
+    font-size: 0.85rem;
+  }
+
+  .sign-up-form-content input {
+    font-size: 0.85rem;
+  }
+
+  .sign-up-form button {
+    padding: 1rem 2rem;
+  }
+
+  .sign-up-container p {
+    font-size: 0.9rem;
+  }
+
+  /* End - Sign up Page */
+  /* ----------------- */
+
+  /* Start - Login Page */
+  /* ----------------- */
+  .login {
+    padding: 1rem 5%;
+  }
+
+  .login-container {
+
+    max-width: 450px;
+
+  }
+
+  .login .login-title {
+    font-size: 2.5rem;
+  }
+
+
+  .login-form {
+    gap: 20px;
+  }
+
+  .login-form .label {
+    max-width: 100px;
+    font-size: 0.85rem;
+  }
+
+  .login-form input {
+    max-width: 400px;
+    font-size: 0.85rem;
+    ;
+  }
+
+  .login-form button {
+    padding: 1rem 2rem;
+  }
+
+  .login-container p {
+    font-size: 0.9rem;
+  }
+
+  /* End - Login Page */
+  /* --------------- */
 }
