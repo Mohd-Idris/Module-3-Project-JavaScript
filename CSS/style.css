@@ -707,6 +707,7 @@ i {
   margin-right: 8px;
   transition: all 150ms ease-in-out;
   text-align: center;
+  font: inherit;
 }
 
 .sign-up-form-content input:hover {
@@ -1270,12 +1271,20 @@ select {
 
   /* Start - Sign up Page */
   /* ------------------- */
+  .sign-up {
+    padding: 4rem 0;
+  }
 
   /* End - Sign up Page */
   /* ----------------- */
 
   /* Start - Login Page */
   /* ----------------- */
+  .login {
+
+    height: 80vh;
+  }
+
   /* End - Login Page */
   /* --------------- */
 
