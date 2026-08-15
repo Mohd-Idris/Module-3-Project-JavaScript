@@ -314,6 +314,10 @@ body {
 
 /* --------------- End of Hero Styling ----------------------------- */
 /* --------------- Start To-Do Hero-Section Styling --------------- */
+.to-do {
+  padding: 15px 5%;
+}
+
 .todo-title .title {
   color: var(--base-color);
   margin: 2rem auto;
@@ -362,7 +366,8 @@ body {
 }
 
 .task-form input,
-.task-form select {
+.task-form select,
+.task-form #date-wrapper input {
   width: 100%;
   border-radius: 25px;
   border: 1px solid var(--accent-color);
@@ -375,7 +380,8 @@ body {
 }
 
 .task-form input:focus,
-.task-form select:focus {
+.task-form select:focus,
+.task-form #date-wrapper input:focus {
   outline: none;
 }
 
@@ -1265,6 +1271,68 @@ select {
 
   /* Start - Application Page */
   /* ----------------------- */
+
+  .to-do {
+    padding: 15px 5%;
+  }
+
+  .todo-title .title {
+    font-size: 2rem;
+  }
+
+  #todo-form {
+    width: 100%;
+    max-width: 400px;
+    padding: 15px 5%;
+
+  }
+
+  .task-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  .task-form .todo-form-label,
+  .task-form #date-wrapper .todo-form-label {
+    align-self: flex-start;
+  }
+
+
+  #todo-form #date-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+    width: 100%;
+  }
+
+  .task-form input,
+  .task-form select,
+  .task-form #date-wrapper input {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  #todo-form .btn {
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem auto;
+  }
+
+  .to-do-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .card .card-heading {
+    width: 100%;
+    font-size: 0.99rem;
+  }
+
   /* End - Application Page */
   /* --------------------- */
 
@@ -1345,6 +1413,12 @@ select {
     padding: 1rem 5%;
   }
 
+  #login-message {
+
+    font-size: 15px;
+
+  }
+
   /* End - Login Page */
   /* --------------- */
 
@@ -1412,6 +1486,71 @@ select {
   /* End - HomePage Page */
   /* ------------------ */
 
+  /* Start - HomePage Page */
+  /* ------------------- */
+  .to-do {
+    padding: 15px 5%;
+  }
+
+  .todo-title .title {
+    font-size: 1.7rem;
+  }
+
+  #todo-form {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px 5%;
+
+  }
+
+  .task-form {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.7rem;
+  }
+
+  .task-form .todo-form-label,
+  .task-form #date-wrapper .todo-form-label {
+    align-self: flex-start;
+  }
+
+
+  #todo-form #date-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+    width: 100%;
+  }
+
+  .task-form input,
+  .task-form select,
+  .task-form #date-wrapper input {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  #todo-form .btn {
+    width: 100%;
+    max-width: 350px;
+    margin: 1rem auto;
+  }
+
+  .to-do-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .card .card-heading {
+    width: 100%;
+    font-size: 0.93rem;
+  }
+
+  /* ------------------- */
+  /* End - Application Page */
 
 
   /* Start - Sign up Page */
@@ -1530,6 +1669,12 @@ select {
 
   .login-container p {
     font-size: 0.9rem;
+  }
+
+  #login-message {
+
+    font-size: 13px;
+
   }
 
   /* End - Login Page */
