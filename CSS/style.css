@@ -203,12 +203,9 @@ body {
   align-items: center;
   text-align: center;
   width: 100%;
-
-
-
 }
 
-.btn-homepage {
+.hero-buttons .btn-homepage {
   background-color: var(--accent-color);
   color: var(--base-color);
   margin: 10px 0 0 0;
@@ -219,6 +216,8 @@ body {
   border-radius: 30px;
   cursor: pointer;
   transition: all 300ms ease-in-out;
+  width: 100%;
+  max-width: 200px;
 }
 
 .btn-homepage:hover {
@@ -779,17 +778,14 @@ i {
 } */
 
 /* ------------------------- */
-#message-delivered {
-  display: none;
-}
 
-#account-created,
-#message-delivered {
+#account-created {
   /* background-color: var(--completed); */
   color: var(--completed);
   padding: 0.5rem 0.7rem;
   border-radius: 8px;
   text-align: center;
+  font-size: 17px;
 }
 
 #login-message {
@@ -797,17 +793,19 @@ i {
   color: var(--completed);
   padding: 0 0.5rem;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 17px;
   text-align: center;
 }
 
+/* General Error Message Inputs */
 .error-message-input {
   display: block;
   margin: 10px 0;
   color: var(--error-message-color);
-  font-size: 13px;
+  font-size: 17px;
   margin-top: 5px;
   min-height: 16px;
+  text-align: center;
 }
 
 .sign-up-form-content input.incorrect {
@@ -818,15 +816,7 @@ i {
   border: 2px solid var(--error-message-color);
 }
 
-#contact-form .form-group input.incorrect,
-#contact-form .form-group #subject.incorrect,
-#contact-form .form-group #message.incorrect {
-  border: 2px solid var(--error-message-color);
-}
 
-/* #contact-form .form-group input.incorrect{
-  background-color: red;
-} */
 
 /* --------------Login Page Styling--------------- */
 .login {
@@ -1119,11 +1109,11 @@ footer * {
   box-shadow: 0px 0px 20px 5px var(--accent-color);
 }
 
-.contact-content img {
+/* .contact-content img {
   border: none;
-  background: #10b981;
+  background: var(--github-color);
 
-}
+} */
 
 /* Contact Me Form content */
 
@@ -1143,6 +1133,7 @@ textarea {
 
 /* Contact Me Subject's combobox value style */
 
+input,
 select {
   text-align: center;
 }
@@ -1157,7 +1148,7 @@ select {
 
 /* Contact Me button style */
 
-.btn-contactMe {
+.contact-content .btn-contactMe {
   /* background: linear-gradient(to left, var(--accent-color), var(--text-color)); */
   background-color: var(--accent-color);
   width: 100%;
@@ -1168,7 +1159,7 @@ select {
   font-size: 14px;
   border: none;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
 }
 
@@ -1185,8 +1176,19 @@ select {
 
 .contact-me .contact-content img {
   width: 100%;
-  align-self: center;
+  height: 100%;
+  /* align-self: center; */
   object-fit: contain;
+  border: none;
+  border-radius: 10px;
+  border: none;
+  background: var(--github-color);
+}
+
+#contact-form .form-group input.incorrect,
+#contact-form .form-group #subject.incorrect,
+#contact-form .form-group #message.incorrect {
+  border: 2px solid var(--error-message-color);
 }
 
 
@@ -1239,9 +1241,11 @@ select {
     height: 250px;
   }
 
-  .btn-homepage {
+  .hero-buttons .btn-homepage {
     padding: 1rem 2rem;
+    max-width: 185px;
   }
+
 
   /* Technologies Section */
   .technologies .tech-title {
@@ -1266,6 +1270,62 @@ select {
 
   /* Start - Contact Me Page */
   /* --------------------- */
+  .contact-me {
+    background-color: var(--text-color);
+    width: 100%;
+    padding: 4rem 5%;
+    margin-top: 2rem;
+  }
+
+  .contact-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    padding: 15px 5%;
+  }
+
+  .contact-me h1 {
+    font-size: 2rem;
+  }
+
+  .contact-me-text {
+    width: 100%;
+    max-width: 600px;
+    font-size: 1rem;
+  }
+
+  .contact-me .contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-me .contact-content label,
+  .contact-me .contact-content input,
+  .contact-me .contact-content select,
+  .contact-me .contact-content textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact-content .btn-contactMe {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .btn-contactMe:hover {
+    transform: scale(1.05);
+  }
+
+  .contact-me .contact-content img {
+    display: none;
+  }
+
+  .error-message-input {
+    font-size: 15px;
+  }
+
   /* End - Contact Me Page */
   /* -------------------- */
 
@@ -1330,8 +1390,10 @@ select {
     height: 200px;
   }
 
-  .btn-homepage {
+  .hero-buttons .btn-homepage {
     padding: 1rem;
+    font-size: 0.9rem;
+    max-width: 170px;
   }
 
   /* Technologies Section */
@@ -1380,6 +1442,55 @@ select {
 
   /* End - Sign up Page */
   /* ----------------- */
+
+  .contact-container {
+    padding: 15px 5%;
+  }
+
+  .contact-me h1 {
+    font-size: 1.8rem;
+  }
+
+  .contact-me-text {
+    width: 100%;
+    max-width: 500px;
+    font-size: 0.85rem;
+  }
+
+  .contact-me .contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-me .contact-content label {
+    font-size: 0.85rem;
+  }
+
+  .contact-me .contact-content label,
+  .contact-me .contact-content input,
+  .contact-me .contact-content select,
+  .contact-me .contact-content textarea {
+    font-size: 0.85rem;
+  }
+
+  .contact-content .btn-contactMe {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .btn-contactMe:hover {
+    transform: scale(1.03);
+  }
+
+  .contact-me .contact-content img {
+    display: none;
+  }
+
+  .error-message-input {
+    font-size: 13px;
+  }
 
   /* Start - Login Page */
   /* ----------------- */
