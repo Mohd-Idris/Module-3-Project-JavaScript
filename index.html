@@ -26,22 +26,27 @@
   <header>
     <div class="hearder-container container">
       <div class="logo">
-        <a href="index.html">My<span class="header-span span">JSPro</span></a>
+        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
+            class="header-span span">JSPro</span></a>
       </div>
       <div class="nav-div">
         <nav class="nav-bar">
           <ul class="nav-links">
-            <li><a href="index.html" class="active-page">Home</a></li>
-            <li><a href="todo-page.html" id="application-link">Application</a></li>
-            <li><a href="contact-me.html">Contact Me</a></li>
-            <li id="sign-up-link"><a href="sign-up.html">Sign up</a></li>
-            <li id="login-link"><a href="login.html">Login</a></li>
-            <!-- <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li> -->
-            <li id="logout-link"><a href="#">Log out</a></li>
+            <li><a href="index.html" class="active-page" aria-label="Home link" aria-labelledby="Home link">Home</a>
+            </li>
+            <li><a href="todo-page.html" id="application-link" aria-label="Application link"
+                aria-labelledby="Application link">Application</a></li>
+            <li><a href="contact-me.html" aria-label="Contact me link" aria-labelledby="Contact me link">Contact Me</a>
+            </li>
+            <li id="sign-up-link"><a href="sign-up.html" aria-label="Sign up link" aria-labelledby="Sign up link">Sign
+                up</a></li>
+            <li id="login-link"><a href="login.html" aria-label="Login link" aria-labelledby="Login link">Login</a></li>
+            <li id="logout-link"><a href="#" aria-label="Logout link" aria-labelledby="Logout link">Log out</a></li>
             <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
           </ul>
         </nav>
       </div>
+    </div>
   </header>
 
   <main>
@@ -68,42 +73,35 @@
           <a href="sign-up.html" class="btn-homepage btn-secondary">Sign Up</a>
         </div>
       </div>
+    </section>
 
+    <section class="technologies">
+      <h2 class="tech-title"><span class="tech-span">Technologies </span>used</h2>
+      <div class="tech-card-container">
 
-      <section class="technologies">
-        <h2 class="tech-title"><span class="tech-span">Technologies </span>used</h2>
-        <div class="tech-card-container">
-
-          <div class="tech-card tech-card-1">
-            <img src="./Images/html.png" alt="HTML image" />
-            <h3>HTML</h3>
-          </div>
-
-          <div class="tech-card tech-card-2">
-            <img src="./Images/css.png" alt="CSS image" />
-            <h3>CSS</h3>
-          </div>
-
-          <div class="tech-card tech-card-3">
-            <img src="./Images/js.png" alt="JavaScript image" />
-            <h3>JavaScript</h3>
-          </div>
+        <div class="tech-card tech-card-1">
+          <img src="./Images/html.png" alt="HTML image" />
+          <h3>HTML</h3>
         </div>
 
+        <div class="tech-card tech-card-2">
+          <img src="./Images/css.png" alt="CSS image" />
+          <h3>CSS</h3>
+        </div>
 
+        <div class="tech-card tech-card-3">
+          <img src="./Images/js.png" alt="JavaScript image" />
+          <h3>JavaScript</h3>
+        </div>
 
-
-
-
-      </section>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2026 MyJSPro | All rights reserved</p>
-      <!-- <a href="#" class="scroll-up" aria-label="An arrorw points up " aria-labelledby="an anchor link "
-        title="An arrow"><i class="fa-solid fa-arrow-up"></i></a> -->
       <div class="social-icons">
         <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
           <i class="fa-brands fa-youtube you-red"></i></a>
@@ -122,15 +120,6 @@
 
   <script src="./welcome-message.js"></script>
   <script src="./script.js"></script>
-  <!-- <script>
-    // Check if the user is logged in 
-    const userLogin = localStorage.getItem("logged-in-User");
-
-    // If the user is not logged in, redirect to the login page
-    if (!userLogin) {
-      window.location.replace("login.html");
-    }
-  </script> -->
 </body>
 
 </html>

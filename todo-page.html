@@ -26,28 +26,32 @@
   <header>
     <div class="hearder-container container">
       <div class="logo">
-        <a href="sign-up.html">My<span class="header-span span">JSPro</span></a>
+        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
+            class="header-span span">JSPro</span></a>
       </div>
       <div class="nav-div">
         <nav class="nav-bar">
           <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="todo-page.html" class="active-page">Application</a></li>
-            <!-- <li><a href="todo-page.html" id="application-link">Application</a></li> -->
-            <li><a href="contact-me.html">Contact Me</a></li>
-            <li id="logout-link"><a href="#">Log out</a></li>
+            <li><a href="index.html" aria-label="Home link" aria-labelledby="Home link">Home</a></li>
+            <li><a href="todo-page.html" class="active-page" aria-label="Application link"
+                aria-labelledby="Application link">Application</a></li>
+            <li><a href="contact-me.html" aria-label="Contact me link" aria-labelledby="Contact me link">Contact Me</a>
+            </li>
+            <li id="logout-link"><a href="#" aria-label="Logout link" aria-labelledby="Logout link">Log out</a></li>
             <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
-            <!-- <div id="welcome-area"></div> -->
           </ul>
         </nav>
       </div>
+    </div>
   </header>
-  <main>
 
+
+  <main>
     <section class="to-do">
       <div class="todo-title">
         <h1 class="title">To-Do Application</h1>
       </div>
+
       <div class="form-data" id="todo-form">
         <form class="task-form" id="task-form">
 
@@ -67,7 +71,7 @@
 
           <div id="date-wrapper">
             <label for="dateInput" class="todo-form-label">Due Date</label>
-            <input type="date" name="date" id="dateInput" min="">
+            <input type="date" name="date" id="dateInput">
           </div>
 
           <button type="submit" class="btn btn-add" id="btnAddTask">
@@ -80,48 +84,13 @@
         </form>
       </div>
 
-      <!-- <form class="task-form" id="task-form">
-
-        <div class="form-group name-data">
-          <label for="nameInput" class="todo-form-label">Name</label>
-          <input type="text" name="name" id="nameInput" placeholder="Please add task " />
-        </div>
-
-        <div class="form-group priority-data">
-          <label for="priorityInput" class="todo-form-label">Priority</label>
-          <select name="priority" id="priorityInput">
-            <option value="">-- Choose Priority --</option>
-            <option>Minor</option>
-            <option>Major</option>
-            <option>Critical</option>
-          </select>
-        </div>
-
-        <div class="form-group buttons-data">
-          <button type="submit" class="btn btn-add" id="btnAddTask">
-            Add Task
-          </button>
-          
-          <button type="button" class="btn btn-edit" id="btnEditTask">
-            Edit Task
-          </button>
-        </div>
-
-      </form> -->
-
-
       <div class="to-do-container">
+
         <div id="minor-task" class="card minor-task-card">
           <h3 id="minor-task-heading" class="card-heading">
-            <!-- <i class="fa-solid fa-spinner minor-sign"></i> -->
-            <!-- <i class="fa-solid fa-clipboard minor-sign"></i> -->
             <i class="fa-solid fa-clipboard-list minor-sign"></i>
             Minor Task / Custom Tasks
           </h3>
-          <!-- <p>-Task Name</p>
-          <p>- Priority Type: Minor</p>
-          <p>- Due Date</p>
-          <p>- Task created date/time</p> -->
         </div>
 
         <div id="major-task" class="card major-task-card">
@@ -129,10 +98,6 @@
             <i class="fa-solid fa-thumbtack major-sign"></i>
             Major Tasks
           </h3>
-          <!-- <p>-Task Name</p>
-          <p>- Priority Type: Major</p>
-          <p>- Due Date</p>
-          <p>- Task created date/time</p> -->
         </div>
 
         <div id="critical-task" class="card critical-task-card">
@@ -140,35 +105,24 @@
             <i class="fa-solid fa-circle-exclamation top-critical-sign"></i>
             Top Priority Tasks
           </h3>
-          <!-- <p>-Task Name</p>
-          <p>- Priority Type: Critical</p>
-          <p>- Due Date</p>
-          <p>- Task created date/time</p> -->
         </div>
 
         <div id="completed-task" class="card completed-task-card">
           <h3 id="completed-task-heading" class="card-heading">
-            <!-- <i class="fa-solid fa-circle-check checked-sign"></i> -->
             <i class="fa-solid fa-clipboard-check checked-sign"></i>
             Completed Tasks
           </h3>
-          <!-- <p>-Task Name</p>
-          <p>- Completed Date</p>
-          <p>- Task created Date</p>
-          <p>- Task completed Date</p> -->
         </div>
+
       </div>
-
     </section>
-
   </main>
 
   <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2026 MyJSPro | All rights reserved</p>
-      <!-- <a href="#" class="scroll-up" aria-label="An arrorw points up " aria-labelledby="an anchor link "
-            title="An arrow"><i class="fa-solid fa-arrow-up"></i></a> -->
+
       <div class="social-icons">
         <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
           <i class="fa-brands fa-youtube you-red"></i></a>

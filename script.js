@@ -26,7 +26,7 @@ const dateWrapper = document.getElementById("date-wrapper");
 // const applicationLink = document.getElementById("application-link");
 // const WelcomeArea = document.getElementById("welcome-area");
 // const welcomeMessage = document.getElementById("welcome-message");
-const btnLearnMore = document.getElementById("btn-learn-more");
+// const btnLearnMore = document.getElementById("btn-learn-more");
 
 // // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
@@ -39,24 +39,6 @@ const majorTaskCard = document.getElementById("major-task");
 const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
-if (btnLearnMore) {
-  btnLearnMore.addEventListener("click", function (event) {
-    event.defaultPrevented();
-
-    const savedUserData = localStorage.getItem("logged-in-User");
-    if (savedUserData) {
-      window.location.href = "./todo-page.html";
-    } else {
-      const confirmMessage = confirm(
-        "🔐 If you want to access this page, you have to log in first",
-      );
-
-      if (confirmMessage) {
-        window.location.href = "./login.html";
-      }
-    }
-  });
-}
 // Variable to hold the task card being edited
 let editTaskVar = null;
 
@@ -136,6 +118,7 @@ try {
   /* Set a minimum date to Today date, so the user can't select a past date for the task
    This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z */
   const minDate = new Date().toISOString().split("T")[0];
+  // Run this only if dateInput exists
   dateInput?.setAttribute("min", minDate);
 
   // Disable the date input field by default until "Custom" is selected
