@@ -72,7 +72,7 @@
 //     window.location.href = "login.html";
 //   });
 // }
-
+const btnLearnMore = document.getElementById("btn-learn-more");
 const applicationLink = document.getElementById("application-link");
 const logoutLink = document.getElementById("logout-link");
 const welcomeMessage = document.getElementById("welcome-message");
@@ -109,6 +109,25 @@ try {
   }
 } catch (error) {
   console.error("❌ Application setup error: ", error.message);
+}
+
+if (btnLearnMore) {
+  btnLearnMore.addEventListener("click", function (event) {
+    event.defaultPrevented();
+
+    const savedUserData = localStorage.getItem("logged-in-User");
+    if (savedUserData) {
+      window.location.href = "./todo-page.html";
+    } else {
+      const confirmMessage = confirm(
+        "🔐 If you want to access this page, you have to log in first",
+      );
+
+      if (confirmMessage) {
+        window.location.href = "./login.html";
+      }
+    }
+  });
 }
 
 try {

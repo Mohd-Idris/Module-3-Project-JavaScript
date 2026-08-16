@@ -26,6 +26,7 @@ const dateWrapper = document.getElementById("date-wrapper");
 // const applicationLink = document.getElementById("application-link");
 // const WelcomeArea = document.getElementById("welcome-area");
 // const welcomeMessage = document.getElementById("welcome-message");
+const btnLearnMore = document.getElementById("btn-learn-more");
 
 // // Declare the buttons
 const addTask = document.getElementById("btnAddTask");
@@ -38,6 +39,24 @@ const majorTaskCard = document.getElementById("major-task");
 const criticalTaskCard = document.getElementById("critical-task");
 const completedTaskCard = document.getElementById("completed-task");
 
+if (btnLearnMore) {
+  btnLearnMore.addEventListener("click", function (event) {
+    event.defaultPrevented();
+
+    const savedUserData = localStorage.getItem("logged-in-User");
+    if (savedUserData) {
+      window.location.href = "./todo-page.html";
+    } else {
+      const confirmMessage = confirm(
+        "🔐 If you want to access this page, you have to log in first",
+      );
+
+      if (confirmMessage) {
+        window.location.href = "./login.html";
+      }
+    }
+  });
+}
 // Variable to hold the task card being edited
 let editTaskVar = null;
 
