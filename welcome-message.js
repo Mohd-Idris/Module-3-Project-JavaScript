@@ -91,14 +91,14 @@ try {
 
         if (savedUserData) {
           // Already logged in, No message needed
-          window.location.href = "../Templates/todo-page.html";
+          window.location.href = "./todo-page.html";
         } else {
           const confirmMessage = confirm(
             "🔐 If you want to access this page, you have to log in first",
           );
 
           if (confirmMessage) {
-            window.location.href = "../Templates/login.html";
+            window.location.href = "./login.html";
           }
         }
       } catch (error) {
@@ -141,7 +141,7 @@ try {
         if (confirmLogout) {
           localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
           alert("✅ You have been logged out successfully.");
-          window.location.href = "index.html";
+          window.location.href = "./index.html";
         }
       } catch (error) {
         console.error("❌ Logout error: ", error.message);
@@ -168,7 +168,7 @@ try {
     }
     // else {
     //   alert("🔐 Please log in first!");
-    //   window.location.href = "../Templates/login.html";
+    //   window.location.href = ".login.html";
     // }
   }
 } catch (error) {

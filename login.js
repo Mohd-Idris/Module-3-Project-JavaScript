@@ -89,7 +89,7 @@ try {
 
         // Redirect to the index.html page after a short delay
         setTimeout(() => {
-          window.location.href = "../Templates/todo-page.html";
+          window.location.href = "./todo-page.html";
         }, 2000); // Redirect after 2 seconds
       }
     } catch (error) {

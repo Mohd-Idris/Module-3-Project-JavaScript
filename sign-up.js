@@ -94,7 +94,7 @@ try {
         clearInputs();
         // Redirect the user to the Login page after 3 seconds after the account has been created successfully
         setTimeout(() => {
-          window.location.href = "login.html";
+          window.location.href = "./login.html";
         }, 3000);
       }
     } catch (error) {
