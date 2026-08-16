@@ -90,23 +90,20 @@ The website is optimized for different screen sizes using the following CSS stra
 
 ```text
 MyJSPro/
-├── Templates/                  # Templates Folder
-│   ├── index.html              # Home page
-│   ├── todo-page.html          # Task Manager — Main Application - login required
-│   ├──contact-me.html          # Contact Form page
-│   ├── signup.html             # Sign Up / Register page
-│   └── login.html              # Login page
+├── index.html              # Home page
+├── todo-page.html          # Task Manager — Main Application - login required
+├── contact-me.html          # Contact Form page
+├── signup.html             # Sign Up / Register page
+├── login.html              # Login page
 │
-├── CSS/                        # CSS Folder
-│   └── style.css               # All styling — shared across all pages
+├── style.css               # All styling — shared across all pages
 │
-├── Images/                     # Images Folder contains website images
+├── Images/                 # Images Folder contains website images
 │
-├── JavaScript/                 # JavaScript Folder
-│   ├── script.js               # Todo App — add/edit/delete/complete tasks
-│   ├── login.js                # Login form validation & auth
-│   ├── signup.js               # Sign Up form validation & account creation
-│   └── welcome-message.js      # Login state — show/hide links, welcome message
+├── script.js               # Todo App — add/edit/delete/complete tasks
+├── login.js                # Login form validation & auth
+├── signup.js               # Sign Up form validation & account creation
+├── welcome-message.js      # Login state — show/hide links, welcome message
 │
 ├── .gitignore                  # Specifies which files Git should NOT track/upload
 │
@@ -173,23 +170,35 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 ### ▶️ How to Run the Website
 
+- Clone or download the repository
+- Open the file named `index.html` in the browser
+- Go to `Application link` and click it
+- Add Task(s) | Delete Tasks(s) | Update Task(s) | Complete Task(s)
+
+### Or
+
+- You can use the provided link below (Live link) to navigate the whole website
+
+### Or
+
 1. Open the project folder in your code editor
-2. Navigate to: **`Templates/index.html`** (Home page — starting point)
+2. Navigate to: **`index.html`** (Home page — starting point)
 3. Right-click → **Open in Browser**
-4. The website loads — you can navigate Home, Contact, and Login freely
+4. The website loads — you can navigate freely
+5. Follow the User Journey below
 
 ### 📝 User Journey — Step by Step
 
 #### 🔹 Step 1 — Browse Public Pages
 
 - When you first visit the website, you see the **Home page**
-- You can click and navigate: **Home → Contact → Login** — all work freely, no login required
+- You can click and navigate: **Home → Contact → Sign up → Login** — all work freely, no login required
 - All pages load smoothly with full navigation visible
 
 #### 🔹 Step 2 — Try to Access the Application
 
 - Click **Application** in the navigation bar
-- ⚠️ **A message appears:** _"If you want to access this page, you have to log in first"_
+- ⚠️ **A message appears:** _`"If you want to access this page, you have to log in first"`_
 - Click **OK** → you are automatically redirected to the **Login page**
 
 #### 🔹 Step 3 — If You Already Have an Account (Log In)
@@ -202,14 +211,14 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 #### 🔹 Step 4 — If You Are NEW (Create an Account)
 
 - On the Login page, click the **"Create Account"** link
-- You go to the **Sign Up page**
+- After clicking the link , You will be taken to the **Sign Up page**
 - Fill in ALL required fields:
   - **Full Name** — at least 2 characters
   - **Email Address** — valid email format
   - **Password** — min. 8 characters, 1 letter + 1 number
-  - **Confirm Password** — must match exactly
+  - **Confirm Password** — must match exactly the password
 - Click **Sign Up**
-- ✅ Account created successfully!
+- **A message appears:** ✅ Account created successfully!
 - You are automatically redirected to the **Login page**
 
 #### 🔹 Step 5 — Log In With Your New Account
@@ -220,22 +229,68 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 #### 🔹 Step 6 — Inside the Application (Todo Page)
 
-- **Add Tasks:** Type a name → choose priority → click Add Task
-- **Edit Tasks:** Click the ✏️ icon → form scrolls up → update → Save
-- **Complete Tasks:** Click the ✅ icon → moves to Completed section
-- **Delete Tasks:** Click the ❌ icon → confirm → removed
+- **Add Tasks:** Type a name → choose priority → click Add Task `
+- **Edit Tasks:** Click the `✏️ Update icon `→ form scrolls up → update the task → Save
+- **Complete Tasks:** Click the `✅ Complete/Done icon` → moves to Completed section
+- **Delete Tasks:** Click the `❌ Delete icon` → confirm → removed
+
+#### Step 6.1 — Add a New Task
+
+-- `Default Scenario`:
+
+- Type your **Task Name** in the input field
+- Select **Priority** from the dropdown:
+  - **Critical** → Due date = **today + 1 day**
+  - **Major** → Due date = **today + 3 days**
+  - **Minor** → Due date = **today + 5 days**
+
+  - **Custom** → Date picker appears → choose your own due date
+
+- Click **Add Task** → task card appears in the correct column/card
+
+-- `Scenario #2`: In this scaenario we set a default value for a priority if the user forget or does not want to set any kind of priorities, then will be automatically set to `Minor Priority`
+
+- Type your **Task Name** in the input field
+- Click **Add Task** → task card appears in the `Minor/Custom Tasks` column/card
+
+#### Step 6.2 — Edit a Task
+
+- Click the **✏️ Update icon** on any task card
+- Page **smooth scrolls** to the form — inputs fill automatically
+- `Add Task` button disappeared and `Edit Task` button shows up instead
+- Change the task name or priority or due date if the task has it
+  - If switching the task to **Custom** priority, then → date picker shows up → select new date
+- Click **Edit Task** → card refreshes with new info
+
+#### Step 6.3 — Mark Task as Completed
+
+- Click the **✅ Complete/Done icon** on any task card
+- Card updates → shows **Completed Date** the icons (Update, Delete, and Complete) will be disappeared
+- Moves to the **Completed Tasks** column/card
+
+#### Step 6.4 — Delete a Task
+
+- Click the **❌ Delete icon** on any task card
+- Confirmation message appears → click **OK** to delete or **Cancel** to keep it
+- Clicked Ok → Task is permanently removed
 
 #### 🔹 Step 7 — Stay Logged In
 
 - Once logged in, you can navigate **Home → Application → Contact** freely
-- Clicking **Application** again → **NO login prompt** — goes straight there!
+- Clicking **Application** again → **NO login prompt required** — goes straight there!
 - Your session stays active until you click **Log Out**
 
 #### 🔹 Step 8 — Log Out
 
 - Click **Log Out** in the header
-- Confirm → logged out → returns to Home page
+- **A message appears:** Confirmation message → logged out → returns to Home page → welcome message hidden → Sign up and Login links visible again
 - Next time you click **Application** → login prompt appears again!
+
+#### Step 9 — Contact Me Page
+
+- Click **Contact Me** in navigation
+- Fill in: Name, Email, Subject, and Message inputs
+- Click **Send Message** → validates all inputs → sends directly to my email
 
 ## 🔒 Security Implementation
 
@@ -254,85 +309,8 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 ## GitHub Repo Link
 
-- https://github.com/Mohd-Idris/-/_ A link _/-
+- [Click here to see my GitHub repository link](https://github.com/Mohd-Idris/Module-3-Project-JavaScript)
 
 ## Live Website Link
 
-- https:// --/_ A link _/ --
-
-## these data is duplicated -- will be removed later
-
-## 📖 How to Run and Use
-
-### ▶️ How to Run the Website
-
-1. Open the project folder in your code editor
-2. Navigate to: **`Templates/login.html`**
-3. Right-click → **Open in Browser** (Chrome, Firefox, Edge, or Safari)
-4. The login page appears — this is the starting point!
-
-### 📝 How to Use the Application
-
-#### Step 1 — Create an Account
-
-- On the Login page, click the **Sign Up** link
-- Fill in your details:
-  - **Full Name** — at least 2 characters (letters, spaces, apostrophes, hyphens allowed)
-  - **Email Address** — must be in valid format (example@domain.com)
-  - **Password** — minimum 8 characters, must include at least one letter and one number
-  - **Confirm Password** — type the same password again
-- Click **Sign Up** → success message appears → auto-redirects to Login page after 3 seconds
-
-#### Step 2 — Log In
-
-- Enter the **email** and **password** you used to sign up
-- Click **Log In** → homepage loads with your name in the welcome message
-- Navigation updates: Login link disappears, Log Out appears
-
-#### Step 3 — Access the Task Application
-
-- Click **Application** in the navigation bar
-- If not logged in → confirmation message appears → redirects to Login
-- If already logged in → Task Manager page loads immediately
-
-#### Step 4 — Add a New Task
-
-- Type your **Task Name** in the input field
-- Select **Priority** from the dropdown:
-  - **Critical** → Due date = **today + 1 day**
-  - **Major** → Due date = **today + 3 days**
-  - **Minor** → Due date = **today + 5 days**
-  - **Custom** → Date picker appears → choose your own due date
-- Click **Add Task** → task card appears in the correct column
-
-#### Step 5 — Edit a Task
-
-- Click the **✏️ (pencil) icon** on any task card
-- Page **smooth scrolls** to the form — inputs fill automatically
-- Change the task name or priority
-  - If switching to **Custom** → date picker shows up → select new date
-- Click **Update Task** → card refreshes with new info
-
-#### Step 6 — Mark Task as Completed
-
-- Click the **✅ (checkmark) icon** on any task card
-- Card updates → shows **Completed Date** instead of icons
-- Moves to the **Completed Tasks** section at the bottom
-
-#### Step 7 — Delete a Task
-
-- Click the **❌ (X) icon** on any task card
-- Confirmation message appears → click **OK** to delete or **Cancel** to keep
-- Task is permanently removed
-
-#### Step 8 — Contact Me Page
-
-- Click **Contact Me** in navigation
-- Fill in: Name, Email, Subject, and Message
-- Click **Send Message** → validates all inputs → sends directly to email
-
-#### Step 9 — Log Out
-
-- Click **Log Out** in the navigation bar
-- Confirmation message appears → click **OK**
-- Returns to Login page → welcome message hidden → Login link visible again
+- [Click here to see my website live](https://mohd-idris.github.io/Module-3-Project-JavaScript/)
