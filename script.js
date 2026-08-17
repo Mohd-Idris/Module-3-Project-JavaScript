@@ -2,16 +2,16 @@
 //--------------------------------------
 
 /* 
-1. Get the form inputs from the user (task name and priority).
+1. Get the form inputs from the user (task name, priority and due date).
 2. Wait the user to click the "Add Task" button.
 3. Read the values that the user entered in the form inputs.
 4. Check if the data is valid (not empty).
 5. When the user clicks the "Add Task" button, get the values from the form inputs.
 6. Based on the priority value, create a new task card and add it to the corresponding
-   task card container (minor, major, critical).
+   task card container (minor / custom, major, critical).
 7. Clear the form inputs after adding the task.
-8. Allow the user to edit or delete tasks by clicking the corresponding buttons on each task card.
-9. Update/delete the task card container when a task is edited or deleted (if the user has the privilege).  
+8. Allow the user to edit, delete, or complete tasks by clicking the corresponding buttons on each task card.
+9. Update/delete the task card container when a task is edited or deleted.  
 10. Allow the user to mark tasks as completed and move them to the completed task card container.
 11. Clear all the inputs.
 */
@@ -20,18 +20,12 @@
 const todoForm = document.getElementById("todo-form");
 const nameInput = document.getElementById("nameInput");
 const priorityInput = document.getElementById("priorityInput");
+const dateWrapper = document.getElementById("date-wrapper");
 const dateInput = document.getElementById("dateInput");
 
-const dateWrapper = document.getElementById("date-wrapper");
-// const applicationLink = document.getElementById("application-link");
-// const WelcomeArea = document.getElementById("welcome-area");
-// const welcomeMessage = document.getElementById("welcome-message");
-// const btnLearnMore = document.getElementById("btn-learn-more");
-
-// // Declare the buttons
+// Declare the buttons
 const addTask = document.getElementById("btnAddTask");
 const editTask = document.getElementById("btnEditTask");
-// const deleteTask = document.getElementById("btnDeleteTask");
 
 // Declare the task cards
 const minorTaskCard = document.getElementById("minor-task");
@@ -42,7 +36,7 @@ const completedTaskCard = document.getElementById("completed-task");
 // Variable to hold the task card being edited
 let editTaskVar = null;
 
-// Function to format the date to "dd/mm/yyyy" format
+// Declare a Function to format the date to "dd/mm/yyyy" format
 function formatDate(date) {
   try {
     const day = String(date.getDate()).padStart(2, "0");
@@ -55,7 +49,7 @@ function formatDate(date) {
   }
 }
 
-// Function to get created date and auto calculate the due date by priority
+// Declare a Function to get created date and auto calculate the due date by priority
 function getDueDate(priority, customDate = null) {
   try {
     const createdDate = new Date();
@@ -90,20 +84,18 @@ function getDueDate(priority, customDate = null) {
     };
   }
 }
+
+// outer try first line defense for Priority Input
 try {
-  // outer try first line defense
+  // Safe Listener - Priority handler
   priorityInput?.addEventListener("change", function () {
+    // Inner try second line defense - keep the page running if hiding/showing date container fails
     try {
-      // inner try second line defense
       if (priorityInput.value === "Custom") {
         dateWrapper.style.display = "flex";
-        // Enable the date input field when "Custom" is selected
-        // dateInput.disabled = false; // should change this to be removed
         dateInput.value = "";
       } else {
         dateWrapper.style.display = "none";
-        // Disable the date input field for other priority values
-        // dateInput.disabled = true;
         dateInput.value = "";
       }
     } catch (error) {
@@ -117,19 +109,22 @@ try {
 try {
   /* Set a minimum date to Today date, so the user can't select a past date for the task
    This method turns the data into a text format e.g. 2026-07-17T20:17:10.000Z */
+
   const minDate = new Date().toISOString().split("T")[0];
   // Run this only if dateInput exists
   dateInput?.setAttribute("min", minDate);
-
-  // Disable the date input field by default until "Custom" is selected
-  // dateInput.disabled = true;
 } catch (error) {
   console.error("❌ Error setting min date: ", error.message);
 }
+
+// outer try first line defense for todoForm,
+// skip safely if the form not found
 try {
+  // Safe Listener - Form submit handler
   todoForm?.addEventListener("submit", function (event) {
     // Prevent the form from submitting and refreshing the page
     event.preventDefault();
+    // inner try second line defense, catch the errors if empty inputs, bad dates, or DOM creation mistake
     try {
       const taskNameCheck = nameInput.value.trim();
       if (taskNameCheck === "") {
@@ -143,7 +138,7 @@ try {
         nameInput.value.trim().charAt(0).toUpperCase() +
         nameInput.value.trim().slice(1);
 
-      // Set a default value for the priority input, if it's not been selected by the user .
+      // Set a default value for the priority input, if it's not been selected by the user
       const priorityValue = priorityInput.value || "Minor";
 
       // Check if the priority is "Custom" and the date input is empty
@@ -157,8 +152,9 @@ try {
         priorityValue,
         dateInput.value,
       );
-      // }
-      // Create a new task card based on the priority value and add it to the corresponding task card container
+
+      /* Create a new task card based on the priority value and 
+         add it to the corresponding task card container */
       const taskCard = document.createElement("div");
       taskCard.classList.add(`task-card`, `${priorityValue.toLowerCase()}`);
       // Store the due date in a data attribute for later use
@@ -254,26 +250,6 @@ try {
       taskCard.appendChild(dueDateParagraph);
       taskCard.appendChild(taskActions);
 
-      //   // Store the due date in a data attribute for later use
-      //   taskCard.dataset.due = dueDate;
-
-      //   // Store the priority in a data attribute for later use
-      //   taskCard.dataset.priority = priorityValue;
-
-      //   // Set the inner HTML of the task card with the task details and action icons
-      //   taskCard.innerHTML = `
-
-      //   <p><span class="bold-text">Task:</span> <span class="task-name"> ${nameValue}</span></p>
-      //   <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${priorityValue}</span></p>
-      //   <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${createdDate}</span></p>
-      //   <p><span class="bold-text">Due Date:</span> <span class="task-due-date"> ${dueDate}</span></p>
-
-      //   <div class="task-actions">
-      //     <span class="task-action-icon update-icon"><i class="fa-solid fa-pencil"></i></span>
-      //     <span class="task-action-icon delete-icon"><i class="fa-solid fa-circle-xmark"></i></span>
-      //     <span class="task-action-icon done-icon"><i class="fa-solid fa-circle-check"></i></span>
-      //   </div>
-      // `;
       // Check the priority first and then add it to the right card
       if (priorityValue === "Minor" || priorityValue === "Custom") {
         minorTaskCard.appendChild(taskCard);
@@ -282,8 +258,9 @@ try {
       } else if (priorityValue === "Critical") {
         criticalTaskCard.appendChild(taskCard);
       }
-
+      // Call the function that contains all task action icons (update, delete, and complete)
       attchTaskEvents(taskCard);
+      // Call the function that resets the form inputs
       resetForm();
     } catch (error) {
       console.error("❌ Error adding task: ", error.message);
@@ -294,8 +271,9 @@ try {
   console.error("❌ Form submit error: ", error.message);
 }
 
+// Declare a Function to hold all task action icons (update, delete, and complete)
 function attchTaskEvents(taskCard) {
-  // delete the task card when the Delete icon/sign is clicked
+  // delete the task card when the Delete icon is clicked
   taskCard
     .querySelector(".delete-icon")
     .addEventListener("click", function (event) {
@@ -310,6 +288,7 @@ function attchTaskEvents(taskCard) {
           // Remove the task card from the DOM
           taskCard.remove();
           alert("✅ The Task has been deleted successfullly!");
+          // Call the function that resets the form inputs
           resetForm();
         }
       } catch (error) {
@@ -318,7 +297,7 @@ function attchTaskEvents(taskCard) {
       }
     });
 
-  // update the task when the Update icon/sign is clicked
+  // update the task when the Update icon is clicked, and scroll & pulse to focus editing
   taskCard
     .querySelector(".update-icon")
     .addEventListener("click", function (event) {
@@ -345,19 +324,17 @@ function attchTaskEvents(taskCard) {
 
         // A shorthand way to assign the same value to these variables
         const [day, month, year] = savedDueDate.split("/");
-        // dateInput.value = `${year}-${month}-${day}`;
 
         // Enable the date input field if the saved priority is "Custom", otherwise disable it
         if (savedPriority === "Custom") {
           dateWrapper.style.display = "flex";
-          // dateInput.disabled = false;
           dateInput.value = `${year}-${month}-${day}`;
         } else {
+          // let it hidden
           dateWrapper.style.display = "none";
-          // dateInput.disabled = true;
           dateInput.value = "";
         }
-
+        // Hide Add Task button, and show up Edit Task button
         addTask.style.display = "none";
         editTask.style.display = "inline-block";
 
@@ -368,6 +345,7 @@ function attchTaskEvents(taskCard) {
           todoForm.classList.remove("pulse-active");
         }, 1200);
 
+        // highlight and focus the Name input when the user clicked on update icon
         nameInput.focus();
         nameInput.select();
       } catch (error) {
@@ -378,7 +356,7 @@ function attchTaskEvents(taskCard) {
       }
     });
 
-  // mark the task as completed when the Check icon/sign is clicked
+  // mark the task as completed when the Check icon is clicked
   taskCard
     .querySelector(".done-icon")
     .addEventListener("click", function (event) {
@@ -459,14 +437,8 @@ function attchTaskEvents(taskCard) {
         taskCard.appendChild(doneCreatedDateParagraph);
         taskCard.appendChild(doneCompletedDateParagraph);
 
-        // taskCard.innerHTML = `
-        //       <p><span class="bold-text">Task:</span> <span class="task-name"> ${currentName}</span></p>
-        //       <p><span class="bold-text">Priority:</span> <span class="task-priority"> ${currentPriority}</span></p>
-        //       <p><span class="bold-text">Created Date:</span> <span class="task-created-date"> ${currentCreatedDate}</span></p>
-        //       <p><span class="bold-text">Completed Date:</span> <span class="task-completed-date"> ${completedDate}</span></p>
-        //     `;
-
-        taskCard.classList.remove("minor", "major", "critical", "custom"); // Remove the priority classes from the task card
+        // Remove the priority class from the task card
+        taskCard.classList.remove("minor", "major", "critical", "custom");
         taskCard.classList.add("completed");
         completedTaskCard.appendChild(taskCard);
       } catch (error) {
@@ -477,6 +449,7 @@ function attchTaskEvents(taskCard) {
 }
 
 try {
+  // Safe Listener - Edit button handler
   editTask?.addEventListener("click", function (event) {
     // Prevent the form from submitting and refreshing the page
     event.preventDefault();
@@ -537,6 +510,7 @@ try {
   console.error("❌ Edit button error: ", error.message);
 }
 
+// Declare a Function to reset all inputs and buttons, and hide date container
 function resetForm() {
   try {
     nameInput.value = "";
