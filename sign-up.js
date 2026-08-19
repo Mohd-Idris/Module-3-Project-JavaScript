@@ -1,18 +1,23 @@
-// Pseudo code for the To-Do Application Sign up Page
-//---------------------------------------------------
+// Pseudo code for the Sign up Page
+//---------------------------------
+
 /*
+
 1. Get the form inputs from the user (Full Name, Email, Password and Confirm Password).
 2. Wait the user to click the "Sign Up" button.
 3. Read the values that the user entered in the form inputs.
-4. Check if the data is valid (not empty).
-   4.1 Enter a valid name.
-   4.2 Check the email if the enterted email meets requirements.
-   4.3 Check the password if the enterted password meets requirements.
-   4.4 Check the confirm password if matches the password.
-5. When the user clicks the "Sign Up" button, get the values from the form inputs.
-6. Show a message that the account has been created successfully.
-7. Clear all the inputs.
-8. Re-direct the user to the Login page.
+4. Check if the data is valid  - Phase #1 (inputs are not empty).
+5. After checking Phase #1, then start checking Phase #2:
+   5.1 Check the name if the entered name meets Regex pattern requirements.
+   5.2 Check the email if the entered email meets Regex pattern requirements.
+   5.3 Check the password if the entered password meets Regex pattern requirements.
+   5.4 Check the confirm password if matches the password.
+6. When the user clicks the "Sign Up" button, get the values from the form inputs.
+7. Show a message that the account has been created successfully.
+8. Save the data into a browser's LocalStorage.
+9. Clear all the inputs.
+10. Re-direct the user to the Login page.
+
 */
 
 // Delcare the Sign-Up form input elements
@@ -21,6 +26,8 @@ const fullNameInput = document.querySelector("#fullname-input");
 const emailInput = document.querySelector("#email-input");
 const passwordInput = document.querySelector("#password-input");
 const confirmPasswordInput = document.querySelector("#confirm-password-input");
+
+// Declare the Sign-Up messages that will be appeared based on the action (Success, Error)
 const accountCreated = document.querySelector("#account-created");
 const errorMessageForm = document.querySelector("#error-message");
 
@@ -30,6 +37,7 @@ const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
 const passwordPattern = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d@$!%*#?&]{8,}$/;
 
 try {
+  // Safe Listener - Sign up submit handler
   signUpForm?.addEventListener("submit", function (event) {
     event.preventDefault();
     try {
@@ -42,6 +50,7 @@ try {
       // Defined an array to put all the errors messages into it
       let errorMessages = [];
 
+      // Call the function and put it inside the array variable
       errorMessages = getSignUpFormErrors(
         fullNameInput.value,
         emailInput.value,
@@ -49,6 +58,7 @@ try {
         confirmPasswordInput.value,
       );
 
+      // Check if the array have errors
       if (errorMessages.length > 0) {
         errorMessageForm.innerText = errorMessages.join(".\n");
       } else {
@@ -85,14 +95,17 @@ try {
             "❌ Could not save this account, please try again";
           return;
         }
+        // Clear the error message(s)
         errorMessageForm.innerText = "";
+        // Create the account and show this message to the user for 5 seconds and disappear
+
         if (accountCreated) {
           accountCreated.innerText = `✅ The account has created successfully !`;
-          // This will make the message disappeared after 5 seconds
           setTimeout(() => accountCreated.remove(), 5000);
         }
+        // Call the function to reset the form inputs
         clearInputs();
-        // Redirect the user to the Login page after 3 seconds after the account has been created successfully
+        // Redirect the user to the Login page after 3 seconds after the account's been created successfully
         setTimeout(() => {
           window.location.href = "./login.html";
         }, 3000);
@@ -112,7 +125,7 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
     // Defined an array to put all the errors messages into it
     let errorMessages = [];
 
-    // Phase 1: Check if the inputs are empty or not
+    // Phase 1 : Check if the inputs are empty or not
     //----------------------------------------------
 
     // Check the Full name input if it is empty or not
@@ -139,10 +152,12 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
       confirmPasswordInput.classList.add("incorrect");
     }
 
-    // Phase 2: Check if the inputs are following the Regex patterns that we set for them
-    //-----------------------------------------------------------------------------
+    // Phase 2: Check if the inputs are following the Regex patterns that we set for them or not
+    //------------------------------------------------------------------------------------------
+
+    // Check if there is no error in phase #1, proceed with phase #2
     if (errorMessages.length === 0) {
-      // Validate the Full name input with the pattern that we set
+      // Validate the Full name input with the Regex pattern
       if (!namePattern.test(fullName)) {
         errorMessages.push(
           "❌ Sorry your name should have at least 2 characters",
@@ -150,14 +165,14 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
         fullNameInput.classList.add("incorrect");
       }
 
-      // Validate the Email input with the pattern that we set
+      // Validate the Email input with the Regex pattern
       if (!emailPattern.test(email)) {
         errorMessages.push(
-          "❌ Please make sure you write your email correctly",
+          "❌ Please make sure your email is correct, e.g example@domain.com",
         );
         emailInput.classList.add("incorrect");
       }
-      // Validate the Password input with the pattern that we set
+      // Validate the Password input with the Regex pattern
       if (!passwordPattern.test(password)) {
         errorMessages.push(
           `❌ The password must have at least 8 characters, including a letter and a number`,
@@ -165,7 +180,7 @@ function getSignUpFormErrors(fullName, email, password, confirmPassword) {
         passwordInput.classList.add("incorrect");
       }
 
-      // validate the Confirm Password input with the pattern that we set and then check if it matches the Password input
+      // Validate the Confirm Password input with the Regex pattern
       if (!passwordPattern.test(confirmPassword)) {
         errorMessages.push(
           `❌ The confirm password must have at least 8 characters, including a letter and a number`,
@@ -200,7 +215,6 @@ try {
   formInputs.forEach((input) => {
     input.addEventListener("input", () => {
       try {
-        // if (input.classList.contains("incorrect")) {
         input.classList.remove("incorrect");
         if (errorMessageForm) {
           errorMessageForm.innerText = "";
@@ -214,7 +228,7 @@ try {
   console.error("❌ Input listenser error: ", error.message);
 }
 
-// Function to clear all the inputs of the Sign Up form
+// Declare a Function to clear all the inputs of the Sign Up form
 function clearInputs() {
   try {
     signUpForm.reset();

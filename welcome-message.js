@@ -1,147 +1,110 @@
-// // Pseudo code for welcome message and logout functionality
-// //--------------------------------------
-// /*
-// 1. Get the current logged-in user from localStorage.
-// 2. Get the welcome message element and logout link element from the DOM.
-// 3. Get all protected links that require the user to be logged in.
-// 4. Check if the current user exists:
-//    4.1 - If yes, display the welcome message with the user's name and show the logout link.
-//    4.2 - Enable all protected links by removing any disabled styles.
-// 5. If the current user does not exist:
-//    5.1 - Hide the welcome message and logout link.
-//    5.2 - Disable all protected links and show an alert when clicked, prompting the user to log in first.
-// 6. Add an event listener to the logout link:
-//    6.1 - When clicked, remove the current user from localStorage, show a logout success alert,
-//     and redirect to the login page.
-// */
-// // Get the current logged-in user from Local Storage
-// const currentUser = localStorage.getItem("logged-in-User");
-// // Parse the current user from Local Storage
-// const parsedUser = currentUser ? JSON.parse(currentUser) : null;
-// const welcomeMessage = document.getElementById("welcome-message");
-// const loginLink = document.getElementById("login-link");
-// const logoutLink = document.getElementById("logout-link");
-// // const protectedLink = document.querySelectorAll(".protected-link");
+/* Pseudo code for accessing To-Do-App page with two methods, 
+ welcome message and logout functionality */
+//---------------------------------------------------------
 
-// // Check if the user is logged in and update the UI accordingly
-// if (parsedUser) {
-//   // Get the user's name or default to "User"
-//   const userName = parsedUser.name || "User";
-//   // User is logged in, show the welcome message and logout link
-//   if (welcomeMessage) {
-//     welcomeMessage.textContent = `Welcome, ${userName}!`;
-//     loginLink.style.display = "none";
-//   }
+/*
 
-//   if (logoutLink) logoutLink.style.display = "inline-block";
+-------- Access the Link process --------
+1. Get all protected links that require the user to be logged in to T0-Do-App page.
+  1.1 Application Link on the Navigation bar
+  1.2 Learn More button on Homepage
+2. Click on the link, A message will show up for accessing the application page
+3. Re-direct the user to the Login page.
 
-//   // Enable the protected links
-//   // protectedLink.forEach((link) => {
-//   //   // Enable the link and remove any disabled styles
-//   //   link.style.pointerEvents = "auto";
-//   //   link.style.opacity = "1";
-//   // });
-// }
-// // else {
-// //   // User is not logged in, hide the welcome message and logout link
-// //   if (welcomeMessage) welcomeMessage.textContent = "";
-// //   // Hide the logout link and disable the protected links
-// //   if (logoutLink) logoutLink.style.display = "none";
+-------- Login Page process --------
+4. Get the form inputs from the user (Email and Password).
+5. Wait the user to click the "Login" button.
+6. Read the values that the user entered in the form inputs.
+7. Check if the data is valid - Phase #1 (inputs are not empty).
+8. After checking Phase #1, then start checking Phase #2:
+  8.1 Check the email if the entered email meets Regex pattern requirements.
+  8.2 Check the password if the entered password meets Regex pattern requirements.
+9. When the user clicks the "Login" button, get the values from the form inputs.
+10. Compare these values with the data from a browser's LocalStorage.
+11. Show a message that the login was successful.
+12. Clear all the inputs.
+13. Re-direct the user to the ToDo-Application page. 
 
-// //   // Disable the protected links and show an alert when clicked
-// //   protectedLink.forEach((link) => {
-// //     link.style.pointerEvents = "none";
-// //     link.style.opacity = "0.6";
-// //     link.addEventListener("click", (event) => {
-// //       event.preventDefault();
-// //       alert("⚠️ Please log in first to access this page.");
-// //     });
-// //   });
-// // }
+-------- Showing/Logging out process --------
+14. Show the welcome message to the user with the user's name 
+15. Show log out link on the navigation bar 
+16. Hide Sign up and Login links from the navigation bar
+17. When the user is finished click on log out link
+18. When clicked, remove the current user from the local Storage
+19. Show a logout message to confirm ,
+20. Once confirmed, Redirect the user to the Home page.
 
-// // Add an event listener to the logout link to log out the user
-// if (logoutLink) {
-//   logoutLink.addEventListener("click", function (event) {
-//     event.preventDefault();
-//     const confirmLogout = confirm("Are you sure you want to log out?");
-//     if (!confirmLogout) {
-//       return; // User canceled the logout action
-//     }
-//     localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
-//     alert("You have been logged out successfully.");
-//     window.location.href = "login.html";
-//   });
-// }
-const btnLearnMore = document.getElementById("btn-learn-more");
+*/
+
+// Declare Accessing links
 const applicationLink = document.getElementById("application-link");
+const btnLearnMore = document.getElementById("btn-learn-more");
+
+// Declare Welcome message & Logout link
 const logoutLink = document.getElementById("logout-link");
 const welcomeMessage = document.getElementById("welcome-message");
 
+// Declare Log in & Log out
 const loginLink = document.getElementById("login-link");
 const signUpLink = document.getElementById("sign-up-link");
 
 try {
-  // Check if logged in
+  // Check if logged in through the navigation bar
   if (applicationLink) {
-    applicationLink.addEventListener("click", function (event) {
-      event.preventDefault();
-
-      try {
-        const savedUserData = localStorage.getItem("logged-in-User");
-
-        if (savedUserData) {
-          // Already logged in, No message needed
-          window.location.href = "./todo-page.html";
-        } else {
-          const confirmMessage = confirm(
-            "🔐 If you want to access this page, you have to log in first",
-          );
-
-          if (confirmMessage) {
-            window.location.href = "./login.html";
-          }
-        }
-      } catch (error) {
-        console.error("❌ Application link error: ", error.message);
-        alert("❌ Something went wrong, please try again");
-      }
-    });
+    applicationLink.addEventListener("click", AccessLinkProtection);
+  }
+} catch (error) {
+  console.error("❌ Application setup error: ", error.message);
+}
+try {
+  // Check if logged in through the Learn More button
+  if (btnLearnMore) {
+    btnLearnMore.addEventListener("click", AccessLinkProtection);
   }
 } catch (error) {
   console.error("❌ Application setup error: ", error.message);
 }
 
-if (btnLearnMore) {
-  btnLearnMore.addEventListener("click", function (event) {
-    event.defaultPrevented();
-
+// Declare a Function to create a protection for accessing links on HomePage
+function AccessLinkProtection(event) {
+  event.preventDefault();
+  try {
+    // Get the existing user data from local storage
     const savedUserData = localStorage.getItem("logged-in-User");
+
     if (savedUserData) {
+      // Already Logged in, No message needed
       window.location.href = "./todo-page.html";
     } else {
+      // Not Logged in, show this message
       const confirmMessage = confirm(
         "🔐 If you want to access this page, you have to log in first",
       );
 
+      // if confirmed, re-direct the user to the Login page
       if (confirmMessage) {
         window.location.href = "./login.html";
       }
     }
-  });
+  } catch (error) {
+    console.error("❌ Application link error: ", error.message);
+    alert("❌ Something went wrong, please try again");
+  }
 }
 
 try {
   if (loginLink || logoutLink) {
+    // Get the existing user data from local storage
     const savedUserData = localStorage.getItem("logged-in-User");
 
     if (savedUserData) {
       // after user logged in hide these links
       if (loginLink) loginLink.style.display = "none";
       if (signUpLink) signUpLink.style.display = "none";
+      // Show this link
       if (logoutLink) logoutLink.style.display = "flex";
     } else {
-      // if (loginLink) loginLink.style.display = "flex";
-      // if (signUpLink) signUpLink.style.display = "flex";
+      // Hide this link
       if (logoutLink) logoutLink.style.display = "none";
     }
   }
@@ -157,8 +120,10 @@ try {
       try {
         const confirmLogout = confirm("⚠️ Are you sure you want to log out?");
 
+        // if confirmed, re-direct the user to the Home page
         if (confirmLogout) {
-          localStorage.removeItem("logged-in-User"); // Remove the current user from localStorage
+          // Remove the current user from localStorage
+          localStorage.removeItem("logged-in-User");
           alert("✅ You have been logged out successfully.");
           window.location.href = "./index.html";
         }
@@ -175,20 +140,18 @@ try {
 try {
   // Welcome Message
   if (welcomeMessage) {
+    // Get the existing user data from local storage
     const savedUserData = localStorage.getItem("logged-in-User");
     if (savedUserData) {
       try {
         const user = JSON.parse(savedUserData);
+        // Show the user a welcome message with the user's name
         welcomeMessage.textContent = `Welcome, ${user.name}`;
       } catch (error) {
         console.error("❌ Error reading user data: ", error.message);
-        welcomeMessage.textContent = "Welcome, Guest!";
+        welcomeMessage.textContent = "Welcome, User!";
       }
     }
-    // else {
-    //   alert("🔐 Please log in first!");
-    //   window.location.href = ".login.html";
-    // }
   }
 } catch (error) {
   console.error("❌ Welcome message error: ", error.message);

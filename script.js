@@ -2,6 +2,7 @@
 //--------------------------------------
 
 /* 
+
 1. Get the form inputs from the user (task name, priority and due date).
 2. Wait the user to click the "Add Task" button.
 3. Read the values that the user entered in the form inputs.
@@ -14,6 +15,7 @@
 9. Update/delete the task card container when a task is edited or deleted.  
 10. Allow the user to mark tasks as completed and move them to the completed task card container.
 11. Clear all the inputs.
+
 */
 
 // Delcare the form and input elements
