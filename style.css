@@ -54,6 +54,10 @@
   --edit-button: #b45309;
   /* Vivid Color (Amber 600) */
   --edit-button-hover: #d97706;
+
+  /* Colors guidelines V2.0 to met Axe DevTool */
+  --accent-color-v2: #6750e6;
+  /* --accent-color-v2: #4230c9; */
 }
 
 /* End of project guideine colors  */
@@ -75,7 +79,8 @@ body {
 
 /* Start the Header Styling  */
 .hearder-container {
-  background-color: var(--accent-color);
+  /* Axe Dev 3.81 4.5:1 */
+  background-color: var(--accent-color-v2);
   color: #d3d4c0;
   width: 100%;
   display: flex;
@@ -87,25 +92,30 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  /* border: 2px solid red; */
 }
 
 .logo a {
-  color: var(--text-color);
+  color: var(--input-color);
+  /* color: #010101; */
+  /* color: #000000; */
+  /* color: #050023; */
   font-size: 1.4rem;
   font-weight: 600;
 }
 
 .logo a:hover {
-  color: var(--base-color);
+  color: var(--primary);
   transition: all 0.3s ease-in-out;
 }
 
 .header-span {
+  /* Axe Dev 3.58 , 4.5:1*/
   color: var(--base-color);
 }
 
 .header-span:hover {
-  color: var(--text-color);
+  color: var(--primary);
   transition: all 0.3s ease-in-out;
 }
 
@@ -117,21 +127,24 @@ body {
 }
 
 .nav-links a {
-  color: var(--text-color);
+  /* color: var(--base-color); */
+  color: var(--input-color);
   font-weight: 300;
   font: inherit;
 }
 
 .nav-links a:hover {
-  color: var(--base-color);
+  color: var(--primary);
   font-weight: 600;
   transition: 0.5s all ease;
   transform: scale(1.05);
 }
 
 .nav-links .active-page {
-  color: var(--primary);
+  color: var(--input-color);
   font-weight: 600;
+  border: 3px solid black;
+  padding: 0 5px;
 }
 
 .welcome-item {
@@ -197,7 +210,7 @@ body {
 }
 
 .hero-buttons .btn-homepage {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-v2);
   color: var(--base-color);
   width: 100%;
   max-width: 200px;
@@ -638,7 +651,8 @@ select {
 /* Contact Me button style */
 
 .contact-content .btn-contactMe {
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
+  background-color: var(--accent-color-v2);
   color: var(--input-color);
   width: 100%;
   max-width: 200px;
@@ -729,7 +743,7 @@ select {
 }
 
 .sign-up-form-content .label {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-v2);
   color: var(--base-color);
   width: 100%;
   max-width: 100px;
@@ -769,7 +783,7 @@ select {
 }
 
 .sign-up-form button {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-v2);
   color: var(--base-color);
   margin: 10px 0 0 0;
   padding: 1rem 3rem;
@@ -795,13 +809,13 @@ select {
 }
 
 .sign-up-form .sign-up-link {
-  color: var(--accent-color);
+  color: var(--accent-color-v2);
+  text-decoration: underline;
 }
 
 .sign-up-form .sign-up-link:hover {
   text-transform: capitalize;
   font-weight: 700;
-  text-decoration: underline;
 }
 
 
@@ -885,7 +899,7 @@ select {
 }
 
 .login-form .label {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-v2);
   color: var(--base-color);
   width: 100%;
   max-width: 130px;
@@ -925,7 +939,7 @@ select {
 }
 
 .login-form button {
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-v2);
   color: var(--base-color);
   margin: 10px 0 0 0;
   padding: 1rem 3rem;
@@ -948,11 +962,11 @@ select {
 }
 
 .login-container .login-link {
-  color: var(--accent-color);
+  color: var(--accent-color-v2);
+  text-decoration: underline;
 }
 
 .login-container .login-link:hover {
-  text-decoration: underline;
   font-weight: 700;
 }
 
