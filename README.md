@@ -26,7 +26,7 @@ The goal of this project is build a fully functional beginner-friendly task mana
 - **Mark as Completed** — Click the checkmark → moves to Completed section
 - **Delete Tasks** — Click the X icon → confirmation prompt → removes task
 - **Auto-Calculate Due Dates** — Automatically sets based on priority, or manual date picker for Custom
-- **Visual Feedback** — Smooth scroll + pulse animation when editing
+- **Visual Feedback** — Smooth scroll + pulse animation when editing a certain task(s)
 
 ### 📬 Contact Form
 
@@ -38,7 +38,7 @@ The goal of this project is build a fully functional beginner-friendly task mana
 
 - ✅ **No `innerHTML` for user content** — uses `createElement` + `textContent` (safe from injection)
 - ✅ Try/catch error handling on ALL operations
-- ✅ LocalStorage safely parsed with fallback
+- ✅ LocalStorage safely parsed with fallback (applied on Sign up, Login, and Log out)
 - ✅ Input validation on every field
 - ✅ Safe element checks — won't crash if something missing
 
@@ -47,28 +47,33 @@ The goal of this project is build a fully functional beginner-friendly task mana
 The website features a smooth, multi-pages navigation layout including:
 
 - Logo & 5-Link Navigation: Quick access to all pages.
-- Application Page: Main application page.
-- Contact Me: A dedicated area for reaching out.
-- Sign Up Page: A page to create an account
-- Login Page: A page to access the application page.
+- Application Page: A page that runs the app for Adding/Editing/Deleting tasks.
+- Contact Me: A dedicated area for reaching me out.
+- Sign Up Page: A page to create an account for the user to be able to access the app page later.
+- Login Page: A page to access the app page by using the account's been created on the early stage.
 - Footer: Copyrights and social links.
 
 # 🛠️ Technologies & Tools
 
+## 🛠️ Technologies Used
+
 ### Core Stack
 
-- HTML5 - Semantic structure.
-- CSS3 - Custom styling and layout.
-- JavaScript (ES6+) - No frameworks! Pure JS only
-- Local Storage - Browser Data save
+- **HTML5** — Semantic markup structure
+- **CSS3** — Custom properties, Flexbox, responsive design
+- **Vanilla JavaScript (ES6+)** — No frameworks! Pure JS only
+- **LocalStorage** — Persistent data storage (Browser Data save)
+- **Font Awesome** — Icons for UI
+- **Formspree** — Contact form email delivery
 
 ## 🎨 Design Resources
 
 I utilized these professional tools to enhance the UI/UX:
 
 - Google Font: For all textual contents in the website (Poppins Font).
-- Font Awesome: For scalable vector icons.
 - Color Hunt: For selecting the professional color palette.
+- Font Awesome: For scalable vector icons.
+- Formspree: For submitting the form to my email.
 
 ## 📱 Responsive Design (Breakpoints)
 
@@ -77,22 +82,13 @@ The website is optimized for different screen sizes using the following CSS stra
 - Tablet View: Optimized for screens with a max-width: 768px.
 - Mobile View: Optimized for screens with a max-width: 528px.
 
-## 🛠️ Technologies Used
-
-- **HTML5** — Semantic markup structure
-- **CSS3** — Custom properties, Flexbox, responsive design
-- **Vanilla JavaScript (ES6+)** — No frameworks! Pure JS only
-- **LocalStorage API** — Persistent data storage
-- **Font Awesome** — Icons for UI
-- **Formspree** — Contact form email delivery
-
 ## 📁 Project Structure
 
 ```text
 MyJSPro/
 ├── index.html              # Home page
-├── todo-page.html          # Task Manager — Main Application - login required
-├── contact-me.html          # Contact Form page
+├── todo-page.html          # Task Manager App — Main Application - login required
+├── contact-me.html         # Contact Form page
 ├── signup.html             # Sign Up / Register page
 ├── login.html              # Login page
 │
@@ -105,9 +101,9 @@ MyJSPro/
 ├── signup.js               # Sign Up form validation & account creation
 ├── welcome-message.js      # Login state — show/hide links, welcome message
 │
-├── .gitignore                  # Specifies which files Git should NOT track/upload
+├── .gitignore              # Specifies which files Git should NOT track/upload
 │
-└── README.md                   # Project documentation
+└── README.md               # Project documentation
 
 ```
 
@@ -126,14 +122,14 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 ## For Reviewing and Cleaning:
 
-- VS Code feature: to clear and format indentation to look good.
+- VS Code feature: to clear unused code (commented out)and format indentation to look good.
 - Developer Tools: to ensure your code is 100% utalizied.
 - Validator.w3.org website: to validate your code is clean for HTML file.
 - Jigsaw.w3.org website: to validate your code is clean for CSS file.
 
 ## For Accessibilty Test :
 
-- Axe Devtools: to ensure the code has no errors.
+- Axe DevTools: to ensure the code has no errors and meets Axe DevTools Standards.
 
 ## General Notes / Developer Logs
 
@@ -187,7 +183,7 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 4. The website loads — you can navigate freely
 5. Follow the User Journey below
 
-### 📝 User Journey — Step by Step
+## 📝 User Journey — Step by Step
 
 #### 🔹 Step 1 — Browse Public Pages
 
@@ -305,7 +301,7 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 - Copy the below link.
 - Paste the link on the browser.
 - Then you will be able to see the whole project on your browser.
-- The link: https: --/_ A link _/ --
+- The link: (https://mohd-idris.github.io/Module-3-Project-JavaScript/)
 
 ## GitHub Repo Link
 
