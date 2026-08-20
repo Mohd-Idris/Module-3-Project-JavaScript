@@ -133,7 +133,31 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 ## General Notes / Developer Logs
 
-/_ Text _/
+- The idea is build a **To-Do-App** allows the user to perform well by adding tasks to the user's agenda, and then can update it if necessary, complete it once it's done, or even delete it.
+
+- It took time to draw the scenario, and then implemented it because JavaScript was a new concept to me; and at the beginning it was not easy to do a simple thing, but by time I got used to it.
+
+### Dev Logs
+
+1. Build the 5 pages, then style each page.
+
+2. Make a JS file for **To-Do-App**, **Sign up**, **Login**, and **Welcome message**.
+
+3. Minimize the code, build **Functions** to reduce my code and make it reusable if needed. After building my code, I used the **Functions** to make my code shorter, flixible and reusable again.
+
+4. Replacing unsafe **innerHTML** with secure approach - I replaced all innerHTML blocks with this approach but it took time because I've used innerHTML all the time to build this project, then the **Tutor** asked us to replace any **innerHTML** block with a secure methode using safe element creation (createElement(), textContent(), and appendChild()) to secure your website from **Injection attack**.
+
+5. Adding LocalStorage for each of **Sign up**, **Login**, and **Welcome message**.
+
+6. Wrapped all code within **try/catch** blocks to ensure my code is protected from every possible scenario that might happend during using the website.
+
+### Challenges:
+
+- During building this project I've encountered some challenges:
+
+1. **Runtime Errors** -
+2. **Event handler Error** - I fixed this issue by adding checks and try/catch blocks.
+3. **Reference Error** - I fixed this by making the JS files run after the HTML loads well.
 
 # 🚫 .gitignore Contents
 
