@@ -36,7 +36,7 @@
   --ongoing: #0ea5e9;
   /* Emerald Color */
   --completed: #10b981;
-  /* ---------------- Social Icons Color Guidelines ----------- */
+  /* ---------------- Social Icons Color Guidelines ------------ */
   /* Red Color */
   --youtube-color: #ff0000;
   /* LinkedIn Blue Color */
@@ -45,7 +45,7 @@
   --x-color: #000000;
   /* Black-Blue Color */
   --github-color: #24292e;
-  /* ---------------- Buttons Color Guidelines ---------------- */
+  /* ---------------- Buttons Color Guidelines ----------------- */
   /* Dark Lime Green Color */
   --add-button: #267d3a;
   /* Deep Dark Green Color (Bucolic) */
@@ -55,9 +55,9 @@
   /* Vivid Color (Amber 600) */
   --edit-button-hover: #d97706;
 
-  /* Colors guidelines V2.0 to met Axe DevTool */
+  /* ---------------- Colors guidelines V2.0 to met Axe DevTool */
+  /* Medium Purple Color (Vivid Iris) */
   --accent-color-v2: #6750e6;
-  /* --accent-color-v2: #4230c9; */
 }
 
 /* End of project guideine colors  */
@@ -79,7 +79,6 @@ body {
 
 /* Start the Header Styling  */
 .hearder-container {
-  /* Axe Dev 3.81 4.5:1 */
   background-color: var(--accent-color-v2);
   color: #d3d4c0;
   width: 100%;
@@ -92,14 +91,10 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  /* border: 2px solid red; */
 }
 
 .logo a {
   color: var(--input-color);
-  /* color: #010101; */
-  /* color: #000000; */
-  /* color: #050023; */
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -110,7 +105,6 @@ body {
 }
 
 .header-span {
-  /* Axe Dev 3.58 , 4.5:1*/
   color: var(--base-color);
 }
 
@@ -127,23 +121,22 @@ body {
 }
 
 .nav-links a {
-  /* color: var(--base-color); */
   color: var(--input-color);
   font-weight: 300;
   font: inherit;
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  background: linear-gradient(to left, var(--text-color), var(--text-color));
   font-weight: 600;
   transition: 0.5s all ease;
-  transform: scale(1.05);
+  transform: scale(1.2);
 }
 
 .nav-links .active-page {
   color: var(--input-color);
   font-weight: 600;
-  border: 3px solid black;
+  border: 3px solid var(--input-color);
   padding: 0 5px;
 }
 
