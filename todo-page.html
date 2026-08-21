@@ -1,144 +1,197 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My JS Project</title>
+    <!-- An external link CSS style  -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Fonts -->
+    <!-- An external font (Poppins font) for the website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <!-- A link to generate icons for the website -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My JS Project</title>
-  <!-- An external link CSS style  -->
-  <link rel="stylesheet" href="./style.css" />
-  <!-- Fonts -->
-  <!-- An external font (Poppins font) for the website -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <!-- Icons -->
-  <!-- A link to generate icons for the website -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-  <!-- Navigation Links Section -->
-  <header>
-    <div class="hearder-container container">
-      <div class="logo">
-        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
-            class="header-span span">JSPro</span></a>
+  <body>
+    <!-- Navigation Links Section -->
+    <header>
+      <div class="hearder-container container">
+        <div class="logo">
+          <a
+            href="index.html"
+            aria-label="Website logo"
+            aria-labelledby="Website logo"
+            >My<span class="header-span span">JSPro</span></a
+          >
+        </div>
+        <div class="nav-div">
+          <nav class="nav-bar">
+            <ul class="nav-links">
+              <li>
+                <a
+                  href="index.html"
+                  aria-label="Home link"
+                  aria-labelledby="Home link"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="todo-page.html"
+                  class="active-page"
+                  aria-label="Application link"
+                  aria-labelledby="Application link"
+                  >Application</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact-me.html"
+                  aria-label="Contact me link"
+                  aria-labelledby="Contact me link"
+                  >Contact Me</a
+                >
+              </li>
+              <li id="logout-link">
+                <a
+                  href="#"
+                  aria-label="Logout link"
+                  aria-labelledby="Logout link"
+                  >Log out</a
+                >
+              </li>
+              <li id="welcome-link" class="welcome-item">
+                <span id="welcome-message"></span>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div class="nav-div">
-        <nav class="nav-bar">
-          <ul class="nav-links">
-            <li><a href="index.html" aria-label="Home link" aria-labelledby="Home link">Home</a></li>
-            <li><a href="todo-page.html" class="active-page" aria-label="Application link"
-                aria-labelledby="Application link">Application</a></li>
-            <li><a href="contact-me.html" aria-label="Contact me link" aria-labelledby="Contact me link">Contact Me</a>
-            </li>
-            <li id="logout-link"><a href="#" aria-label="Logout link" aria-labelledby="Logout link">Log out</a></li>
-            <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+    </header>
 
+    <!-- Main Section -->
+    <main>
+      <section class="to-do">
+        <div class="todo-title">
+          <h1 class="title">To-Do Application</h1>
+        </div>
 
-  <main>
-    <section class="to-do">
-      <div class="todo-title">
-        <h1 class="title">To-Do Application</h1>
-      </div>
+        <div class="form-data" id="todo-form">
+          <form class="task-form" id="task-form">
+            <label for="nameInput" class="todo-form-label">Name</label>
+            <input
+              type="text"
+              name="name"
+              id="nameInput"
+              placeholder="Please add task "
+            />
 
-      <div class="form-data" id="todo-form">
-        <form class="task-form" id="task-form">
+            <label for="priorityInput" class="todo-form-label">Priority</label>
+            <select name="priority" id="priorityInput">
+              <option value="">-- Select the priority --</option>
+              <option value="Minor">Minor</option>
+              <option value="Major">Major</option>
+              <option value="Critical">Critical</option>
+              <option value="Custom">Custom</option>
+            </select>
 
-          <label for="nameInput" class="todo-form-label">Name</label>
-          <input type="text" name="name" id="nameInput" placeholder="Please add task " />
+            <div id="date-wrapper">
+              <label for="dateInput" class="todo-form-label">Due Date</label>
+              <input type="date" name="date" id="dateInput" />
+            </div>
 
+            <button type="submit" class="btn btn-add" id="btnAddTask">
+              Add Task
+            </button>
 
-          <label for="priorityInput" class="todo-form-label">Priority</label>
-          <select name="priority" id="priorityInput">
-            <option value="">-- Select the priority --</option>
-            <option value="Minor">Minor</option>
-            <option value="Major">Major</option>
-            <option value="Critical">Critical</option>
-            <option value="Custom">Custom</option>
-          </select>
+            <button type="button" class="btn btn-edit" id="btnEditTask">
+              Edit Task
+            </button>
+          </form>
+        </div>
 
-          <div id="date-wrapper">
-            <label for="dateInput" class="todo-form-label">Due Date</label>
-            <input type="date" name="date" id="dateInput">
+        <div class="to-do-container">
+          <div id="minor-task" class="card minor-task-card">
+            <h3 id="minor-task-heading" class="card-heading">
+              <i class="fa-solid fa-clipboard-list minor-sign"></i>
+              Minor Task / Custom Tasks
+            </h3>
           </div>
 
-          <button type="submit" class="btn btn-add" id="btnAddTask">
-            Add Task
-          </button>
+          <div id="major-task" class="card major-task-card">
+            <h3 id="major-task-heading" class="card-heading">
+              <i class="fa-solid fa-thumbtack major-sign"></i>
+              Major Tasks
+            </h3>
+          </div>
 
-          <button type="button" class="btn btn-edit" id="btnEditTask">
-            Edit Task
-          </button>
-        </form>
+          <div id="critical-task" class="card critical-task-card">
+            <h3 id="critical-task-heading" class="card-heading">
+              <i class="fa-solid fa-circle-exclamation top-critical-sign"></i>
+              Top Priority Tasks
+            </h3>
+          </div>
+
+          <div id="completed-task" class="card completed-task-card">
+            <h3 id="completed-task-heading" class="card-heading">
+              <i class="fa-solid fa-clipboard-check checked-sign"></i>
+              Completed Tasks
+            </h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 MyJSPro | All rights reserved</p>
+
+        <div class="social-icons">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            aria-label="Youtube Website"
+          >
+            <i class="fa-brands fa-youtube you-red"></i
+          ></a>
+
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            aria-label="LinkedIN Website"
+          >
+            <i class="fa-brands fa-linkedin link-blue"></i
+          ></a>
+
+          <a href="https://x.com" target="_blank" aria-label="X Website ">
+            <i class="fa-brands fa-x-twitter x-black"></i
+          ></a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            aria-label="GitHub Website"
+          >
+            <i class="fa-brands fa-github git-black"></i
+          ></a>
+        </div>
       </div>
-
-      <div class="to-do-container">
-
-        <div id="minor-task" class="card minor-task-card">
-          <h3 id="minor-task-heading" class="card-heading">
-            <i class="fa-solid fa-clipboard-list minor-sign"></i>
-            Minor Task / Custom Tasks
-          </h3>
-        </div>
-
-        <div id="major-task" class="card major-task-card">
-          <h3 id="major-task-heading" class="card-heading">
-            <i class="fa-solid fa-thumbtack major-sign"></i>
-            Major Tasks
-          </h3>
-        </div>
-
-        <div id="critical-task" class="card critical-task-card">
-          <h3 id="critical-task-heading" class="card-heading">
-            <i class="fa-solid fa-circle-exclamation top-critical-sign"></i>
-            Top Priority Tasks
-          </h3>
-        </div>
-
-        <div id="completed-task" class="card completed-task-card">
-          <h3 id="completed-task-heading" class="card-heading">
-            <i class="fa-solid fa-clipboard-check checked-sign"></i>
-            Completed Tasks
-          </h3>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 MyJSPro | All rights reserved</p>
-
-      <div class="social-icons">
-        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
-          <i class="fa-brands fa-youtube you-red"></i></a>
-
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website">
-          <i class="fa-brands fa-linkedin link-blue"></i></a>
-
-        <a href="https://x.com" target="_blank" aria-label="X Website ">
-          <i class="fa-brands fa-x-twitter x-black"></i></a>
-
-        <a href="https://github.com" target="_blank" aria-label="GitHub Website">
-          <i class="fa-brands fa-github git-black"></i></a>
-      </div>
-    </div>
-  </footer>
-  <script src="./welcome-message.js"></script>
-  <script src="./script.js"></script>
-</body>
-
+    </footer>
+    <script src="./welcome-message.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>

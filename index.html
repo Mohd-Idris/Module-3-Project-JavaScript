@@ -1,125 +1,202 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta http-equiv="refresh" content="0; url=login.html"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do-App Website</title>
+    <!-- An external link CSS style  -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Fonts -->
+    <!-- An external font (Poppins font) for the website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <!-- A link to generate icons for the website -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <!-- <meta http-equiv="refresh" content="0; url=login.html"> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do-App Website</title>
-  <!-- An external link CSS style  -->
-  <link rel="stylesheet" href="./style.css">
-  <!-- Fonts -->
-  <!-- An external font (Poppins font) for the website -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <!-- Icons -->
-  <!-- A link to generate icons for the website -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-  <header>
-    <div class="hearder-container container">
-      <div class="logo">
-        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
-            class="header-span span">JSPro</span></a>
+  <body>
+    <!-- Navigation Links Section -->
+    <header>
+      <div class="hearder-container container">
+        <div class="logo">
+          <a
+            href="index.html"
+            aria-label="Website logo"
+            aria-labelledby="Website logo"
+            >My<span class="header-span span">JSPro</span></a
+          >
+        </div>
+        <div class="nav-div">
+          <nav class="nav-bar">
+            <ul class="nav-links">
+              <li>
+                <a
+                  href="index.html"
+                  class="active-page"
+                  aria-label="Home link"
+                  aria-labelledby="Home link"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="todo-page.html"
+                  id="application-link"
+                  aria-label="Application link"
+                  aria-labelledby="Application link"
+                  >Application</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact-me.html"
+                  aria-label="Contact me link"
+                  aria-labelledby="Contact me link"
+                  >Contact Me</a
+                >
+              </li>
+              <li id="sign-up-link">
+                <a
+                  href="sign-up.html"
+                  aria-label="Sign up link"
+                  aria-labelledby="Sign up link"
+                  >Sign up</a
+                >
+              </li>
+              <li id="login-link">
+                <a
+                  href="login.html"
+                  aria-label="Login link"
+                  aria-labelledby="Login link"
+                  >Login</a
+                >
+              </li>
+              <li id="logout-link">
+                <a
+                  href="#"
+                  aria-label="Logout link"
+                  aria-labelledby="Logout link"
+                  >Log out</a
+                >
+              </li>
+              <li id="welcome-link" class="welcome-item">
+                <span id="welcome-message"></span>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div class="nav-div">
-        <nav class="nav-bar">
-          <ul class="nav-links">
-            <li><a href="index.html" class="active-page" aria-label="Home link" aria-labelledby="Home link">Home</a>
-            </li>
-            <li><a href="todo-page.html" id="application-link" aria-label="Application link"
-                aria-labelledby="Application link">Application</a></li>
-            <li><a href="contact-me.html" aria-label="Contact me link" aria-labelledby="Contact me link">Contact Me</a>
-            </li>
-            <li id="sign-up-link"><a href="sign-up.html" aria-label="Sign up link" aria-labelledby="Sign up link">Sign
-                up</a></li>
-            <li id="login-link"><a href="login.html" aria-label="Login link" aria-labelledby="Login link">Login</a></li>
-            <li id="logout-link"><a href="#" aria-label="Logout link" aria-labelledby="Logout link">Log out</a></li>
-            <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="home-page" id="homepage">
-      <div class="hero-page-container">
-        <div class="hero-page-content">
-          <h1 class="hero-page-title">
-            <span class="hero-page-span">W</span>elcome
-            <span class="hero-page-span">T</span>o,
-            <span class="hero-page-span">T</span>o-<span class="hero-page-span">D</span>o-<span
-              class="hero-page-span">A</span>pplication
-          </h1>
-          <p class="hero-page-text">
-            Organize your daily tasks, set clear priorities, and receive timely alerts so you stay on track.
-            <br>Whether
-            it’s work, study or personal goals — this app helps you focus on what’s important.
-          </p>
-          <div class="hero-image">
-            <img src="./Images/todo-picture.png" alt="to-do picture ">
+    <!-- Main Section -->
+    <main>
+      <section class="home-page" id="homepage">
+        <div class="hero-page-container">
+          <div class="hero-page-content">
+            <h1 class="hero-page-title">
+              <span class="hero-page-span">W</span>elcome
+              <span class="hero-page-span">T</span>o,
+              <span class="hero-page-span">T</span>o-<span
+                class="hero-page-span"
+                >D</span
+              >o-<span class="hero-page-span">A</span>pplication
+            </h1>
+            <p class="hero-page-text">
+              Organize your daily tasks, set clear priorities, and receive
+              timely alerts so you stay on track.
+              <br />Whether it’s work, study or personal goals — this app helps
+              you focus on what’s important.
+            </p>
+            <div class="hero-image">
+              <img src="./Images/todo-picture.png" alt="to-do picture " />
+            </div>
+          </div>
+          <div class="hero-buttons">
+            <a
+              href="todo-page.html"
+              id="btn-learn-more"
+              class="btn-homepage btn-primary"
+              >Learn More</a
+            >
+            <a href="sign-up.html" class="btn-homepage btn-secondary"
+              >Sign Up</a
+            >
           </div>
         </div>
-        <div class="hero-buttons">
-          <a href="todo-page.html" id="btn-learn-more" class="btn-homepage btn-primary">Learn More</a>
-          <a href="sign-up.html" class="btn-homepage btn-secondary">Sign Up</a>
+      </section>
+
+      <section class="technologies">
+        <h2 class="tech-title">
+          <span class="tech-span">Technologies </span>used
+        </h2>
+        <div class="tech-card-container">
+          <div class="tech-card tech-card-1">
+            <img src="./Images/html.png" alt="HTML image" />
+            <h3>HTML</h3>
+          </div>
+
+          <div class="tech-card tech-card-2">
+            <img src="./Images/css.png" alt="CSS image" />
+            <h3>CSS</h3>
+          </div>
+
+          <div class="tech-card tech-card-3">
+            <img src="./Images/js.png" alt="JavaScript image" />
+            <h3>JavaScript</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 MyJSPro | All rights reserved</p>
+        <div class="social-icons">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            aria-label="Youtube Website"
+          >
+            <i class="fa-brands fa-youtube you-red"></i
+          ></a>
+
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            aria-label="LinkedIN Website"
+          >
+            <i class="fa-brands fa-linkedin link-blue"></i
+          ></a>
+
+          <a href="https://x.com" target="_blank" aria-label="X Website ">
+            <i class="fa-brands fa-x-twitter x-black"></i
+          ></a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            aria-label="GitHub Website"
+          >
+            <i class="fa-brands fa-github git-black"></i
+          ></a>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <section class="technologies">
-      <h2 class="tech-title"><span class="tech-span">Technologies </span>used</h2>
-      <div class="tech-card-container">
-
-        <div class="tech-card tech-card-1">
-          <img src="./Images/html.png" alt="HTML image" />
-          <h3>HTML</h3>
-        </div>
-
-        <div class="tech-card tech-card-2">
-          <img src="./Images/css.png" alt="CSS image" />
-          <h3>CSS</h3>
-        </div>
-
-        <div class="tech-card tech-card-3">
-          <img src="./Images/js.png" alt="JavaScript image" />
-          <h3>JavaScript</h3>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 MyJSPro | All rights reserved</p>
-      <div class="social-icons">
-        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
-          <i class="fa-brands fa-youtube you-red"></i></a>
-
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website">
-          <i class="fa-brands fa-linkedin link-blue"></i></a>
-
-        <a href="https://x.com" target="_blank" aria-label="X Website ">
-          <i class="fa-brands fa-x-twitter x-black"></i></a>
-
-        <a href="https://github.com" target="_blank" aria-label="GitHub Website">
-          <i class="fa-brands fa-github git-black"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <script src="./welcome-message.js"></script>
-  <script src="./script.js"></script>
-</body>
-
+    <script src="./welcome-message.js"></script>
+    <script src="./script.js"></script>
+  </body>
 </html>

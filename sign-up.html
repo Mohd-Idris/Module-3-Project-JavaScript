@@ -1,122 +1,207 @@
 <!doctype html>
 <html lang="en" id="sign-up-html">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My JS Project</title>
+    <!-- An external link CSS style  -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Fonts -->
+    <!-- An external font (Poppins font) for the website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <!-- A link to generate icons for the website -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My JS Project</title>
-  <!-- An external link CSS style  -->
-  <link rel="stylesheet" href="./style.css" />
-  <!-- Fonts -->
-  <!-- An external font (Poppins font) for the website -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <!-- Icons -->
-  <!-- A link to generate icons for the website -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <body id="sign-up-body">
+    <!-- Navigation Links Section -->
+    <header>
+      <div class="hearder-container container">
+        <div class="logo">
+          <a
+            href="index.html"
+            aria-label="Website logo"
+            aria-labelledby="Website logo"
+            >My<span class="header-span span">JSPro</span></a
+          >
+        </div>
 
-  <!-- Google Icons (all styles: Filled, Outlined, Rounded, Sharp) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
-</head>
-
-<body id="sign-up-body">
-  <!-- Navigation Links Section -->
-  <header>
-    <div class="hearder-container container">
-      <div class="logo">
-        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
-            class="header-span span">JSPro</span></a>
+        <div class="nav-div">
+          <nav class="nav-bar">
+            <ul class="nav-links">
+              <li>
+                <a
+                  href="index.html"
+                  aria-label="Home link"
+                  aria-labelledby="Home link"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="todo-page.html"
+                  id="application-link"
+                  aria-label="Application link"
+                  aria-labelledby="Application link"
+                  >Application</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact-me.html"
+                  aria-label="Contact me link"
+                  aria-labelledby="Contact me link"
+                  >Contact Me</a
+                >
+              </li>
+              <li>
+                <a
+                  href="sign-up.html"
+                  class="active-page"
+                  aria-label="Sign up link"
+                  aria-labelledby="Sign up link"
+                  >Sign Up</a
+                >
+              </li>
+              <li>
+                <a
+                  href="login.html"
+                  aria-label="Login link"
+                  aria-labelledby="Login link"
+                  >Login</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
+    </header>
 
-      <div class="nav-div">
-        <nav class="nav-bar">
-          <ul class="nav-links">
-            <li><a href="index.html" aria-label="Home link" aria-labelledby="Home link">Home</a></li>
-            <li><a href="todo-page.html" id="application-link" aria-label="Application link"
-                aria-labelledby="Application link">Application</a></li>
-            <li><a href="contact-me.html" aria-label="Contact me link" aria-labelledby="Contact me link">Contact
-                Me</a></li>
-            <li><a href="sign-up.html" class="active-page" aria-label="Sign up link" aria-labelledby="Sign up link">Sign
-                Up</a></li>
-            <li><a href="login.html" aria-label="Login link" aria-labelledby="Login link">Login</a></li>
-          </ul>
-        </nav>
+    <!-- Main Section -->
+    <main>
+      <section class="sign-up">
+        <div class="sign-up-container">
+          <h1 class="sign-up-title">
+            <span class="sign-up-span">S</span>ign
+            <span class="sign-up-span">U</span>p
+          </h1>
+          <span id="error-message" class="error-message-input"></span>
+          <span id="account-created" class="account-created"></span>
+          <form class="sign-up-form" id="sign-up-form">
+            <div class="sign-up-form-content">
+              <label for="fullname-input" class="label lbl-fullname"
+                >Name
+              </label>
+              <input
+                type="text"
+                name="fullname"
+                id="fullname-input"
+                placeholder="Please enter your Full Name"
+              />
+            </div>
+
+            <div class="sign-up-form-content">
+              <label for="email-input" class="label lbl-email">Email </label>
+              <input
+                type="email"
+                name="email"
+                id="email-input"
+                placeholder="Please enter your Email "
+              />
+            </div>
+
+            <div class="sign-up-form-content">
+              <label for="password-input" class="label lbl-password">
+                password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password-input"
+                placeholder="Please enter your password "
+              />
+            </div>
+
+            <div class="sign-up-form-content">
+              <label
+                for="confirm-password-input"
+                class="label lbl-confirm-password"
+                >Confirm password
+              </label>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password-input"
+                placeholder="Please confirm your password "
+              />
+            </div>
+
+            <button type="submit" class="btn-sign-up" id="btnSignUp">
+              Sign up
+            </button>
+            <p>
+              Already registered
+              <a href="./login.html" class="sign-up-link">login</a>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 MyJSPro | All rights reserved</p>
+        <div class="social-icons">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            aria-label="Youtube Website"
+          >
+            <i class="fa-brands fa-youtube you-red"></i
+          ></a>
+
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            aria-label="LinkedIN Website"
+          >
+            <i class="fa-brands fa-linkedin link-blue"></i
+          ></a>
+
+          <a
+            href="https://x.com"
+            target="_blank"
+            aria-label="X/Twitter Website "
+          >
+            <i class="fa-brands fa-x-twitter x-black"></i
+          ></a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            aria-label="GitHub Website"
+          >
+            <i class="fa-brands fa-github git-black"></i
+          ></a>
+        </div>
       </div>
-    </div>
-  </header>
+    </footer>
 
-  <main>
-
-    <section class="sign-up">
-      <div class="sign-up-container">
-        <h1 class="sign-up-title"><span class="sign-up-span">S</span>ign <span class="sign-up-span">U</span>p</h1>
-        <span id="error-message" class="error-message-input"></span>
-        <span id="account-created" class="account-created"></span>
-        <form class="sign-up-form" id="sign-up-form">
-
-
-
-          <div class="sign-up-form-content">
-            <label for="fullname-input" class="label lbl-fullname">Name
-            </label>
-            <input type="text" name="fullname" id="fullname-input" placeholder="Please enter your Full Name" />
-          </div>
-
-          <div class="sign-up-form-content">
-            <label for="email-input" class="label lbl-email">Email
-            </label>
-            <input type="email" name="email" id="email-input" placeholder="Please enter your Email " />
-          </div>
-
-          <div class="sign-up-form-content">
-            <label for="password-input" class="label lbl-password"> password
-            </label>
-            <input type="password" name="password" id="password-input" placeholder="Please enter your password " />
-          </div>
-
-          <div class="sign-up-form-content">
-            <label for="confirm-password-input" class="label lbl-confirm-password">Confirm password
-            </label>
-            <input type="password" name="confirm-password" id="confirm-password-input"
-              placeholder="Please confirm your password " />
-          </div>
-
-          <button type="submit" class="btn-sign-up" id="btnSignUp">Sign up</button>
-          <p>Already registered <a href="./login.html" class="sign-up-link">login</a></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 MyJSPro | All rights reserved</p>
-      <div class="social-icons">
-        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
-          <i class="fa-brands fa-youtube you-red"></i></a>
-
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website">
-          <i class="fa-brands fa-linkedin link-blue"></i></a>
-
-        <a href="https://x.com" target="_blank" aria-label="X/Twitter Website ">
-          <i class="fa-brands fa-x-twitter x-black"></i></a>
-
-        <a href="https://github.com" target="_blank" aria-label="GitHub Website">
-          <i class="fa-brands fa-github git-black"></i></a>
-      </div>
-    </div>
-  </footer>
-
-
-  <script src="./welcome-message.js"></script>
-  <script src="./sign-up.js"></script>
-</body>
-
+    <script src="./welcome-message.js"></script>
+    <script src="./sign-up.js"></script>
+  </body>
 </html>

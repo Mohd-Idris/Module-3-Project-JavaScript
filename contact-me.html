@@ -1,136 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do-App Website</title>
+    <!-- An external link CSS style  -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Fonts -->
+    <!-- An external font (Poppins font) for the website -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <!-- A link to generate icons for the website -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do-App Website</title>
-  <!-- An external link CSS style  -->
-  <link rel="stylesheet" href="./style.css">
-  <!-- Fonts -->
-  <!-- An external font (Poppins font) for the website -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <!-- Icons -->
-  <!-- A link to generate icons for the website -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-
-<body>
-  <header>
-    <div class="hearder-container container">
-      <div class="logo">
-        <a href="index.html" aria-label="Website logo" aria-labelledby="Website logo">My<span
-            class="header-span span">JSPro</span></a>
-      </div>
-      <div class="nav-div">
-        <nav class="nav-bar">
-          <ul class="nav-links">
-            <li><a href="index.html" aria-label="Home link" aria-labelledby="Home link">Home</a></li>
-            <li><a href="todo-page.html" id="application-link" aria-label="Application link"
-                aria-labelledby="Application link">Application</a></li>
-            <li><a href="contact-me.html" class="active-page" aria-label="Contact me link"
-                aria-labelledby="Contact me link">Contact Me</a></li>
-            <li id="sign-up-link"><a href="sign-up.html" aria-label="Sign up link" aria-labelledby="Sign up link">Sign
-                up</a></li>
-            <li id="login-link"><a href="login.html" aria-label="Login link" aria-labelledby="Login link">Login</a></li>
-            <li id="logout-link"><a href="#" aria-label="Logout link" aria-labelledby="Logout link">Log out</a></li>
-            <li id="welcome-link" class="welcome-item"><span id="welcome-message"></span></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="contact-me" id="contactMe">
-
-      <div class="contact-container">
-        <div class="contact-header">
-          <h1>
-            Contact<span class="contact-title-span"> Me</span>
-          </h1>
-          <p class="contact-me-text">
-            If you have any questions, inquiries, or would like to discuss potential
-            collaborations, please feel free to reach out to me. I am always open to
-            connecting with <span class="bold">like-minded</span> individuals and
-            exploring new opportunities.
-          </p>
+  <body>
+    <!-- Navigation Links Section -->
+    <header>
+      <div class="hearder-container container">
+        <div class="logo">
+          <a
+            href="index.html"
+            aria-label="Website logo"
+            aria-labelledby="Website logo"
+            >My<span class="header-span span">JSPro</span></a
+          >
         </div>
-
-        <div class="contact-content">
-          <img src="./Images/contact-me.jpg" alt="Contact Me picture" />
-
-          <!-- The action here will send info you've enterd directly to the email below -->
-          <form id="contact-form" action="https://formspree.io/f/xvkpzpge" method="POST">
-            <span id="error-message" class="error-message-input"></span>
-            <span id="message-delivered" class="message-delivered"></span>
-
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" placeholder="Enter your Full Name" />
-            </div>
-
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" name="email" id="email" placeholder="Enter your Email address" />
-            </div>
-
-            <div class="form-group">
-              <label for="subject">Subject</label>
-              <select name="subject" id="subject">
-                <option value="" disabled selected hidden>-- Choose a Subject --</option>
-                <option>General inquiry</option>
-                <option>Job Opportunity</option>
-                <option>Meeting with Employer</option>
-                <option>Meeting with Client</option>
-                <option>Send Feedback</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea name="message" id="message" cols="30" rows="10"
-                placeholder="Enter your message here"></textarea>
-            </div>
-
-            <button type="submit" class="btn-contactMe">Send Message</button>
-          </form>
+        <div class="nav-div">
+          <nav class="nav-bar">
+            <ul class="nav-links">
+              <li>
+                <a
+                  href="index.html"
+                  aria-label="Home link"
+                  aria-labelledby="Home link"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="todo-page.html"
+                  id="application-link"
+                  aria-label="Application link"
+                  aria-labelledby="Application link"
+                  >Application</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact-me.html"
+                  class="active-page"
+                  aria-label="Contact me link"
+                  aria-labelledby="Contact me link"
+                  >Contact Me</a
+                >
+              </li>
+              <li id="sign-up-link">
+                <a
+                  href="sign-up.html"
+                  aria-label="Sign up link"
+                  aria-labelledby="Sign up link"
+                  >Sign up</a
+                >
+              </li>
+              <li id="login-link">
+                <a
+                  href="login.html"
+                  aria-label="Login link"
+                  aria-labelledby="Login link"
+                  >Login</a
+                >
+              </li>
+              <li id="logout-link">
+                <a
+                  href="#"
+                  aria-label="Logout link"
+                  aria-labelledby="Logout link"
+                  >Log out</a
+                >
+              </li>
+              <li id="welcome-link" class="welcome-item">
+                <span id="welcome-message"></span>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 MyJSPro | All rights reserved</p>
+    <!-- Main Section -->
+    <main>
+      <section class="contact-me" id="contactMe">
+        <div class="contact-container">
+          <div class="contact-header">
+            <h1>Contact<span class="contact-title-span"> Me</span></h1>
+            <p class="contact-me-text">
+              If you have any questions, inquiries, or would like to discuss
+              potential collaborations, please feel free to reach out to me. I
+              am always open to connecting with
+              <span class="bold">like-minded</span> individuals and exploring
+              new opportunities.
+            </p>
+          </div>
 
-      <div class="social-icons">
-        <a href="https://youtube.com" target="_blank" aria-label="Youtube Website">
-          <i class="fa-brands fa-youtube you-red"></i></a>
+          <div class="contact-content">
+            <img src="./Images/contact-me.jpg" alt="Contact Me picture" />
 
-        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIN Website">
-          <i class="fa-brands fa-linkedin link-blue"></i></a>
+            <!-- The action here will send info you've enterd directly to the email linked with formspree -->
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/xvkpzpge"
+              method="POST"
+            >
+              <span id="error-message" class="error-message-input"></span>
+              <span id="message-delivered" class="message-delivered"></span>
 
-        <a href="https://x.com" target="_blank" aria-label="X Website ">
-          <i class="fa-brands fa-x-twitter x-black"></i></a>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your Full Name"
+                />
+              </div>
 
-        <a href="https://github.com" target="_blank" aria-label="GitHub Website">
-          <i class="fa-brands fa-github git-black"></i></a>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Enter your Email address"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject</label>
+                <select name="subject" id="subject">
+                  <option value="" disabled selected hidden>
+                    -- Choose a Subject --
+                  </option>
+                  <option>General inquiry</option>
+                  <option>Job Opportunity</option>
+                  <option>Meeting with Employer</option>
+                  <option>Meeting with Client</option>
+                  <option>Send Feedback</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                  placeholder="Enter your message here"
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-contactMe">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 MyJSPro | All rights reserved</p>
+
+        <div class="social-icons">
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            aria-label="Youtube Website"
+          >
+            <i class="fa-brands fa-youtube you-red"></i
+          ></a>
+
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            aria-label="LinkedIN Website"
+          >
+            <i class="fa-brands fa-linkedin link-blue"></i
+          ></a>
+
+          <a href="https://x.com" target="_blank" aria-label="X Website ">
+            <i class="fa-brands fa-x-twitter x-black"></i
+          ></a>
+
+          <a
+            href="https://github.com"
+            target="_blank"
+            aria-label="GitHub Website"
+          >
+            <i class="fa-brands fa-github git-black"></i
+          ></a>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
 
-
-  <script src="./welcome-message.js"></script>
-  <script src="./contact-me.js"></script>
-</body>
-
+    <script src="./welcome-message.js"></script>
+    <script src="./contact-me.js"></script>
+  </body>
 </html>
