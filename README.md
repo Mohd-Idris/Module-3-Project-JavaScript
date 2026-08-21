@@ -1,10 +1,11 @@
-# 📋 MyJSPro — Task Manager Application
+# 📋 JavaScript Project — Task Manager Application - Mohamed Idris
 
 A beginner-friendly, interactive web application for managing daily tasks with priority levels, automatic due date calculation, and user authentication. Built with **pure HTML, CSS, and vanilla JavaScript**.
 
 # 🎯 Project Overview
 
-The goal of this project is build a fully functional beginner-friendly task management web application using pure HTML, CSS, and Vanilla JavaScript - no frameworks.
+The goal of this project is designed to help the users organize your daily tasks, set clear priorities, and receive timely alerts so you stay on track. Whether it’s work, study or personal goals — this app helps you focus on what’s important.
+It allows the user to perform well and smooth by adding tasks to the user's agenda, and then can update it if necessary, complete it once it's done, or even delete it.
 
 ## 🚀 Features
 
@@ -149,15 +150,38 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 5. Adding LocalStorage for each of **Sign up**, **Login**, and **Welcome message**.
 
-6. Wrapped all code within **try/catch** blocks to ensure my code is protected from every possible scenario that might happend during using the website.
+6. Wrapping all code within **try/catch** blocks to ensure my code is protected from every possible scenario that might happend during using the website.
+
+7. Using Optional Chaining`?.` operator before `addEventListener`, safely skips binding when the target element is absent, avoids breaking the script, improves reliability across pages.
 
 ### Challenges:
 
 - During building this project I've encountered some challenges:
 
-1. **Runtime Errors** -
+1. **Runtime TypeErrors (sizeCache)** - Actually this error happens becaused of these issues as listed
+
+```
+ - Browser Internal Helper Code
+ - Autofill
+ - Password Manager
+ - Extension
+ - Built-in Browser Feature.
+```
+
+It happens when you're tryring to track sizing when you `Click` or `Focus` the `Email input` and/or `Password input`.
+In my case I've been activiting the `Password Manager` all the time that's why I encountered this issue.
+
 2. **Event handler Error** - I fixed this issue by adding checks and try/catch blocks.
 3. **Reference Error** - I fixed this by making the JS files run after the HTML loads well.
+
+### My Recommendation:
+
+This project is still new and definitely needs some development to be a perfect website, I am writing this recommendation for myself in near future, there are some aspects need some development such as:
+
+1. A better design for responsive design will be great thing such as intead of having header (logo & links) under each other, it's better to have them all inside a `Sidebar` or a `Hamburger Menu`.
+2. ToDo-Application should have at least a locaStorage or something better to save the data.
+3. Applying some professional effects to make it better for the user when the user makes any event such as editing, completing , deleting , or even adding tasks
+4. Having a better scenario from adding tasks till completing tasks will be an amazing addition to this project.
 
 # 🚫 .gitignore Contents
 
@@ -185,27 +209,6 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 
 - \*.log
 - .cache/
-
-## 📖 How to Run and Use
-
-### ▶️ How to Run the Website
-
-- Clone or download the repository
-- Open the file named `index.html` in the browser
-- Go to `Application link` and click it
-- Add Task(s) | Delete Tasks(s) | Update Task(s) | Complete Task(s)
-
-### Or
-
-- You can use the provided link below (Live link) to navigate the whole website
-
-### Or
-
-1. Open the project folder in your code editor
-2. Navigate to: **`index.html`** (Home page — starting point)
-3. Right-click → **Open in Browser**
-4. The website loads — you can navigate freely
-5. Follow the User Journey below
 
 ## 📝 User Journey — Step by Step
 
@@ -254,7 +257,7 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 - **Complete Tasks:** Click the `✅ Complete/Done icon` → moves to Completed section
 - **Delete Tasks:** Click the `❌ Delete icon` → confirm → removed
 
-#### Step 6.1 — Add a New Task
+#### 🔹🔹 Step 6.1 — Add a New Task
 
 -- `Default Scenario`:
 
@@ -273,7 +276,7 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 - Type your **Task Name** in the input field
 - Click **Add Task** → task card appears in the `Minor/Custom Tasks` column/card
 
-#### Step 6.2 — Edit a Task
+#### 🔹🔹 Step 6.2 — Edit a Task
 
 - Click the **✏️ Update icon** on any task card
 - Page **smooth scrolls** to the form — inputs fill automatically
@@ -282,13 +285,13 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
   - If switching the task to **Custom** priority, then → date picker shows up → select new date
 - Click **Edit Task** → card refreshes with new info
 
-#### Step 6.3 — Mark Task as Completed
+#### 🔹🔹 Step 6.3 — Mark Task as Completed
 
 - Click the **✅ Complete/Done icon** on any task card
 - Card updates → shows **Completed Date** the icons (Update, Delete, and Complete) will be disappeared
 - Moves to the **Completed Tasks** column/card
 
-#### Step 6.4 — Delete a Task
+#### 🔹🔹 Step 6.4 — Delete a Task
 
 - Click the **❌ Delete icon** on any task card
 - Confirmation message appears → click **OK** to delete or **Cancel** to keep it
@@ -306,7 +309,7 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 - **A message appears:** Confirmation message → logged out → returns to Home page → welcome message hidden → Sign up and Login links visible again
 - Next time you click **Application** → login prompt appears again!
 
-#### Step 9 — Contact Me Page
+#### 🔹 Step 9 — Contact Me Page
 
 - Click **Contact Me** in navigation
 - Fill in: Name, Email, Subject, and Message inputs
@@ -320,7 +323,28 @@ To ensure that my code meets the requirements of cleaning and has no any kind of
 - ✅ Try/catch error handling everywhere
 - ⚠️ **Student project** — data stored locally in your browser
 
-# 🔍 How to View
+## 📖 How to Run and Use
+
+### ▶️ How to Run the Website
+
+- Clone or download the repository
+- Open the file named `index.html` in the browser
+- Go to `Application link` and click it
+- Add Task(s) | Delete Tasks(s) | Update Task(s) | Complete Task(s)
+
+### Or
+
+- You can use the provided link below (Live link) to navigate the whole website
+
+### Or
+
+1. Open the project folder in your code editor
+2. Navigate to: **`index.html`** (Home page — starting point)
+3. Right-click → **Open in Browser**
+4. The website loads — you can navigate freely
+5. Follow the User Journey below
+
+## 🔍 How to View
 
 - Copy the below link.
 - Paste the link on the browser.
