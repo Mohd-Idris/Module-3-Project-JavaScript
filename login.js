@@ -69,7 +69,7 @@ try {
           errorMessageForm.innerText =
             "❌ email not found, please try again or Sign Up first";
           emailInput.classList.add("incorrect");
-          passwordInput.classList.add("incorrect");
+          emailInput.select();
           return;
         }
         if (foundUser.password !== passwordValue) {

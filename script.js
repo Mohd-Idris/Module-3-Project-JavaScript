@@ -241,6 +241,7 @@ try {
       doneIcon.classList.add("task-action-icon", "done-icon");
       doneIcon.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
 
+      // Append these icons in secure way
       taskActions.appendChild(updateIcon);
       taskActions.appendChild(deleteIcon);
       taskActions.appendChild(doneIcon);

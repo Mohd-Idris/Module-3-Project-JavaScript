@@ -93,6 +93,7 @@ function AccessLinkProtection(event) {
 }
 
 try {
+  // Check if you are logging in or logging out?
   if (loginLink || logoutLink) {
     // Get the existing user data from local storage
     const savedUserData = localStorage.getItem("logged-in-User");

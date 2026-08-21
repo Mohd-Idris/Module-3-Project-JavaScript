@@ -85,7 +85,7 @@ function getContactFormErrors(name, email, subject, message) {
 
   // Check Confirm Password input if it is empty or not
   if (!message) {
-    errorMessages.push("❌ Please write your message");
+    errorMessages.push("❌ Your Message is required");
     messageInput.classList.add("incorrect");
   }
 
@@ -119,9 +119,7 @@ const formInputs = [nameInput, emailInput, subjectInput, messageInput].filter(
 // Clearing the inputs that have errors
 formInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    // if (input.classList.contains("incorrect")) {
     input.classList.remove("incorrect");
     errorMessageForm.innerText = "";
-    // }
   });
 });
